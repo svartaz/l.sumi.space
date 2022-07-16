@@ -23,7 +23,7 @@ export const Owner = () => {
     </div>
 
     <div className='evenly' style={{ marginTop: '1em' }}>
-      <a href='https://twitter.com/intent/user?user_id=759648849786920960'>
+      <a href='https://twitter.com/i/user/759648849786920960'>
         <img src='downloaded/twitter-logo-01282021/Twitter logo/SVG/Logo white.svg' alt='twitter icon' width='48px' />
       </a>
 
@@ -31,7 +31,7 @@ export const Owner = () => {
         <img src='downloaded/Discord-Logo-White.svg' alt='discord icon' width='48px' />
       </a>
 
-      <a href='https://twitter.com/intent/user?user_id=759648849786920960'>
+      <a href='https://github.com/xekri'>
         <img src='downloaded/GitHub-Mark/PNG/GitHub-Mark-Light-64px.png' alt='github icon' width='48px' />
       </a>
 
