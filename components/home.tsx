@@ -3,22 +3,31 @@ import Link from 'next/link'
 export const Owner = () => {
   return <>
     <div style={{ textAlign: 'center' }}>
-      <img src='/avatar.gif' alt='avatar' width='200px' style={{ borderRadius: '50%', border: '1px solid' }} />
+      <img src={'/avatar\'.gif'} alt='avatar' width='200px' style={{ borderRadius: '50%', border: '1px solid' }} />
     </div>
 
     <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
       <ul>
+        <li>修士 (情報科學)</li>
         <li>軟件工程師</li>
         <li>語學趣味者
           <ul>
-            <li>TOEIC L&R 810/990 (2017): B2相當</li>
-            <li>英檢 準1級 2555/3000 (2021): B2相當</li>
-            <li>HSK 4級 235/300 (2021): A2相當</li>
+            <li>EN: B2
+              <ul>
+                <li>英檢 準1級 2555 (CE2021)</li>
+                <li>TOEIC L&R 900 (CE2022)</li>
+              </ul>
+            </li>
+            <li>CMN: A2
+              <ul>
+                <li>HSK 4級 235 (CE2021)</li>
+              </ul>
+            </li>
             <li>FA, FR, YUE: A1未滿</li>
           </ul>
         </li>
+        <li>近代自由主義者</li>
         <li>男性愛者</li>
-        <li>(特に表現の) 近代自由主義者</li>
       </ul>
     </div>
 
@@ -45,8 +54,8 @@ export const Owner = () => {
 export const Works = () => <ul>
   <li>舊網站
     <ul>
-      <li><Link href='https://0.sumi.space'>12018 (Gulp, Pug)</Link></li>
-      <li><Link href='https://www.sumi.space'>12021 (Next.js)</Link></li>
+      <li><Link href='https://0.sumi.space'>CE2018 (Gulp, Pug)</Link></li>
+      <li><Link href='https://www.sumi.space'>CE2021 (Next.js)</Link></li>
     </ul>
   </li>
   <li><Link href='https://sjagci.pages.dev'>將棋 (Elm)</Link></li>

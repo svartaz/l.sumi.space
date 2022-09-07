@@ -35,6 +35,7 @@ export default () => <>
       <li>2012 <a href='https://www.amazon.co.jp/dp/B074CFZ28K'>スピリットサークル</a></li>
       <li>2014 <a href='https://www.amazon.co.jp/dp/B074C559L8'>ダンジョン飯</a></li>
       <li>2016 <a href='https://www.amazon.co.jp/dp/B07875FXZ4'>Artiste</a></li>
+      <li>2018 <a href='https://www.amazon.co.jp/dp/B07D58KR39'>呪術廻戦</a></li>
       <li>2019 <a href='https://www.amazon.co.jp/dp/B08C6GFYV6'>潮が舞い子が舞い</a></li>
     </ul>
   </section>
@@ -60,6 +61,7 @@ export default () => <>
       <li>2010 <a href='https://jp.finalfantasyxiv.com/product'>FINAL FANTASY XIV</a></li>
       <li>2017 <a href='https://play.google.com/store/apps/details?id=com.dena.a12021245'>メギド72</a></li>
       <li>2020 <a href='https://store.steampowered.com/app/1150690'>OMORI</a></li>
+      <li>2022 <a href='https://nucarnival.com'>NU:カーニバル</a></li>
     </ul>
   </section>
 </>
