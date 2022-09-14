@@ -97,6 +97,9 @@ section
   & + &
     margin-top: 1em
 
+.v, .v-parent *
+  writing-mode: vertical-lr
+
 table
   border-collapse: collapse
   border: 1px solid
@@ -104,10 +107,6 @@ table
   margin-right: auto
   max-width: 80%
   tr
-    &:first-of-type
-      th
-        writing-mode: vertical-lr
-
     th
       text-align: right
     td

@@ -22,9 +22,47 @@ export default () => <>
   </div>
 
   <section>
-    <h3>SPECIFICATION</h3>
+    <h3>SUMMARY</h3>
+    <p>副次創作をする際は, 以下の簡單な設定を參考にして下さい. 逸脱しても構ひません.</p>
+    <table style={{ maxWidth: '75%' }}>
+      <tr className='h'>
+        <th className='l'>硯 suzuli <span style={{ color: 'gray' }}>□</span><span style={{ color: 'crimson' }}>■</span></th>
+        <th className='l'>盈 mitulu ■<span style={{ color: 'turquoise' }}>■</span></th>
+      </tr>
+      <tr>
+        <td>
+          <ul>
+            <li>大學院生 (情報)</li>
+            <li>無口, 無感情</li>
+            <li>1.75m, 70kg, 色白, 引き締まった細身</li>
+            <li>薄灰髪, 右目隱れ</li>
+            <li><a href='https://twitter.com/enkaust/status/1239962725746454528'>左耳耳環</a>, <a href='https://en.wikipedia.org/wiki/Prince_Albert_(genital_piercing)'>prince albert</a></li>
+            <li>bottom寄りversatile</li>
+            <li>一途, monogamy</li>
+            <li>下反り 230mm</li>
+            <li>首が弱い</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>大學生 (數學)</li>
+            <li>明朗, 社交的</li>
+            <li>1.85m, 80kg, 筋骨隆々</li>
+            <li>黑髪, 兩目隱れ</li>
+            <li>顎髭, 垂れ目, 太眉</li>
+            <li>bottom寄りversatile</li>
+            <li>淫亂</li>
+            <li>上反り 210mm</li>
+            <li>胸が弱い</li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+  </section>
 
-    <p>以下の値は目安であり, 書き手の好むに應じ變動します.</p>
+  <section>
+    <h3>SPECIFICATION</h3>
+    <p>より詳細な設定は以下です.</p>
     <table style={{ maxWidth: '75%' }}>
       <tr>
         <th></th>
@@ -36,34 +74,9 @@ export default () => <>
         </td>
       </tr>
       <tr>
-        <th>名</th>
-        <td>硯 (suzuli)</td>
-        <td>盈 (mitulu)</td>
-      </tr>
-      <tr>
         <th>外見</th>
         <td>上圖右</td>
         <td>上圖左</td>
-      </tr>
-      <tr>
-        <th>年齡</th>
-        <td>23</td>
-        <td>21</td>
-      </tr>
-      <tr>
-        <th>身長/m</th>
-        <td>1.75</td>
-        <td>1.85</td>
-      </tr>
-      <tr>
-        <th>體質量/kg</th>
-        <td>70</td>
-        <td>80</td>
-      </tr>
-      <tr>
-        <th>髮色 (地毛)</th>
-        <td>薄墨色<span style={{ color: 'lightgray' }}>■</span></td>
-        <td>黒色<span>□</span></td>
       </tr>
       <tr>
         <th>所在</th>
@@ -75,31 +88,9 @@ export default () => <>
         <td>葦原大學 理學部 數學科</td>
       </tr>
       <tr>
-        <th>性</th>
-        <td>男, 男性愛, polyamory</td>
-        <td>男, 男性愛, monoamory</td>
-      </tr>
-      <tr>
-        <th>陰莖</th>
-        <td>最大230mm, 下反り, 半剝け</td>
-        <td>最大210mm, 上反り, 半剝け</td>
-      </tr>
-      <tr>
         <th>言語</th>
         <td>Ja-東京, En-US, Yue</td>
         <td>Ja-京都, En-GB, Fr</td>
-      </tr>
-      {/*<tr>
-        <th>主題色</th>
-        <td>黒色<span>□</span>, 紅色<span style={{ color: 'crimson' }}>■</span></td>
-        <td>白色<span style={{ color: 'white' }}>■</span>, 青綠色 <span style={{ color: 'turquoise' }}>■</span></td>
-      </tr>*/}
-      <tr>
-        <th>服飾</th>
-        <td>
-          素朴, 無彩, 穿孔 (<a href='https://twitter.com/enkaust/status/1239962725746454528'>耳</a>, <a href='https://en.wikipedia.org/wiki/Prince_Albert_(genital_piercing)'>prince albert</a>)
-        </td>
-        <td>(未定)</td>
       </tr>
       <tr>
         <th>趣味</th>
@@ -114,7 +105,7 @@ export default () => <>
       <tr>
         <th>性格</th>
         <td>論理的, 冷靜, 淫蕩</td>
-        <td>快活, 社交的, 一途</td>
+        <td>快活, 社交的, 一途</td>
       </tr>
       <tr>
         <th>思想</th>
@@ -157,7 +148,7 @@ export default () => <>
       暫くして盈が硯に聲を掛けて知り合って以來, 穩やかな友人關係を續けてゐる.
     </p>
     <p>
-      盈は社交的で學内に築いた多くの友人關係を樂しんでゐるが, 入り組んだ人間關係を器用に立ち回る事を煩はしく思ふ時が有る.
+      盈は社交的で學内に築いた多くの友人關係を樂しんでゐるが, 入り組んだ人間關係を器用に立ち回る事を煩はしく思ふ時が有る.
       硯と行動を共にする内に人に阿らない毅然とした彼の態度を盈は好み始めた.
     </p>
     <p>
