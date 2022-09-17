@@ -100,7 +100,7 @@ export default () => <>
       <tr>
         <th>愛讀書</th>
         <td>«better never to have been»</td>
-        <td>«l'être et le néant»</td>
+        <td>«l&apos;être et le néant»</td>
       </tr>
       <tr>
         <th>性格</th>

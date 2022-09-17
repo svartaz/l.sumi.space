@@ -1,7 +1,8 @@
 import matter from "gray-matter"
+import React from "react"
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import Link from 'next/link'
-import { Owner, Works, Misc } from '../components/home'
+import { Me, Works, Fav, Misc } from '../components/home'
 
 export async function getStaticProps() {
   const posts = (context => {
@@ -30,24 +31,26 @@ export async function getStaticProps() {
   }
 }
 
-export default ({ posts }) => <Tabs>
-  <TabList>
-    <Tab><h2>OWNER</h2></Tab>
-    <Tab><h2>WORKS</h2></Tab>
-    <Tab><h2>MISC</h2></Tab>
-    <Tab><h2>POSTS</h2></Tab>
-  </TabList>
+const tabs = ['me', 'works', 'misc', 'posts', 'fav']
 
-  <TabPanel><Owner /></TabPanel>
+export default ({ posts }) => <Tabs>
+  <TabList>{
+    tabs.map((tab, i) =>
+      <Tab key={i}><h2>{tab.toUpperCase()}</h2></Tab>
+    )
+  }</TabList>
+
+  <TabPanel><Me /></TabPanel>
   <TabPanel><Works /></TabPanel>
   <TabPanel><Misc /></TabPanel>
+  <TabPanel><Fav /></TabPanel>
   <TabPanel>
-    {posts.map(post =>
-      <section>
+    {posts.map((post, i) =>
+      <section key={i}>
         <h3>
           <Link href={`../posts/${post.slug}`} >{post.meta.date}</Link> {post.meta.title}
         </h3>
       </section>
     )}
   </TabPanel>
-</Tabs>
+</Tabs >
