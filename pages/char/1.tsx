@@ -23,11 +23,11 @@ export default () => <>
 
   <section>
     <h3>SUMMARY</h3>
-    <p>副次創作をする際は, 以下の簡單な設定を參考にして下さい. 逸脱しても構ひません.</p>
+    <p>副次創作をする際は, 以下の簡單な設定を參考にして下さい. 逸脱しても構ひません.</p>
     <table style={{ maxWidth: '75%' }}>
       <tr className='h'>
-        <th className='l'>硯 suzuli <span style={{ color: 'gray' }}>□</span><span style={{ color: 'crimson' }}>■</span></th>
-        <th className='l'>盈 mitulu ■<span style={{ color: 'turquoise' }}>■</span></th>
+        <th style={{ textAlign: 'center', width: '50%' }}>硯 suzuli <span style={{ color: 'gray' }}>□</span><span style={{ color: 'crimson' }}>■</span></th>
+        <th style={{ textAlign: 'center', width: '50%' }}>盈 mitulu ■<span style={{ color: 'turquoise' }}>■</span></th>
       </tr>
       <tr>
         <td>
@@ -46,7 +46,7 @@ export default () => <>
         <td>
           <ul>
             <li>大學生 (數學)</li>
-            <li>明朗, 社交的</li>
+            <li>明朗, 社交的</li>
             <li>1.85m, 80kg, 筋骨隆々</li>
             <li>黑髪, 兩目隱れ</li>
             <li>顎髭, 垂れ目, 太眉</li>
@@ -61,15 +61,15 @@ export default () => <>
   </section>
 
   <section>
-    <h3>SPECIFICATION</h3>
+    <h3>DETAIL</h3>
     <p>より詳細な設定は以下です.</p>
     <table style={{ maxWidth: '75%' }}>
       <tr>
         <th></th>
-        <td style={{ textAlign: "center" }}>
+        <td style={{ textAlign: "center", width: '40%' }}>
           <img src="/suzuli.svg" width="64px" />
         </td>
-        <td style={{ textAlign: "center" }}>
+        <td style={{ textAlign: "center", width: '40%' }}>
           <img src="/mitulu.svg" width="64px" />
         </td>
       </tr>
@@ -89,8 +89,8 @@ export default () => <>
       </tr>
       <tr>
         <th>言語</th>
-        <td>Ja-東京, En-US, Yue</td>
-        <td>Ja-京都, En-GB, Fr</td>
+        <td>Ja-東京, En-US, Fr</td>
+        <td>Ja-京都, En-GB, Yue</td>
       </tr>
       <tr>
         <th>趣味</th>
@@ -99,18 +99,18 @@ export default () => <>
       </tr>
       <tr>
         <th>愛讀書</th>
-        <td>«better never to have been»</td>
-        <td>«l&apos;être et le néant»</td>
+        <td>«the law of peoples»</td>
+        <td>«de l{'\''}inconvénient d{'\''}être né»</td>
       </tr>
       <tr>
         <th>性格</th>
         <td>論理的, 冷靜, 淫蕩</td>
-        <td>快活, 社交的, 一途</td>
+        <td>快活, 社交的, 一途</td>
       </tr>
       <tr>
         <th>思想</th>
-        <td>義務論的自由主義, 親自殺主義</td>
-        <td>選好的功利主義, 反出生主義</td>
+        <td>義務論的自由主義</td>
+        <td>選好的功利主義, 親自殺主義</td>
       </tr>
       <tr>
         <th>他方からの呼稱</th>
@@ -144,12 +144,11 @@ export default () => <>
   <section>
     <h3>BACKGROUND</h3>
     <p>
-      盈は硯を大學圖書館で數度 見掛け一方的に認識してゐた.
-      暫くして盈が硯に聲を掛けて知り合って以來, 穩やかな友人關係を續けてゐる.
+      盈の履修した講義で硯がTAを勤め, その理知的な雰圍氣に惹かれた盈が硯に聲を掛け知り合った.
     </p>
     <p>
-      盈は社交的で學内に築いた多くの友人關係を樂しんでゐるが, 入り組んだ人間關係を器用に立ち回る事を煩はしく思ふ時が有る.
-      硯と行動を共にする内に人に阿らない毅然とした彼の態度を盈は好み始めた.
+      硯と行動を共にする内に人に阿らない毅然とした彼の態度を見て盈は硯を一層 敬愛し始めた.
+      盈は社交的で學内に築いた多くの友人關係を樂しんでゐるが, 入り組んだ人間關係を器用に立ち回る事を煩はしく思ふ時が有る.
     </p>
     <p>
       盈は多くの週末を硯の家で過ごす.
@@ -162,7 +161,7 @@ export default () => <>
       硯は年齢や學年に基づく上下關係と言った物に價値を認めないが, 盈に對しては兄の如く甘やかす立場を取り勝ちである.
     </p>
     <p>
-      硯は殆ど毎日, 盈を含む多數の相手の内の (單複問はず) 誰かと性交する.
+      硯は殆ど毎日, 盈を含む多數の内の (單複問はず) 誰かと性交する.
       一方で盈はしばしば戀人を定め, 別るまでは硯を含む他者と性交しない.
     </p>
   </section>
@@ -170,6 +169,7 @@ export default () => <>
   <section>
     <h3>ARTS</h3>
     <div className={style.tweets}>
+      <TwitterTweetEmbed tweetId='1551269180070334464' options={{ theme: "dark" }} /> {/*<blockquote class="twitter-tweet"><p lang="ja" dir="ltr"><a href="https://t.co/vRi2NOjJSv">pic.twitter.com/vRi2NOjJSv</a></p>&mdash; toqme (@toqme) <a href="https://twitter.com/toqme/status/1551269180070334464?ref_src=twsrc%5Etfw">July 24, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>*/}
       <TwitterTweetEmbed tweetId='1548324710231916549' options={{ theme: "dark" }} />
       <TwitterTweetEmbed tweetId='1488869489685012485' options={{ theme: "dark" }} /> {/*<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">【R-18🔞】skeb納品しました。リクエストありがとうございました！<a href="https://t.co/MUKQZBYvja">https://t.co/MUKQZBYvja</a> <a href="https://t.co/UlIjonaXpG">pic.twitter.com/UlIjonaXpG</a></p>&mdash; はいき｜𝗛𝗔𝗜𝗞𝗜 (@haiki396g) <a href="https://twitter.com/haiki396g/status/1488869489685012485?ref_src=twsrc%5Etfw">February 2, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>*/}
       <TwitterTweetEmbed tweetId='1479281810123390978' options={{ theme: "dark" }} /> {/*<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">Skebありがとうございました！<a href="https://t.co/sdYui5BcE1">https://t.co/sdYui5BcE1</a><a href="https://twitter.com/hashtag/Skeb?src=hash&amp;ref_src=twsrc%5Etfw">#Skeb</a> <a href="https://t.co/nSLnroOfRg">pic.twitter.com/nSLnroOfRg</a></p>&mdash; ᴘᴏᴢᴏɴ²🔞 (@Pozonuun) <a href="https://twitter.com/Pozonuun/status/1479281810123390978?ref_src=twsrc%5Etfw">January 7, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>*/}
