@@ -134,7 +134,7 @@ const Misc = () => <ul>
     </ul>
   </li>
   <li><Link href='https://sjagci.pages.dev'>將棋 (Elm)</Link></li>
-  <li><Link href='https://dincva.sumi.space'>ラテン化</Link></li>
+  <li><Link href='https://tung.sumi.space'>ラテン化</Link></li>
   <li>original characters
     <ul>
       <li><Link href='char/1'>suzuli, mitulu</Link></li>
