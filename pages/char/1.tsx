@@ -39,7 +39,7 @@ export default () => <>
             <li><a href='https://twitter.com/enkaust/status/1239962725746454528'>左耳耳環</a>, <a href='https://en.wikipedia.org/wiki/Prince_Albert_(genital_piercing)'>prince albert</a></li>
             <li>bottom寄りversatile</li>
             <li>一途, monogamy</li>
-            <li>下反り 230mm</li>
+            <li>下反り 200mm</li>
             <li>首が弱い</li>
           </ul>
         </td>
@@ -52,7 +52,7 @@ export default () => <>
             <li>顎髭, 垂れ目, 太眉</li>
             <li>bottom寄りversatile</li>
             <li>淫亂</li>
-            <li>上反り 210mm</li>
+            <li>上反り 185mm</li>
             <li>胸が弱い</li>
           </ul>
         </td>
