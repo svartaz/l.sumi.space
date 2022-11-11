@@ -30,7 +30,7 @@ const Me = () => <>
               <li>HSK 4級 235 (CE2021)</li>
             </ul>
           </li>
-          <li>FA, FR, YUE: A1未滿</li>
+          <li>FR, FA, YUE, JBO: A1未滿</li>
         </ul>
       </li>
       <li>近代自由主義者</li>
@@ -41,6 +41,10 @@ const Me = () => <>
   <div className='evenly' style={{ marginTop: '1em' }}>
     <a href='https://twitter.com/i/user/759648849786920960'>
       <img src='downloaded/twitter-logo-01282021/Twitter logo/SVG/Logo white.svg' alt='twitter icon' width={48} />
+    </a>
+
+    <a href='https://m.sumi.space/@s'>
+      <img src='https://raw.githubusercontent.com/mastodon/mastodon/cf4992c918459187962a9e2f389f9ccb4f1b825d/app/javascript/images/logo-symbol-icon.svg' alt='mastodon icon' width={48} />
     </a>
 
     <a href='https://discordapp.com/users/335857821629546496'>
@@ -56,9 +60,8 @@ const Me = () => <>
     </a>
 
     <a href='https://ci-en.net/creator/15102'>
-      <img src='https://ci-en.net/assets/img/common/logo_cien_web.png' alt='ci-en icon' width={48} style={{ filter: 'grayscale(1)' }} />
+      <img src='https://ci-en.net/assets/img/common/logo_cien_web.png' alt='ci-en icon' width={48} style={{ filter: 'grayscale(1) brightness(7)' }} />
     </a>
-
   </div>
 </>
 
