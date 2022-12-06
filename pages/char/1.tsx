@@ -18,65 +18,43 @@ export default () => <>
     <Link href='/char-1/20220716-bk.png'>
       <img src='/char-1/20220716-bk.png' style={{ width: '50%' }} />
     </Link>
-    <p>drawn by <a href='https://twitter.com/i/user/948471113448792064'>絹豆腐</a></p>
+    <p><a href='https://twitter.com/i/user/948471113448792064'>絹豆腐</a> 筆</p>
   </div>
 
   <section>
-    <h3>SUMMARY</h3>
-    <p>副次創作をする際は, 以下の簡單な設定を參考にして下さい. 逸脱しても構ひません.</p>
-    <table style={{ maxWidth: '75%' }}>
-      <tr className='h'>
-        <th style={{ textAlign: 'center', width: '50%' }}>硯 suzuli <span style={{ color: 'gray' }}>□</span><span style={{ color: 'crimson' }}>■</span></th>
-        <th style={{ textAlign: 'center', width: '50%' }}>盈 mitulu ■<span style={{ color: 'turquoise' }}>■</span></th>
-      </tr>
-      <tr>
-        <td>
-          <ul>
-            <li>大學院生 (情報)</li>
-            <li>無口, 無感情</li>
-            <li>1.75m, 70kg, 色白, 引き締まった細身</li>
-            <li>薄灰髪, 右目隱れ</li>
-            <li><a href='https://twitter.com/enkaust/status/1239962725746454528'>左耳耳環</a>, <a href='https://en.wikipedia.org/wiki/Prince_Albert_(genital_piercing)'>prince albert</a></li>
-            <li>bottom寄りversatile</li>
-            <li>一途, monogamy</li>
-            <li>下反り 200mm</li>
-            <li>首が弱い</li>
-          </ul>
-        </td>
-        <td>
-          <ul>
-            <li>大學生 (數學)</li>
-            <li>明朗, 社交的</li>
-            <li>1.85m, 80kg, 筋骨隆々</li>
-            <li>黑髪, 兩目隱れ</li>
-            <li>顎髭, 垂れ目, 太眉</li>
-            <li>bottom寄りversatile</li>
-            <li>淫亂</li>
-            <li>上反り 185mm</li>
-            <li>胸が弱い</li>
-          </ul>
-        </td>
-      </tr>
-    </table>
-  </section>
-
-  <section>
-    <h3>DETAIL</h3>
-    <p>より詳細な設定は以下です.</p>
+    <p>副次創作をする際は以下の設定を逸脱しても構ひません。</p>
+    <h3>詳細</h3>
     <table style={{ maxWidth: '75%' }}>
       <tr>
         <th></th>
         <td style={{ textAlign: "center", width: '40%' }}>
           <img src="/suzuli.svg" width="64px" />
+          <br />硯 suzuli <span style={{ color: 'gray' }}>□</span><span style={{ color: 'crimson' }}>■</span>
         </td>
         <td style={{ textAlign: "center", width: '40%' }}>
           <img src="/mitulu.svg" width="64px" />
+          <br />盈 mitulu ■<span style={{ color: 'turquoise' }}>■</span>
         </td>
       </tr>
       <tr>
-        <th>外見</th>
-        <td>上圖右</td>
-        <td>上圖左</td>
+        <th>容姿</th>
+        <td>
+          <ul>
+            <li>上圖右</li>
+            <li>1.75m・70kg</li>
+            <li>色白・引き締まった細身</li>
+            <li>薄灰色の髪・右目隱れ</li>
+            <li>薄い體毛</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>上圖左</li>
+            <li>1.85m・80kg</li>
+            <li>筋骨隆々</li>
+            <li>黒色の髪・兩目隱れ・輕い癖毛</li>
+          </ul>
+        </td>
       </tr>
       <tr>
         <th>所在</th>
@@ -84,56 +62,62 @@ export default () => <>
       </tr>
       <tr>
         <th>身分</th>
-        <td>葦原大學大學院 情報科學院 理論計算機科專攻</td>
+        <td>葦原大學大學院 情報科學院 理論計算機科學專攻</td>
         <td>葦原大學 理學部 數學科</td>
       </tr>
       <tr>
-        <th>言語</th>
-        <td>Ja-東京, En-US, Fr</td>
-        <td>Ja-京都, En-GB, Yue</td>
-      </tr>
-      <tr>
         <th>趣味</th>
-        <td>讀書, 鋼琴, 亂交</td>
-        <td>映畫鑑賞, 筋力鍛錬</td>
+        <td>讀書・鋼琴・亂交</td>
+        <td>映畫鑑賞・筋力鍛錬</td>
       </tr>
       <tr>
         <th>愛讀書</th>
-        <td>«the law of peoples»</td>
-        <td>«de l{'\''}inconvénient d{'\''}être né»</td>
+        <td>『a theory of justice』</td>
+        <td>『de l{'\''}inconvénient d{'\''}être né』</td>
       </tr>
       <tr>
         <th>性格</th>
-        <td>論理的, 冷靜, 淫蕩</td>
-        <td>快活, 社交的, 一途</td>
+        <td>澹泊・冷靜・淫蕩</td>
+        <td>明朗快活・社交的・一途</td>
       </tr>
       <tr>
-        <th>思想</th>
-        <td>義務論的自由主義</td>
-        <td>選好的功利主義, 親自殺主義</td>
-      </tr>
-      <tr>
-        <th>他方からの呼稱</th>
+        <th>呼ばれ方</th>
         <td>硯君 suzuli-kun</td>
         <td>盈 mitulu</td>
+      </tr>
+      <tr>
+        <th>性生活</th>
+        <td>
+          <ul>
+            <li>男性男性愛者</li>
+            <li>自淫は平均1回/週</li>
+            <li>可攻可受だが受くを好む</li>
+            <li>首を絞めらるを好む</li>
+            <li>受けの時は甘えたがり</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>男性男性愛者</li>
+            <li>自淫は平均1回/日</li>
+            <li>可攻可受だが受くを好む</li>
+            <li>胸が弱い</li>
+            <li>先導されたい</li>
+          </ul>
+        </td>
       </tr>
       <tr>
         <th>他</th>
         <td>
           <ul>
-            <li>自淫は平均1回/週</li>
-            <li>可攻可受だが受くを好む</li>
-            <li>首を絞めらるを好む</li>
-            <li>性行爲中は甘えたがり</li>
+            <li>陰莖は下反り巨根</li>
             <li>大麻とLSDを好む</li>
+            <li>服には興味が無いので品の有る範圍で素朴な物を著るが、盈に服を押し附けられる事で先進的に成りつつある</li>
           </ul>
         </td>
         <td>
           <ul>
-            <li>自淫は平均1回/日</li>
-            <li>可攻可受だが受くを好む</li>
-            <li>乳頭が弱い</li>
-            <li>寂しがり</li>
+            <li>陰莖は上反り巨根だが硯に負ける</li>
             <li>酒精に弱い</li>
           </ul>
         </td>
@@ -141,33 +125,23 @@ export default () => <>
     </table>
   </section >
 
-  <section>
-    <h3>BACKGROUND</h3>
-    <p>
-      盈の履修した講義で硯がTAを勤め, その理知的な雰圍氣に惹かれた盈が硯に聲を掛け知り合った.
-    </p>
-    <p>
-      硯と行動を共にする内, 彼の人に阿らない態度と一貫した論理に觸れて盈は硯を一層敬愛し始めた.
-      對照的に盈は社交的で學内に築いた多くの友人關係を樂しんで居るが入り組んだ人間關係を器用に立ち回る事を煩はしく思ふ時が有る.
-    </p>
-    <p>
-      盈は多くの週末を硯の家で過ごす.
-      二人は長椅に竝び麥酒や大麻を喫しながら映畫を觀る事が多い.
-      時にはそれぞれの專門である程序設計や數學の話をする.
-    </p>
-    <p>
-      夜は大抵性交した後に共寢する.
-      本來は兩者とも受けを望むが, 硯が攻めに回る事が多い.
-      硯は年齢や學年に基づく上下關係と言った物に價値を認めないが, 盈に對しては兄の如く甘やかす立場を取り勝ちである.
-    </p>
-    <p>
-      硯は殆ど毎日, 盈を含む多數の内の (單複問はず) 誰かと性交する.
-      一方で盈はしばしば戀人を定め, 別るまでは硯を含む他者と性交しない.
-    </p>
+  <section style={{ wordBreak: 'break-all' }}>
+    <h3>背景</h3>
+    <p>盈の履修した講義で硯がTAを勤め、その理知的な雰圍氣に惹かれた盈が硯に聲を掛け知り合った。</p>
+    <p>硯と行動を共にする内、彼の人に阿らない態度と一貫した論理に觸れて盈は硯を一層敬愛し始めた。
+      <br />盈は對照的に社交的で學内に築いた多くの友人關係を樂しむが、入り組んだ人間關係を器用に立ち回る事に虛しく成る時が有る。</p>
+    <p>盈は多くの週末を硯の家で過ごす。
+      <br />二人は長椅に竝び麥酒や大麻を喫しながら映畫を觀る事が多い。
+      <br />時にはそれぞれの專門である程序設計や數學の話をする。</p>
+    <p>夜は大抵性交した後に共寢する。
+      <br />本來は兩者とも受けを望むが、硯が攻めに回る事が多い。
+      <br />硯は年齢や學年に基づく上下關係と言った虛禮に價値を認めないが、盈に對しては兄の如く甘やかす立場を取り勝ちである。</p>
+    <p>硯は殆ど毎日、盈を含む多數の内の誰か（單複問はず）の體を求める。
+      <br />一方で盈はしばしば戀人を定め、別るまでは硯を含む他者と枕を共にしない。</p>
   </section>
 
   <section>
-    <h3>ARTS</h3>
+    <h3>繪畫</h3>
     <div className={style.tweets}>
       <TwitterTweetEmbed tweetId='1551269180070334464' options={{ theme: "dark" }} /> {/*<blockquote class="twitter-tweet"><p lang="ja" dir="ltr"><a href="https://t.co/vRi2NOjJSv">pic.twitter.com/vRi2NOjJSv</a></p>&mdash; toqme (@toqme) <a href="https://twitter.com/toqme/status/1551269180070334464?ref_src=twsrc%5Etfw">July 24, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>*/}
       <TwitterTweetEmbed tweetId='1548324710231916549' options={{ theme: "dark" }} />
@@ -222,7 +196,7 @@ export default () => <>
         <blockquote className="twitter-tweet" data-theme="dark"><p>Commission<a href="https://t.co/GCP58cuKd5">https://t.co/GCP58cuKd5</a> <a href="https://t.co/5sHvE7QLqa">pic.twitter.com/5sHvE7QLqa</a></p>&mdash; ミネむら (@minefarmkun) <a href="https://twitter.com/minefarmkun/status/1281632927529332736?ref_src=twsrc%5Etfw">July 10, 2020</a></blockquote>
         <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
       </div>
-      <TwitterTweetEmbed tweetId='1270015188935172097' options={{ theme: "dark" }} />
+      {/*<TwitterTweetEmbed tweetId='1270015188935172097' options={{ theme: "dark" }} />*/}
       {/*<TwitterTweetEmbed tweetId='1266767231813214208' options={{ theme: "dark" }} />*/}
       <TwitterTweetEmbed tweetId='1253513328783065088' options={{ theme: "dark" }} />
       <TwitterTweetEmbed tweetId='1250046521636085761' options={{ theme: "dark" }} />
