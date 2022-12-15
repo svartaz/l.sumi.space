@@ -21,9 +21,12 @@ export default () => <>
     <p><a href='https://twitter.com/i/user/948471113448792064'>絹豆腐</a> 筆</p>
   </div>
 
+  <p>硯（2018-）と盈（2022-）はsumiのOCです。</p>
+
   <section>
-    <p>副次創作をする際は以下の設定を逸脱しても構ひません。</p>
     <h3>詳細</h3>
+    <p>副次創作をする際は以下の設定を逸脱しても構ひません。</p>
+
     <table style={{ maxWidth: '75%' }}>
       <tr>
         <th></th>
@@ -42,7 +45,7 @@ export default () => <>
           <ul>
             <li>上圖右</li>
             <li>1.75m・70kg</li>
-            <li>色白・引き締まった細身</li>
+            <li>色白・すらっとした</li>
             <li>薄灰色の髪・右目隱れ</li>
             <li>薄い體毛</li>
           </ul>
@@ -51,7 +54,7 @@ export default () => <>
           <ul>
             <li>上圖左</li>
             <li>1.85m・80kg</li>
-            <li>筋骨隆々</li>
+            <li>大柄・むちっとした</li>
             <li>黒色の髪・兩目隱れ・輕い癖毛</li>
           </ul>
         </td>
@@ -61,7 +64,7 @@ export default () => <>
         <td colSpan={2}>日本共和國 / 武蔵縣</td>
       </tr>
       <tr>
-        <th>身分</th>
+        <th>所屬</th>
         <td>葦原大學大學院 情報科學院 理論計算機科學專攻</td>
         <td>葦原大學 理學部 數學科</td>
       </tr>
@@ -72,8 +75,8 @@ export default () => <>
       </tr>
       <tr>
         <th>愛讀書</th>
-        <td>『a theory of justice』</td>
         <td>『de l{'\''}inconvénient d{'\''}être né』</td>
+        <td>『a theory of justice』</td>
       </tr>
       <tr>
         <th>性格</th>
@@ -112,12 +115,12 @@ export default () => <>
           <ul>
             <li>陰莖は下反り巨根</li>
             <li>大麻とLSDを好む</li>
-            <li>服には興味が無いので品の有る範圍で素朴な物を著るが、盈に服を押し附けられる事で先進的に成りつつある</li>
+            <li>服に興味が無いので品の有る範圍で素朴な物を著るが、盈に服を贈られる事で華やぎつつある</li>
           </ul>
         </td>
         <td>
           <ul>
-            <li>陰莖は上反り巨根だが硯に負ける</li>
+            <li>陰莖は上反り巨根だが大きさで硯に負ける</li>
             <li>酒精に弱い</li>
           </ul>
         </td>
@@ -128,8 +131,8 @@ export default () => <>
   <section style={{ wordBreak: 'break-all' }}>
     <h3>背景</h3>
     <p>盈の履修した講義で硯がTAを勤め、その理知的な雰圍氣に惹かれた盈が硯に聲を掛け知り合った。</p>
-    <p>硯と行動を共にする内、彼の人に阿らない態度と一貫した論理に觸れて盈は硯を一層敬愛し始めた。
-      <br />盈は對照的に社交的で學内に築いた多くの友人關係を樂しむが、入り組んだ人間關係を器用に立ち回る事に虛しく成る時が有る。</p>
+    <p>硯と行動を共にする内、人に阿らない彼の態度と一貫した論理に觸れて盈は硯を一層敬愛し始めた。
+      <br />盈は對照的に社交的で學内に築いた多くの友人關係を樂しむが、入り組んだ人間關係を疎む日も有る。</p>
     <p>盈は多くの週末を硯の家で過ごす。
       <br />二人は長椅に竝び麥酒や大麻を喫しながら映畫を觀る事が多い。
       <br />時にはそれぞれの專門である程序設計や數學の話をする。</p>
@@ -152,7 +155,7 @@ export default () => <>
       <TwitterTweetEmbed tweetId='1421131605460979718' options={{ theme: "dark" }} /> {/**/}
       <TwitterTweetEmbed tweetId='1416882380334243841' options={{ theme: "dark" }} /> {/*<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">れんちゅ <a href="https://t.co/sG1zv9pJIJ">pic.twitter.com/sG1zv9pJIJ</a></p>&mdash; 絹豆腐📛 (@toufu0128) <a href="https://twitter.com/toufu0128/status/1416882380334243841?ref_src=twsrc%5Etfw">July 18, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>*/}
       <TwitterTweetEmbed tweetId='1415714345334415360' options={{ theme: "dark" }} /> {/*<blockquote class="twitter-tweet"><p lang="und" dir="ltr">? <a href="https://t.co/J2GFIIL8mm">pic.twitter.com/J2GFIIL8mm</a></p>&mdash; † (@ttqss) <a href="https://twitter.com/ttqss/status/1415714345334415360?ref_src=twsrc%5Etfw">July 15, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>*/}
-      <TwitterTweetEmbed tweetId='1413499483258638341' options={{ theme: "dark" }} /> {/*<blockquote class="twitter-tweet"><p lang="zxx" dir="ltr"><a href="https://t.co/LWAQzq3tiw">pic.twitter.com/LWAQzq3tiw</a></p>&mdash; 墨侖 (@ENKAUST) <a href="https://twitter.com/ENKAUST/status/1413499483258638341?ref_src=twsrc%5Etfw">July 9, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>*/}
+      {/*<TwitterTweetEmbed tweetId='1413499483258638341' options={{ theme: "dark" }} /> <blockquote class="twitter-tweet"><p lang="zxx" dir="ltr"><a href="https://t.co/LWAQzq3tiw">pic.twitter.com/LWAQzq3tiw</a></p>&mdash; 墨侖 (@ENKAUST) <a href="https://twitter.com/ENKAUST/status/1413499483258638341?ref_src=twsrc%5Etfw">July 9, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>*/}
       <TwitterTweetEmbed tweetId='1409123563672510469' options={{ theme: "dark" }} /> {/*<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">skebで描かせてもらったよそ様のキャラ、めちゃ好みだったので楽しかった<br>残像ちんの修正がどうすればよいのか全然わからなかった、これも勉強ですね。。。 <a href="https://t.co/tsTvNadjCd">pic.twitter.com/tsTvNadjCd</a></p>&mdash; 🔞さぶこ (@sabu_ur) <a href="https://twitter.com/sabu_ur/status/1409123563672510469?ref_src=twsrc%5Etfw">June 27, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>*/}
       <TwitterTweetEmbed tweetId='1401933201350664197' options={{ theme: "dark" }} /> {/**/}
       <TwitterTweetEmbed tweetId='1391770750495850498' options={{ theme: "dark" }} /> {/*<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">生首しか描けない <a href="https://t.co/Tb41nUC7wO">pic.twitter.com/Tb41nUC7wO</a></p>&mdash; 墨侖 (@ENKAUST) <a href="https://twitter.com/ENKAUST/status/1391770750495850498?ref_src=twsrc%5Etfw">May 10, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>*/}

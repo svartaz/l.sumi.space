@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 const Me = () => <>
   <div style={{ textAlign: 'center' }}>
-    <img src={'/avatar\'.gif'} alt='avatar' width='200px' style={{ borderRadius: '50%', border: '1px solid' }} />
+    <img src={'/avatar.gif'} alt='avatar' width='200px' style={{ borderRadius: '50%', border: '1px solid' }} />
   </div>
 
   <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
@@ -16,7 +16,7 @@ const Me = () => <>
 
     <ul>
       <li>修士 (情報科學)</li>
-      <li>軟件工程師</li>
+      <li>工程師</li>
       <li>語學趣味者</li>
       <ul>
         <li>EN: B2</li>
@@ -28,7 +28,7 @@ const Me = () => <>
         <ul>
           <li>HSK 4級 235 (CE2021)</li>
         </ul>
-        <li>FR, FA, YUE, JBO: A1未滿</li>
+        <li>ID, FR, FA, YUE, JBO: A1未滿</li>
       </ul>
       <li>近代自由主義者</li>
       <li>男性愛者</li>
@@ -118,10 +118,11 @@ const Fav = () => <>
     <ul>
       <li>2009 <a href='https://www.atlus.co.jp/title-archive/ds/'>女神異聞録デビルサバイバー</a></li>
       <li>2010 <a href='https://jp.finalfantasyxiv.com/product'>FINAL FANTASY XIV</a></li>
-      <li>2017 <a href='https://play.google.com/store/apps/details?id=com.dena.a12021245'>メギド72</a></li>
+      <li>2017 <a href='https://megido72.com/'>メギド72</a></li>
       <li>2018 <a href='https://store.steampowered.com/app/814540'>Changed</a></li>
       <li>2020 <a href='https://store.steampowered.com/app/1150690'>OMORI</a></li>
       <li>2022 <a href='https://nucarnival.com'>NU:カーニバル</a></li>
+      <li>2022 <a href='https://www.pokemon.co.jp/ex/sv/ja/'>ポケットモンスター スカーレット&バイオレット</a></li>
     </ul>
   </section>
 </>
@@ -133,7 +134,7 @@ const Misc = () => <ul>
     <li><Link href='https://www.sumi.space'>CE2021 (Next.js)</Link></li>
   </ul>
   <li><Link href='https://sjagci.pages.dev'>將棋 (Elm)</Link></li>
-  <li><Link href='https://tung.sumi.space'>ラテン化</Link></li>
+  <li><Link href='https://tung.sumi.space'>latin字化</Link></li>
   <li>original characters</li>
   <ul>
     <li><Link href='char/1'>suzuli, mitulu</Link></li>

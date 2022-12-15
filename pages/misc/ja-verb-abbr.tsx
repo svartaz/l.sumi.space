@@ -44,19 +44,19 @@ export default () => <>
       <td>欲</td>
     </tr>
     <tr>
-      <th>義務</th>
-      <td>連用-べき</td>
-      <td>須</td>
-    </tr>
-    <tr>
       <th>丁寧</th>
       <td>連用-ます</td>
       <td>候</td>
     </tr>
     <tr>
       <th>完了</th>
-      <td>終止-た</td>
+      <td>連用-た</td>
       <td>了</td>
+    </tr>
+    <tr>
+      <th>義務</th>
+      <td>終止-べき</td>
+      <td>須</td>
     </tr>
     <tr>
       <th>變化</th>
