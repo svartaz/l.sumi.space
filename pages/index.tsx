@@ -11,7 +11,7 @@ const Me = () => <>
   <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
     <p style={{ textAlign: 'center' }}>
       <span style={{ fontSize: '150%' }}>SUMI</span><br />
-      (墨侖, 初夏の夜風の涼しさ)
+      (初夏の夜風の涼しさ)
     </p>
 
     <ul>
