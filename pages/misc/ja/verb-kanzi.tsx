@@ -5,7 +5,7 @@ export default () => <>
   <NextSeo title={title} />
   <h2>{title}</h2>
 
-  <p>日本語の助動詞を漢字を用ゐて可逆に省略する事を考へる。Twitterなどで有用だらう。</p>
+  <p>日本語の助動詞を漢字を用ゐて可逆に省略する事を考へる. Twitterなどで有用だらう.</p>
 
   <table>
     <tr>
@@ -63,25 +63,20 @@ export default () => <>
       <td>連體-樣に成る</td>
       <td>成</td>
     </tr>
-    <tr>
-      <th>形容</th>
-      <td>連體-</td>
-      <td>之</td>
-    </tr>
   </table>
 
   <table style={{ marginTop: '2ex' }}>
     <tr>
       <td>子に食はせられなくなった</td>
-      <td>子に 食-令可不成了</td>
+      <td>子に 食令可不成了</td>
     </tr>
     <tr>
       <td>これを買はれたいですか</td>
-      <td>此を 買-給欲候か</td>
+      <td>此を 買給欲候か</td>
     </tr>
     <tr>
       <td>愛した人に選ばれる樣に成らうよ</td>
-      <td>愛了之 人に 選-被成應よ</td>
+      <td>愛-了 人に 選被成應よ</td>
     </tr>
   </table>
 </>

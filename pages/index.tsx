@@ -1,4 +1,3 @@
-import matter from "gray-matter"
 import React from "react"
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
 import Link from 'next/link'
@@ -15,7 +14,6 @@ const Me = () => <>
     </p>
 
     <ul>
-      <li>修士 (情報科學)</li>
       <li>工程師</li>
       <li>語學趣味者</li>
       <ul>
@@ -28,7 +26,7 @@ const Me = () => <>
         <ul>
           <li>HSK 4級 235 (CE2021)</li>
         </ul>
-        <li>ID, FR, FA, YUE, JBO: A1未滿</li>
+        <li>FR, ID, FA, YUE, JBO: pre-A1</li>
       </ul>
       <li>近代自由主義者</li>
       <li>男性愛者</li>
@@ -60,6 +58,15 @@ const Me = () => <>
       <img src='https://ci-en.net/assets/img/common/logo_cien_web.png' alt='ci-en icon' width={48} style={{ filter: 'grayscale(1) brightness(7)' }} />
     </a>
   </div>
+
+  <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+    <ul>
+      <li><a href='https://snort.social/p/npub1fz65nf68h0kyg895u9vvwzwc0paynvdv64nu7cg7700g845k6juqzg59wk'>nostr</a></li>
+      <li><a href='https://booklog.jp/users/xek'>booklog</a></li>
+      <li><a href='https://eiga.com/user/1115495/review/'>eiga.com</a></li>
+      <li><a href='https://nuita.net/users/tuFEwqlaelfFak7x'>nuita.net</a></li>
+    </ul>
+  </div>
 </>
 
 const Fav = () => <>
@@ -75,27 +82,12 @@ const Fav = () => <>
 
   <section>
     <h3>小説</h3>
-    <ul>
-      <li>2010 <a href='https://www.amazon.co.jp/dp/B009DEMA1Q'>ハーモニー</a></li>
-      <li>2010 <a href='https://www.amazon.co.jp/dp/B075VFL6WS'>Coda Series</a></li>
-      <li>2011 <a href='https://www.amazon.co.jp/dp/4344417534'>天帝のはしたなき果実</a></li>
-      <li>2012 <a href='https://www.amazon.co.jp/dp/B00O2O7JEA'>あなたの人生の物語</a></li>
-      <li>2014 <a href='https://www.amazon.co.jp/dp/B00RSPXLT2'>ディアスポラ</a></li>
-      <li>2017 <a href='https://www.amazon.co.jp/dp/4150121265'>もののあはれ (ケン・リュウ短篇傑作集2)</a></li>
-      <li>2019 <a href='https://www.amazon.co.jp/dp/B08KWLBML3'>三体</a></li>
-      <li>2021 <a href='https://www.amazon.co.jp/dp/B09JNXC5DL'>鴨川ランナー</a></li>
-    </ul>
+    <a href='https://booklog.jp/users/xek?category_id=3448170&rank=5'>booklog.jp</a>
   </section>
 
   <section>
     <h3>漫畫</h3>
-    <ul>
-      <li>2012 <a href='https://www.amazon.co.jp/dp/B074CFZ28K'>スピリットサークル</a></li>
-      <li>2014 <a href='https://www.amazon.co.jp/dp/B074C559L8'>ダンジョン飯</a></li>
-      <li>2016 <a href='https://www.amazon.co.jp/dp/B07875FXZ4'>Artiste</a></li>
-      <li>2018 <a href='https://www.amazon.co.jp/dp/B07D58KR39'>呪術廻戦</a></li>
-      <li>2019 <a href='https://www.amazon.co.jp/dp/B08C6GFYV6'>潮が舞い子が舞い</a></li>
-    </ul>
+    <a href='https://booklog.jp/users/xek?category_id=2789561'>booklog.jp</a>
   </section>
 
   <section>
@@ -127,56 +119,68 @@ const Fav = () => <>
   </section>
 </>
 
-const Misc = () => <ul>
-  <li>舊網站</li>
-  <ul>
-    <li><Link href='https://0.sumi.space'>CE2018 (Gulp, Pug)</Link></li>
-    <li><Link href='https://www.sumi.space'>CE2021 (Next.js)</Link></li>
-  </ul>
-  <li><Link href='https://sjagci.pages.dev'>將棋 (Elm)</Link></li>
-  <li><Link href='https://tung.sumi.space'>latin字化</Link></li>
-  <li>original characters</li>
-  <ul>
-    <li><Link href='char/1'>suzuli, mitulu</Link></li>
-    <li><Link href='char/2'>lon</Link></li>
-  </ul>
-  <li>links</li>
-  <ul>
-    <li><a href='https://booklog.jp/users/xek'>booklog</a></li>
-    <li><a href='https://eiga.com/user/1115495/review/'>eiga.com</a></li>
-  </ul>
+const Works = () => <ul>
+  <table>
+    <tr>
+      <th>以前のpage</th>
+      <td>
+        <ul>
+          <li><Link href='https://0.sumi.space'>CE2018 (Gulp, Pug)</Link></li>
+          <li><Link href='https://1.sumi.space'>CE2021 (Next.js)</Link></li>
+        </ul>
+      </td>
+    </tr>
+
+    <tr>
+      <th>
+        將棋 (Elm學習時に實裝)
+      </th>
+      <td>
+        <Link href='https://sjagci.pages.dev'>SjagCi</Link>
+      </td>
+    </tr>
+
+    <tr>
+      <th>
+        同型鍵盤isomorf (Swift學習時に實裝)
+      </th>
+      <td>
+        <Link href='https://github.com/xekri/isomorf'>GitHub</Link>
+      </td>
+    </tr>
+
+    <tr>
+      <th>各言語のromanisation</th>
+      <td>
+        <Link href='https://tung.sumi.space'>tung.sumi.space</Link>
+      </td>
+    </tr>
+
+    <tr>
+      <th>original character</th>
+      <td>
+        <ul>
+          <li><Link href='char/1'>suzuli, mitulu</Link></li>
+          <li><Link href='char/2'>lon</Link></li>
+        </ul>
+      </td>
+    </tr>
+  </table>
 </ul>
 
-export async function getStaticProps() {
-  const posts = (context => {
-    const keys = context.keys()
-    const data = keys.map((key, index) => {
-      let slug = key.replace(/^.*[\\\/]/, '').slice(0, -3)
-      // FIXME
-      const value: any = keys.map(context)[index]
-      const document = matter(value.default)
-      return {
-        meta: document.data,
-        slug,
-      }
-    })
-    return data
-  })(require.context('../data', true, /\.md$/))
+const Articles = () =>
+  <ul>
+    <li>日本語</li>
+    <ul>
+      <li><Link href='misc/ja/new'>獨自變種の表記</Link></li>
+      <li><Link href='misc/ja/verb-kanzi'>助動詞を漢字のみで表す試み</Link></li>
+    </ul>
+  </ul>
 
-  const postsSorted = posts.sort((a, b) =>
-    b.meta.id - a.meta.id
-  ).reverse()
 
-  return {
-    props: {
-      posts: JSON.parse(JSON.stringify(postsSorted))
-    }
-  }
-}
+const tabs = ['am', 'made', 'like', 'wrote']
 
-const tabs = ['me', 'misc', 'fav', 'posts']
-
-export default ({ posts }) => <Tabs>
+export default () => <Tabs>
   <TabList>{
     tabs.map((tab, i) =>
       <Tab key={i}><h2>{tab.toUpperCase()}</h2></Tab>
@@ -184,15 +188,7 @@ export default ({ posts }) => <Tabs>
   }</TabList>
 
   <TabPanel><Me /></TabPanel>
-  <TabPanel><Misc /></TabPanel>
+  <TabPanel><Works /></TabPanel>
   <TabPanel><Fav /></TabPanel>
-  <TabPanel>
-    {posts.map((post, i) =>
-      <section key={i}>
-        <h3>
-          <Link href={`../posts/${post.slug}`} >{post.meta.date}</Link> {post.meta.title}
-        </h3>
-      </section>
-    )}
-  </TabPanel>
+  <TabPanel><Articles /></TabPanel>
 </Tabs >
