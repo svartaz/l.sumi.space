@@ -1,30 +1,93 @@
-@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;500&family=Source+Code+Pro:wght@300&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Noto+Emoji:wght@300;400;500;600;700&family=Noto+Sans+Mono:wght@100;200;300;400;500;600;700;800;900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap')
+
+$color: #222
 
 *
   box-sizing: border-box
 
-html
-  height: 100%
-
 body
   margin: 0
-  color: white
-  background-color: #111
-  font-family: 'Zen Kaku Gothic New', sans-serif
-  font-weight: 300
-  padding: 1em
+  background-color: $color
 
-  &>div
-    max-width: 960px
-    margin-left: auto
-    margin-right: auto
-    background-caolor: black
-    padding: 1em
-    padding-right: 0
-    padding-bottom: 0
-    box-sizing: border-box
-    border-top: 1px solid
-    border-left: 1px solid
+#__next
+  color: white
+  font-family: 'Zen Kaku Gothic New', sans-serif, 'Noto Emoji'
+  font-weight: 300
+  box-sizing: border-box
+
+  margin-inline-start: auto
+  margin-inline-end: auto
+  padding: 1em
+  max-width: 1080px
+  max-height: 100vh
+
+  display: flex
+  flex-direction: column
+  row-gap: 1em
+
+header, main, footer
+  border-block-start: 1px solid
+  border-inline-start: 1px solid
+  padding-block-start: 1em
+  padding-inline-start: 1em
+
+header
+  position: sticky
+
+  display: flex
+  gap: 1em
+  align-items: flex-end
+  justify-content: space-evenly
+  flex-wrap: wrap
+
+  a
+    text-decoration: none
+    font-weight: bold
+    text-transform: uppercase
+    padding-inline-start: 0.5em
+    padding-inline-end: 0.5em
+
+  .active
+    background-color: white
+    color: $color
+
+  div.separate
+    border-left: 1px solid white
+    height: 22px
+
+  .time
+    font-family: 'Noto Sans Mono', monospace
+
+main
+  flex-grow: 1
+  overflow: auto
+
+main, section
+  display: flex
+  flex-direction: column
+  row-gap: 1em
+
+section
+  margin: 0
+  padding: 0
+  padding-block-start: 1em
+  padding-inline-start: 1em
+  border-block-start: 1px solid
+  border-inline-start: 1px solid
+
+footer
+  .share
+    display: flex
+    gap: 1em
+    justify-content: right
+
+h1, h2, h3, h4, h5, h6
+  font: inherit
+  font-weight: 500
+
+  text-transform: uppercase
+  margin: 0
+  padding: 0
 
 code
   font-family: 'Source Code Pro', monospace
@@ -32,50 +95,8 @@ code
   padding-left: .25em
   padding-right: .25em
 
-h1, h2, h3, h4, h5, h6
-  margin: 0
-  margin-bottom: 1em
-
-h1, h2, h3, h4, h5, h6, th
-  font: inherit
-  font-weight: 500
-
-h1
-  margin-bottom: 1em
-
-li
-  list-style-type: square
-
 a
   color: white
-
-.react-tabs__tab-list
-  display: grid
-  grid-auto-columns: 1fr
-  grid-auto-flow: column
-  column-gap: 1em
-  list-style-type: none
-  margin: 0
-  margin-bottom: 1em
-  padding: 0
-  h2
-    margin-bottom: 0
-
-.react-tabs__tab
-  display: flex
-  align-items: center
-  justify-content: center
-  border: 1px solid
-  &:hover
-    color: black
-    background-color: white
-
-.react-tabs__tab--selected
-  outline: none
-  color: black
-  background-color: white
-
-.react-tabs__tab-panel
 
 .center
   margin-left: auto
@@ -85,17 +106,6 @@ a
   display: flex
   justify-content: space-evenly
   align-items: center
-
-section
-  margin: 0
-  padding: 0
-  padding-top: 1em
-  padding-left: 1em
-  border-top: 1px solid
-  border-left: 1px solid
-
-  & + &
-    margin-top: 1em
 
 .v, .v-parent *
   writing-mode: vertical-lr
@@ -128,4 +138,18 @@ table
 
 hr
   height: 1px
-  border-color: #FFF2
+  border-color: #FFF
+
+ul
+  list-style-position: inside
+  margin: 0
+
+ul:not(ul *)
+  padding-left: 0
+
+li
+  list-style-type: square
+
+.tables
+  display: flex
+  justify-content: space-evenly
