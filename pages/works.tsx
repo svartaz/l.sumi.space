@@ -35,14 +35,4 @@ export default () => <table>
       <Link href='https://tung.sumi.space'>tung.sumi.space</Link>
     </td>
   </tr>
-
-  <tr>
-    <th>original character</th>
-    <td>
-      <ul>
-        <li><Link href='char/1'>suzuli, mitulu</Link></li>
-        <li><Link href='char/2'>lon</Link></li>
-      </ul>
-    </td>
-  </tr>
 </table>

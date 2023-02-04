@@ -1,4 +1,5 @@
 import React from "react"
+import { Rubies, Ruby } from "../components/ruby"
 
 export default () => <>
   <div style={{ textAlign: 'center' }}>
@@ -8,12 +9,12 @@ export default () => <>
   <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
     <span style={{ textAlign: 'center' }}>
       <span style={{ fontSize: '150%' }}>SUMI</span><br />
-      (初夏の夜風の涼しさ)
+      (<Rubies>初夏</Rubies>の<Ruby rt='jo-kaze'>夜風</Ruby>の<Ruby rt='suzu'>涼</Ruby>しさ)
     </span>
 
     <ul>
-      <li>工程師</li>
-      <li>語學趣味者</li>
+      <li><Rubies>程序員</Rubies></li>
+      <li><Rubies>語學趣味者</Rubies></li>
       <ul>
         <li>EN: B2</li>
         <ul>
@@ -26,15 +27,15 @@ export default () => <>
         </ul>
         <li>FR, ID, FA, YUE, JBO: pre-A1</li>
       </ul>
-      <li>近代自由主義者</li>
-      <li>男性愛者</li>
+      <li><Rubies>近代自由主義者</Rubies></li>
+      <li><Rubies>同性愛者</Rubies></li>
     </ul>
   </div>
 
   <section><h4>accounts</h4>
     <ul>
-      <li><a href='https://ci-en.net/creator/15102'>ci-en</a></li>
       <li><a href='https://snort.social/p/npub1fz65nf68h0kyg895u9vvwzwc0paynvdv64nu7cg7700g845k6juqzg59wk'>nostr</a></li>
+      <li><a href='https://ci-en.net/creator/15102'>ci-en</a></li>
       <li><a href='https://booklog.jp/users/xek'>booklog</a></li>
       <li><a href='https://eiga.com/user/1115495/review/'>eiga.com</a></li>
       <li><a href='https://nuita.net/users/tuFEwqlaelfFak7x'>nuita.net</a></li>
