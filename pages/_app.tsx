@@ -5,28 +5,7 @@ import { DefaultSeo } from 'next-seo'
 import '../styles/app.sass'
 import Link from 'next/link'
 import Script from 'next/script'
-
-const getTime = () => {
-  const date0 = new Date(1998, 11, 22)
-  const date = new Date()
-
-  let diff = date.getTime() - date0.getTime()
-
-  let year = 1999
-  for (; ; year++) {
-    const isLeap = year % 4 == 0 && year % 128 != 0
-    const dayPerYear = isLeap ? 366 : 365
-    const msPerYear = dayPerYear * 24 * 60 * 60 * 1000
-    if (diff < msPerYear) {
-      break
-    } else {
-      diff -= msPerYear
-    }
-  }
-
-  const day = diff / 1000 / 60 / 60 / 24
-  return `${year + 10000}/${(day + '00000000').slice(0, 8)}`
-}
+import { getTime } from '../lib/time'
 
 const title = 'inkwell'
 export default ({ Component, pageProps }) => {
@@ -35,7 +14,10 @@ export default ({ Component, pageProps }) => {
 
   const [time, setTime] = useState(null)
   useEffect(() => {
-    const interval = setInterval(() => setTime(getTime()), 100);
+    const interval = setInterval(() => {
+      const [y, d, f] = getTime()
+      setTime(`${y}/${('000' + d).slice(-3)}.${(f + '0000').slice(2, 7)}`)
+    }, 100);
     return () => {
       clearInterval(interval);
     };
