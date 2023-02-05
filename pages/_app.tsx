@@ -7,8 +7,10 @@ import Link from 'next/link'
 import Script from 'next/script'
 import { getTime } from '../lib/time'
 
+const twitter = '215su'
+
 const title = 'inkwell'
-export default ({ Component, pageProps }) => {
+export default ({ Component, props }) => {
   const router = useRouter()
   const path = router.pathname
 
@@ -44,9 +46,10 @@ export default ({ Component, pageProps }) => {
       }}
       twitter={{
         cardType: 'summary',
-        handle: '@215su',
+        handle: twitter,
       }}
     />
+
     <Head>
       <link rel='icon' type='image/svg' href='/sumi.svg' />
     </Head>
@@ -76,7 +79,7 @@ export default ({ Component, pageProps }) => {
     </header>
 
     <main>
-      <Component {...pageProps} />
+      <Component {...props} />
     </main>
 
     <footer>
@@ -84,10 +87,12 @@ export default ({ Component, pageProps }) => {
         © 2022 sumi
       </div>
 
+      {/* FIXME: url not updated
       <div className='share' style={{ float: 'right' }}>
-        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" className="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js"></script>
-        <a href="https://b.hatena.ne.jp/entry/" className="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label-counter" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style={{ border: 'none' }} /></a><Script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js"></Script>
+        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" className="twitter-share-button" data-show-count="true" data-via={twitter}>Tweet</a><Script async={true} src="https://platform.twitter.com/widgets.js"></Script>
+        <a href="https://b.hatena.ne.jp/entry/" className="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label-counter" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style={{ border: 'none' }} /></a><Script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" async={true}></Script>
       </div>
+      */}
     </footer>
   </>
 }

@@ -1,10 +1,6 @@
-import { NextSeo } from 'next-seo'
+import { Page } from '../../../components/page'
 
-const title = '新日本語'
-export default () => <>
-  <NextSeo title={title} />
-  <h2>{title}</h2>
-
+export default () => <Page title='新日本語'>
   <p><ruby>新日本語<rt>SinNitPonGo</rt></ruby>-pa so-vo va-le <ruby>簡略化<rt>KanLjakKa</rt></ruby>-s-ital-u <ruby>日本語<rt>NitPonGo</rt></ruby>-nal-u.</p>
 
   <section>
@@ -211,4 +207,4 @@ export default () => <>
     </table>
 
   </section>
-</>
+</Page>

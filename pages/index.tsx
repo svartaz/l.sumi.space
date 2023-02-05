@@ -1,16 +1,17 @@
 import React from "react"
 import { Rubies, Ruby } from "../components/ruby"
+import { Section } from "../components/page"
 
 export default () => <>
   <div style={{ textAlign: 'center' }}>
     <img src={'/avatar.gif'} alt='avatar' width='200px' style={{ borderRadius: '50%', border: '1px solid' }} />
   </div>
 
-  <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
-    <span style={{ textAlign: 'center' }}>
+  <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', gap: '1em' }}>
+    <div style={{ textAlign: 'center' }}>
       <span style={{ fontSize: '150%' }}>SUMI</span><br />
       (<Rubies>初夏</Rubies>の<Ruby rt='jo-kaze'>夜風</Ruby>の<Ruby rt='suzu'>涼</Ruby>しさ)
-    </span>
+    </div>
 
     <ul>
       <li><Rubies>程序員</Rubies></li>
@@ -32,7 +33,7 @@ export default () => <>
     </ul>
   </div>
 
-  <section><h4>accounts</h4>
+  <Section title='accounts'>
     <ul>
       <li><a href='https://snort.social/p/npub1fz65nf68h0kyg895u9vvwzwc0paynvdv64nu7cg7700g845k6juqzg59wk'>nostr</a></li>
       <li><a href='https://ci-en.net/creator/15102'>ci-en</a></li>
@@ -41,5 +42,5 @@ export default () => <>
       <li><a href='https://nuita.net/users/tuFEwqlaelfFak7x'>nuita.net</a></li>
       <li><a href='https://m.sumi.space/@s'>mastodon</a></li>
     </ul>
-  </section>
+  </Section>
 </>

@@ -1,15 +1,11 @@
-import { NextSeo } from 'next-seo'
+import { Page, Section } from "../../components/page";
 
-const title = '有性言語の無性化'
-export default () => <>
-  <NextSeo title={title} />
-  <h2>{title}</h2>
-
-  <section><h3>En</h3>
+export default () => <Page title='有性言語の無性化'>
+  <Section title='en'>
     <p><em>單數they</em>の浸透により殆ど問題が無い.</p>
-  </section>
+  </Section>
 
-  <section><h3>Es</h3>
+  <Section title='Es'>
     <p>-{'{'}a, o{'}'}を-eに置換すれば良い.</p>
 
     <table>
@@ -51,9 +47,9 @@ export default () => <>
     </table>
 
     <p>發音を考慮しない方法として-@を使ふ事が有るが醜いので-ꜵが良い.</p>
-  </section>
+  </Section>
 
-  <section><h3>Es</h3>
+  <Section title='Pt'>
     <p>Es語に近い.</p>
 
     <table>
@@ -90,9 +86,9 @@ export default () => <>
     </table>
 
     <p>發音を考慮しない方法として-@を使ふ事が有るが醜いので-ꜵが良い.</p>
-  </section>
+  </Section>
 
-  <section><h3>Fr</h3>
+  <Section title='Fr'>
     <p>詞末母音の變化のみでは對處不能なので, 男性形を廢止するのが良い (女性形は詞末子音を發音し明晰な爲).</p>
-  </section>
-</>
+  </Section>
+</Page>

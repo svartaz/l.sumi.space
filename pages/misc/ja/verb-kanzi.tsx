@@ -1,10 +1,7 @@
-import { NextSeo } from 'next-seo'
+import { Page } from '../../../components/page'
 
-const title = '漢字を用ゐたJa語助動詞の略記'
-export default () => <>
-  <NextSeo title={title} />
-  <h2>{title}</h2>
-
+const title = ''
+export default () => <Page title='漢字を用ゐたJa語助動詞の略記'>
   <p>日本語の助動詞を漢字を用ゐて可逆に省略する事を考へる. Twitterなどで有用だらう.</p>
 
   <table>
@@ -79,4 +76,4 @@ export default () => <>
       <td>愛-了 人に 選被成應よ</td>
     </tr>
   </table>
-</>
+</Page>
