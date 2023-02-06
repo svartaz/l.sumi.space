@@ -1,11 +1,9 @@
 import { TwitterTweetEmbed } from 'react-twitter-embed'
 import style from './style.module.sass';
+import { Page, Section } from '../../components/page';
 
-export default () => <>
-  <h2>LON</h2>
-
-  <section>
-    <h3>SPECIFICATION</h3>
+export default () => <Page title='lon'>
+  <Section title='specification'>
     <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
       <blockquote className="twitter-tweet" data-theme='dark'><p lang="ja" dir="ltr">進捗 <a href="https://t.co/WMHf3qTyrY">pic.twitter.com/WMHf3qTyrY</a></p>&mdash; sumi (@215su) <a href="https://twitter.com/215su/status/1488170066613272577?ref_src=twsrc%5Etfw">January 31, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js"></script>
     </div>
@@ -17,10 +15,9 @@ export default () => <>
       <li>距離感の近さ</li>
       <li>Ja En Yue</li>
     </ul>
-  </section>
+  </Section>
 
-  <section>
-    <h3>ARTS</h3>
+  <Section title='implementation'>
     <div className={style.tweets}>
       <blockquote className="twitter-tweet" data-theme='dark' data-conversation="none"><p lang="und" dir="ltr">OC/3 <a href="https://t.co/0h7ue62dgP">pic.twitter.com/0h7ue62dgP</a></p>&mdash; sumi (@215su) <a href="https://twitter.com/215su/status/1425831886060802056?ref_src=twsrc%5Etfw">August 12, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js"></script>
       <blockquote className="twitter-tweet" data-theme='dark' data-conversation="none"><p lang="ja" dir="ltr">なめ <a href="https://t.co/p5KpAURnLU">pic.twitter.com/p5KpAURnLU</a></p>&mdash; sumi (@215su) <a href="https://twitter.com/215su/status/1429464857263239174?ref_src=twsrc%5Etfw">August 22, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js"></script>
@@ -32,5 +29,5 @@ export default () => <>
       <blockquote className="twitter-tweet" data-theme='dark' data-conversation="none"><p><a href="https://twitter.com/hashtag/lewd?src=hash&amp;ref_src=twsrc%5Etfw">#lewd</a> 侖 ぶっかけ <a href="https://t.co/OWiqyXstEs">pic.twitter.com/OWiqyXstEs</a></p>&mdash; sumi (@215su) <a href="https://twitter.com/215su/status/1483129180187672577?ref_src=twsrc%5Etfw">January 17, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js"></script>
       <blockquote className="twitter-tweet" data-theme='dark' data-conversation="none"><p lang="qme" dir="ltr"><a href="https://t.co/MsqPfId0c8">https://t.co/MsqPfId0c8</a> <a href="https://twitter.com/hashtag/Skeb?src=hash&amp;ref_src=twsrc%5Etfw">#Skeb</a> <a href="https://twitter.com/hashtag/Commission?src=hash&amp;ref_src=twsrc%5Etfw">#Commission</a> <a href="https://t.co/SQWwin5ac8">pic.twitter.com/SQWwin5ac8</a></p>&mdash; ‡ (@ttqss) <a href="https://twitter.com/ttqss/status/1603225773405396994?ref_src=twsrc%5Etfw">December 15, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js"></script>
     </div>
-  </section>
-</>
+  </Section>
+</Page>

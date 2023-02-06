@@ -52,7 +52,6 @@ const dict = {
   every: [3, '數詞 :全'],
 }
 
-const title = 'toy language'
 export default () => {
   let dictFixed = null;
   for (let seed = 1; seed < 1000000; seed++) {

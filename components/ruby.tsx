@@ -34,6 +34,16 @@ const dict = {
   漢: 'kàn',
   字: 'zì',
   試: 'sì',
+
+  履: 'lí',
+  修: 'siu',
+  講: 'kóg',
+
+  日: 'nit',
+  的: 'tek',
+  關: 'kuan',
+  係: 'kèi',
+  行: 'cjag',
 }
 
 export const Ruby = props =>

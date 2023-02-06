@@ -1,5 +1,5 @@
 import { NextSeo } from "next-seo"
-import { Page, Section } from "../components/page"
+import { Section } from "../components/page"
 
 export default () => <>
   <NextSeo title='fav' />

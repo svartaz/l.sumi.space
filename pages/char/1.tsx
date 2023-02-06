@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { TwitterTweetEmbed } from 'react-twitter-embed'
 import { NextSeo } from 'next-seo'
 import style from './style.module.sass'
+import { Section } from '../../components/page'
+import { Rubies, Ruby } from '../../components/ruby'
 
 const title = 'SUZULI & MITULU'
 export default () => <>
@@ -23,8 +25,7 @@ export default () => <>
 
   <p>硯（2018-）と盈（2022-）はsumiのOCです。</p>
 
-  <section>
-    <h3>詳細</h3>
+  <Section title='specification'>
     <p>副次創作をする際は以下の設定を逸脱しても構ひません。</p>
 
     <table style={{ maxWidth: '75%' }}>
@@ -61,12 +62,12 @@ export default () => <>
       </tr>
       <tr>
         <th>性格</th>
-        <td>澹泊・冷靜・淫蕩</td>
-        <td>明朗快活・人懷っこい・一途</td>
+        <td>澹泊・孤高・淫蕩</td>
+        <td>明朗・人懷っこい・一途</td>
       </tr>
       <tr>
         <th>所在</th>
-        <td colSpan={2}>日本共和國 / 武蔵縣</td>
+        <td colSpan={2}>共和國日本 / 武蔵縣</td>
       </tr>
       <tr>
         <th>所屬</th>
@@ -79,14 +80,9 @@ export default () => <>
         <td>映畫鑑賞・筋力鍛錬</td>
       </tr>
       <tr>
-        <th>愛讀書</th>
-        <td>『de l{'\''}inconvénient d{'\''}être né』</td>
-        <td>『a theory of justice』</td>
-      </tr>
-      <tr>
         <th>呼ばれ方</th>
-        <td>硯君 suzuli-kun</td>
-        <td>盈 mitulu</td>
+        <td><Ruby rt='すずり'>硯</Ruby><Ruby rt='くん'>君</Ruby></td>
+        <td><Ruby rt='みつる'>盈</Ruby></td>
       </tr>
       <tr>
         <th>性生活</th>
@@ -115,45 +111,43 @@ export default () => <>
           <ul>
             <li>陰莖は下反り巨根</li>
             <li>大麻とLSDを好む</li>
-            <li>服に興味が無いので品の有る範圍で素朴な物を著るが、盈に服を贈られる事で華やぎつつある</li>
+            <li>服に興味が無いので品の有る範圍で素朴な物を著るが、盈に服を贈られる事で色附きつつある</li>
           </ul>
         </td>
         <td>
           <ul>
-            <li>陰莖は上反り巨根だが大きさで硯に負ける</li>
+            <li>陰莖は上反り巨根（硯には負ける）</li>
             <li>酒精に弱い</li>
           </ul>
         </td>
       </tr>
     </table>
-  </section >
+  </Section>
 
-  <section style={{ wordBreak: 'break-all' }}>
-    <h3>背景</h3>
+  <Section title='story'>
     <ul>
-      <li>盈が履修した講義で硯がTAを勤め、その理知的な雰圍氣に惹かれた盈が硯に聲を掛け知り合った。</li>
+      <li>盈が履修した講義で硯がTAを勤め、雰圍氣に惹かれた盈が硯に聲を掛け知り合った。</li>
       <ul>
-        <li>初日から硯の誘ひで性的な間柄と成った。</li>
+        <li>初日から硯の誘ひで性的な關係と成った。</li>
       </ul>
-      <li>硯と行動を共にする内、人に阿らない彼の態度と一貫した論理に觸れて盈は硯を慕ひ始めた。</li>
-      <li>硯は當初盈の肉體に惹かれて關はる事にしたが、今では理解力の高い話し相手としても氣に入ってゐる。</li>
+      <li>硯と行動を共にする内、人に阿らない態度と一貫した論理に觸れて盈は硯を慕ひ始めた。</li>
+      <li>硯は當初盈の肉體に惹かれて關はったが、今では理解力の高い話し相手としても氣に入ってゐる。</li>
       <li>盈は多くの週末を硯の家で過ごす。</li>
       <ul>
         <li>二人は麥酒や大麻（彼らの日本では合法）を喫しながら映畫を觀る事が多い。</li>
-        <li>時にはそれぞれの專門である程序設計や數學の話をする。</li>
+        <li>時には<Ruby rt='おのおの'>各</Ruby>の專門である程序設計や數學の話をする。</li>
         <li>夜は大抵性交してから共寢する。</li>
         <ul>
-          <li>本來は兩者受けを望むが、硯が攻めに回る事が多い。</li>
-          <li>硯は年齢や學年に基づく上下關係と言った虛禮に價値を認めないが、盈に對しては兄の如く甘やかす立場を取り勝ちである。</li>
+          <li>兩者受けを望むが、硯が攻めに回る事が多い。</li>
+          <li>硯は年齢に基づく上下關係と言った虛禮に價値を認めないが、盈に對しては兄の如く甘やかす立場を取り勝ちである。</li>
         </ul>
       </ul>
-      <li>硯は殆ど毎日、盈を含む多數の内の誰か（單複問はず）の體を求める。</li>
-      <li>一方で盈は現在硯意外に相手を持たない。</li>
+      <li>硯はほぼ毎日盈を含む多數の内の誰か（單複問はず）の體を欲望する。</li>
+      <li>一方で盈は時折他に一個の相手を作り硯とは非性的な關係と成るが、その期間は短い事が多い。</li>
     </ul>
-  </section>
+  </Section>
 
-  <section>
-    <h3>繪畫</h3>
+  <Section title='implementation'>
     <div className={style.tweets}>
       <blockquote className="twitter-tweet" data-theme="dark" data-conversation="none"><p><a href="https://t.co/AlWaN5GHlw">pic.twitter.com/AlWaN5GHlw</a></p>&mdash; ‡ (@ttqss) <a href="https://twitter.com/ttqss/status/1595886665691987968?ref_src=twsrc%5Etfw">November 24, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
       <blockquote className="twitter-tweet" data-theme="dark" data-conversation="none"><p><a href="https://t.co/vRi2NOjJSv">pic.twitter.com/vRi2NOjJSv</a></p>&mdash; toqme (@toqme) <a href="https://twitter.com/toqme/status/1551269180070334464?ref_src=twsrc%5Etfw">July 24, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
@@ -190,7 +184,6 @@ export default () => <>
       <div className={style.nontweet}>
         <blockquote className="twitter-tweet" data-theme="dark" data-conversation="none"><p>まあまあ上手くかけたと思う <a href="https://t.co/2U64U2EcRf">pic.twitter.com/2U64U2EcRf</a></p>&mdash; 絹豆腐📛 (@toufu0128) <a href="https://twitter.com/toufu0128/status/1290307240197386246?ref_src=twsrc%5Etfw">August 3, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
         <img src='/char-1/20200804.png'></img>
-        @toufu0128
       </div>
       <blockquote className="twitter-tweet" data-theme="dark" data-conversation="none"><p>🔞NFSW🔞<br />skeb納品しました！穴まで描きたかった〜〜〜〜ッ！<br />リクエストありがとうございました🌞<a href="https://t.co/cqMdrGNWyZ">https://t.co/cqMdrGNWyZ</a> <a href="https://t.co/kYUK5iYora">pic.twitter.com/kYUK5iYora</a></p>&mdash; たま魂👼 (@mkotan) <a href="https://twitter.com/mkotan/status/1289200726829195264?ref_src=twsrc%5Etfw">July 31, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
       <blockquote className="twitter-tweet" data-theme="dark" data-conversation="none"><p><a href="https://twitter.com/sumimq?ref_src=twsrc%5Etfw">@sumimq</a> スミくんはぴば♥ <a href="https://t.co/LnbuWVojri">pic.twitter.com/LnbuWVojri</a></p>&mdash; 斎川 (@ti17_) <a href="https://twitter.com/ti17_/status/1286677524563365888?ref_src=twsrc%5Etfw">July 24, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
@@ -228,5 +221,5 @@ export default () => <>
         <img src='/char-1/20180801.png'></img>
       </div>
     </div>
-  </section>
+  </Section>
 </>
