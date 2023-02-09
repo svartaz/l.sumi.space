@@ -29,11 +29,12 @@ body
   flex-direction: column
   row-gap: 1em
 
-header, main, footer
+header, main, footer, section
   border-block-start: 1px solid
   border-inline-start: 1px solid
   padding-block-start: 1em
   padding-inline-start: 1em
+  margin: 0
 
 header
   position: sticky
@@ -71,13 +72,11 @@ main, section
   flex-direction: column
   row-gap: 1em
 
-section
-  margin: 0
-  padding: 0
-  padding-block-start: 1em
-  padding-inline-start: 1em
-  border-block-start: 1px solid
-  border-inline-start: 1px solid
+pre
+  font: inherit
+  font-family: 'Noto Sans Mono', monospace
+  border: 1px solid #FFF2
+  padding: 1em
 
 footer
   .share
@@ -93,12 +92,6 @@ h1, h2, h3, h4, h5, h6
   text-transform: uppercase
   margin: 0
   padding: 0
-
-code
-  font-family: 'Source Code Pro', monospace
-  background-color: #FFF2
-  padding-left: .25em
-  padding-right: .25em
 
 a
   color: white
