@@ -1,37 +1,45 @@
 import Random from '../../../lib/random';
 import { Page, Section } from '../../../components/page';
 
-const consonants = 'g n m c d b k t p x s f h z v l'.split(' ')
-const vowels = 'i ü u ë ö e o ä a'.split(' ')
-// æœ
+const cs = 'g n m c d b k t p x s f h z v l'.split(' ')
+const vs = 'ï ü i u e ö o a'.split(' ')
 
-const consonants2 = 'nc nd nb nk nt np ns nz nl kn pn ks ps kl pl lc ld lb lk lt lp ls lz ln'.split(' ')
-const vowels2 = 'üi ui ei eu öi oi ai'.split(' ')
+const ccs = 'nc nd nb nk nt np ns nz nl kn ks kl pn ps pl sn sk st sp sl lc ld lb lk lt lp ls lz ln'.split(' ')
 
-const forbidden = /^[nl][cdbktpsz]|^nl|^ln/
+const allowed = x => !/^[nl][cdbktpsz]|^nl|^ln/.test(x)
 
-const syllables2 = consonants.flatMap(c => vowels.map(v => c + v))
-const syllables3 = [
-  ...consonants2.flatMap(cc => vowels.map(v => cc + v)),
-  ...consonants.flatMap(c => vowels2.map(vv => c + vv)),
-]
+const cvs = cs.flatMap(c => vs.map(v => c + v)).filter(allowed)
+const ccvs = ccs.flatMap(cc => vs.map(v => cc + v)).filter(allowed)
 const signifierss = {
-  2: syllables2,
-  3: syllables3,
-  4: consonants2.flatMap(cc => vowels2.map(vv => cc + vv)),
-  '2_2': syllables2.flatMap(s => syllables2.map(s1 => s + s1)),
-  5: [
-    ...syllables3.flatMap(s => syllables2.map(s1 => s + s1)),
-    ...syllables2.flatMap(s => syllables3.map(s1 => s + s1)),
+  'c': cs,
+  'v': vs,
+  'cv': cvs,
+  'ccv': ccvs,
+  'cvc': cvs.flatMap(cv => cs.map(c => cv + c)),
+  'cvcv': cvs.flatMap(cv => cvs.map(cv1 => cv + cv1)).filter(allowed),
+  'cxxcv': [
+    ...ccvs.flatMap(ccv => cvs.map(cv => ccv + cv)).filter(allowed),
+    ...cvs.flatMap(cv => ccvs.map(ccv => cv + ccv)).filter(allowed),
   ],
 }
 
+for (const k in signifierss)
+  console.log(k + ': ' + signifierss[k].length)
+
 import dictPre from './dict'
 let dict = {};
-const categories = [...new Set(Object.values(dictPre).map(v => v[1]))]
-const random = new Random();
 (() => {
+  const categories = [...new Set(Object.values(dictPre).map(v => v[1]))]
+  const random = new Random();
+
   const usedWords = []
+
+  for (const [k, [x, category, klass, mean]] of Object.entries(dictPre))
+    if (typeof x == 'string') {
+      usedWords.push(x)
+      dict[k] = [x, klass, mean]
+    }
+
   for (const category of categories) {
     const usedInitials = []
 
@@ -40,15 +48,20 @@ const random = new Random();
         for (let i = 0; ; i++) {
           console.log(`${category} ${x} ${i}`)
 
-          const w = random.choose(signifierss[x])
+          if ('random' in x) {
+            const w = random.choose(signifierss[x.random])
+            const initial = w.match(new RegExp(`^[${cs.join('')}]+`))[0]
 
-          if (forbidden.test(w) || category != '' && usedInitials.includes(w.charAt(0)) || usedWords.includes(w))
-            continue
+            if (category != '' && usedInitials.includes(initial) || usedWords.includes(w))
+              continue
 
-          usedInitials.push(w.charAt(0))
-          usedWords.push(w)
-          dict[k] = [w, klass, mean]
-          break
+            usedInitials.push(initial)
+            usedWords.push(w)
+            dict[k] = [w, klass, mean]
+            break
+          } else {
+            // FIXME
+          }
         }
       }
     }
@@ -99,7 +112,7 @@ export default () => {
           </tr>
           <tr>
             <th>有聲摩擦</th>
-            <td>h [ʔ, ʁ, ∅]</td>
+            <td>h [ʁ, ʔ, ∅]</td>
             <td>z</td>
             <td>v</td>
           </tr>
@@ -121,25 +134,25 @@ export default () => {
           </tr>
           <tr>
             <th>高</th>
-            <td>i</td>
-            <td>ü</td>
-            <td></td>
+            <td>ï [i]</td>
+            <td>ü [y]</td>
+            <td>i [ɨ]</td>
             <td>u</td>
           </tr>
 
           <tr>
             <th></th>
-            <td>ë</td>
-            <td>ö </td>
             <td>e</td>
+            <td>ö [ø]</td>
+            <td></td>
             <td>o</td>
           </tr>
 
           <tr>
             <th>低</th>
-            <td>ä</td>
             <td></td>
-            <td>a</td>
+            <td></td>
+            <td>a [a~ə]</td>
             <td></td>
           </tr>
         </table>
@@ -148,7 +161,7 @@ export default () => {
 
     <Section title='文法'>
       <pre>
-        VP       ← verb | verb_'n' (preposition verb)* end-verb?<br />
+        VP       ← verb | verb '{translate('VERB')}' (preposition verb)* ({translate('END VERB')})?<br />
         sentence ← VP (preposition VP)*
       </pre>
     </Section>
