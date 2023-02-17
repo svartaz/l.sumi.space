@@ -4,6 +4,7 @@ import { NextSeo } from 'next-seo'
 import style from './style.module.sass'
 import { Section } from '../../components/page'
 import { Rubies, Ruby } from '../../components/ruby'
+import Script from 'next/script'
 
 const title = 'SUZULI & MITULU'
 export default () => <>
@@ -17,26 +18,24 @@ export default () => <>
   />
   <h2>{title}</h2>
   <div style={{ textAlign: 'center', marginBottom: '16px' }}>
-    <Link href='/char-1/20220716.png'>
-      <img src='/char-1/20220716.png' style={{ width: '50%' }} />
-    </Link>
+    <img src='/char-1/20220716.png' style={{ width: '50%' }} />
     <p><a href='https://twitter.com/i/user/948471113448792064'>絹豆腐</a> 筆</p>
   </div>
 
   <p>硯（2018-）と盈（2022-）はsumiのOCです。</p>
 
   <Section title='specification'>
-    <p>副次創作をする際は以下の設定を逸脱しても構ひません。</p>
+    <p>以下は絶對では有りません。豫告無く變更します。實裝する際は自身に望ましい改變を加へて下さい。</p>
 
     <table style={{ maxWidth: '75%' }}>
       <tr>
         <th></th>
         <td style={{ textAlign: "center", width: '40%' }}>
-          <img src="/suzuli.svg" width="64px" />
-          <br />硯 suzuli <span style={{ color: 'gray' }}>□</span><span style={{ color: 'crimson' }}>■</span>
+          <img src="/suzuli.svg" width="20%" />
+          <br />硯 suzuli <span style={{ color: 'gray' }}>□</span><span style={{ color: 'deeppink' }}>■</span>
         </td>
         <td style={{ textAlign: "center", width: '40%' }}>
-          <img src="/mitulu.svg" width="64px" />
+          <img src="/mitulu.svg" width="20%" />
           <br />盈 mitulu ■<span style={{ color: 'turquoise' }}>■</span>
         </td>
       </tr>
@@ -61,9 +60,21 @@ export default () => <>
         </td>
       </tr>
       <tr>
-        <th>性格</th>
-        <td>澹泊・孤高・淫蕩</td>
-        <td>明朗・人懷っこい・一途</td>
+        <th>性格<br /><small>(12023/58~)</small></th>
+        <td>
+          <ul>
+            <li>口數と人附き合ひが少ない</li>
+            <li>人嫌ひなわけではなく、人の質問や相談に裏表無く應答するので周圍の人には慕はれる</li>
+            <li>性欲が強く、性行爲の間は普段より口數が多く甘えたがりに成る</li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li>明るく振る舞ひ人に好かれる事が得意</li>
+            <li>知人が多いが信頼する相手は少なく、内心を見せない</li>
+            <li>一度懷いた相手には依存氣味に成る</li>
+          </ul>
+        </td>
       </tr>
       <tr>
         <th>所在</th>
@@ -106,17 +117,36 @@ export default () => <>
         </td>
       </tr>
       <tr>
+        <th>陰莖<br /><small>（12023/57~）</small></th>
+        <td>
+          <img className={style.blur} src='/char-1/penis-suzuli.png' style={{ width: '75%', display: 'block', margin: 'auto' }} />
+          <ul>
+            <li>長さ 0.23m</li>
+            <li>長徑 0.055m</li>
+            <li>下反り半剝（手を使へば剝ける）</li>
+            <li>體毛は薄くて視認し難い</li>
+          </ul>
+        </td>
+        <td>
+          <img className={style.blur} src='/char-1/penis-mitulu.png' style={{ width: '75%', display: 'block', margin: 'auto' }} />
+          <ul>
+            <li>長さ 0.21m</li>
+            <li>長徑 0.06m</li>
+            <li>上反り包莖（手を使へば剝ける）</li>
+            <li>根元に陰毛（畫像では省略）</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
         <th>他</th>
         <td>
           <ul>
-            <li>陰莖は下反り巨根</li>
             <li>大麻とLSDを好む</li>
-            <li>服に興味が無いので品の有る範圍で素朴な物を著るが、盈に服を贈られる事で色附きつつある</li>
+            <li>服に興味が無いので品の有る範圍で素朴な物を著るが、盈に服を贈られる事で彩られつつある</li>
           </ul>
         </td>
         <td>
           <ul>
-            <li>陰莖は上反り巨根（硯には負ける）</li>
             <li>酒精に弱い</li>
           </ul>
         </td>
@@ -142,9 +172,13 @@ export default () => <>
           <li>硯は年齢に基づく上下關係と言った虛禮に價値を認めないが、盈に對しては兄の如く甘やかす立場を取り勝ちである。</li>
         </ul>
       </ul>
-      <li>硯はほぼ毎日盈を含む多數の内の誰か（單複問はず）の體を欲望する。</li>
-      <li>一方で盈は時折他に一個の相手を作り硯とは非性的な關係と成るが、その期間は短い事が多い。</li>
+      <li>硯はほぼ毎日盈を含む多數の内の誰か（單複問はず）の體を求める。</li>
+      <li>盈は時折他に一個の相手を作り硯とは非性的な關係と成るが、その期間は短い事が多い。</li>
     </ul>
+  </Section>
+
+  <Section title='rules'>
+    <p>作者からの依頼を除く實裝では<Link href='/char/rule'>規約</Link>への準據を強く要望します。</p>
   </Section>
 
   <Section title='implementation'>
