@@ -5,7 +5,7 @@ const title = 'toy language'
 export default () => {
 
   return <Page title='toy language'>
-    <Section title='音韻'>
+    <Section title='字素と音素'>
       <div className='tables'>
         <table>
           <tr className='v-parent'>
@@ -95,32 +95,55 @@ export default () => {
     </Section>
 
     <Section title='例'>
+      ‘()’ は理解の爲に追加した. 實際の文には表れない.
       <table>
+        <tr>
+          <th>En</th>
+          <th>中間</th>
+          <th>對象</th>
+        </tr>
         {
           [
             [
-              'i see an animal.',
-              'I SEE{ OBJECT ANIMAL }',
+              'i speak.',
+              'I SPEAK',
             ],
             [
-              'i see an animal.',
-              'I SEE{ OBJECT ANIMAL }',
+              'i speak truth.',
+              'I SPEAK( PATIENT TRUE',
             ],
             [
-              'i see an black animal.',
-              'I (SEE VERB){ OBJECT ANIMAL ZERO-WHITE }',
+              'i speak truth to you.',
+              'I SPEAK( PATIENT TRUE TO THOU',
             ],
             [
-              'i saw an animal.',
-              'I (SEE VERB){ ADVERB BEFORE OBJECT ANIMAL }',
+              'i am a speaker of truth.',
+              'I HABITUAL SPEAK( PATIENT TRUE',
             ],
             [
-              'i see an animal which likes him.',
-              'I (SEE VERB){ OBJECT ANIMAL (GLAD VERB){ OBJECT HE } }',
+              'thou dost not know it.',
+              'THOU (NOT KNOW)( PATIENT IT',
+            ],
+            [
+              'i speak that which thou know not.',
+              'I SPEAK( PATIENT PASSIVE (NOT KNOW)( PATIENT THOU',
+            ],
+            [
+              'i speak truth which thou know not.',
+              'I SPEAK( PATIENT PASSIVE TRUE (NOT KNOW)( PATIENT THOU',
+            ],
+            [
+              'i spoke.',
+              'I SPEAK( ADVERB BEFORE',
+            ],
+            [
+              'i speak when thou see me.',
+              'I SPEAK ADVERB NOW'
             ],
           ].map(([en, code], i) =>
             <tr key={i}>
               <td>{en}</td>
+              <td>{code}</td>
               <td>{translate(code)}</td>
             </tr>
           )

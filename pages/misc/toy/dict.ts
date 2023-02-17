@@ -10,7 +10,7 @@ const ccs = [
   ...'n k t p l'.split(' ').map(c => 's' + c),
   ...'n k t p l'.split(' ').map(c => 'f' + c),
   ...'n c d b h z v'.split(' ').map(c => 'l' + c),
-]
+];
 
 const compareWords = (w, w1) => {
   const c = w.charAt(0)
