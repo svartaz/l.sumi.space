@@ -2,13 +2,13 @@ export const dictBase = {
   i: [{ random: 'cv' }, '代', '述詞', '我れ'],
   thou: [{ random: 'cv' }, '代', '述詞', '汝れ'],
   he: [{ random: 'cv' }, '代', '述詞', '彼れ'],
-  what: [{ random: 'cv' }, '代', '述詞', '誰れ'],
-  how_many: [{ random: 'cv' }, '代', '述詞', '幾ら'],
-  self: [{ random: 'cv' }, '代', '述詞', '自身'],
   this: [{ random: 'cv' }, '代', '述詞', 'この發話'],
-
   now: [{ random: 'cv' }, '代', '述詞', '今'],
   here: [{ random: 'cv' }, '代', '述詞', 'ここ'],
+
+  self: [{ random: 'cv' }, '代', '述詞', '自身'],
+  what: [{ random: 'cv' }, '代', '述詞', '誰れ'],
+  how_many: [{ random: 'cv' }, '代', '述詞', '幾ら'],
 
   that: [{ random: 'cv' }, '構造', '文→述', 'aはxである事である'],
   quote: [{ random: 'cv' }, '構造', '借用→述', 'aはxと呼ばれる'],

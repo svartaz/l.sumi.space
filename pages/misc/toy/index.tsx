@@ -62,26 +62,26 @@ export default () => {
           </tr>
           <tr>
             <th>高</th>
-            <td>ï [i]</td>
-            <td>ü [y]</td>
+            <td>ǐ [i]</td>
+            <td>ǔ [y]</td>
             <td>i [ɨ]</td>
             <td>u</td>
           </tr>
 
           <tr>
             <th></th>
+            <td>ě</td>
+            <td>ǒ</td>
             <td>e</td>
-            <td>ö [ø]</td>
-            <td></td>
             <td>o</td>
           </tr>
 
           <tr>
             <th>低</th>
-            <td>ä [æ]</td>
+            <td>ǎ</td>
             <td></td>
-            <td>a [a~ə]</td>
             <td></td>
+            <td>a</td>
           </tr>
         </table>
       </div>

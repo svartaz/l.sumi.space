@@ -1,27 +1,24 @@
 import Random from "../../../lib/random";
 
 const cs = 'g n m c d b k t p x s f h z v l'.split(' ');
-const vs = 'ï ü i u e ö o ä a'.split(' ');
+const vs = 'ı e a o u ǐ ě ǎ ǒ ǔ'.split(' ');
 const ccs = [
   ...'c d b h z v l'.split(' ').map(c => 'n' + c),
-  ...'n x s f l'.split(' ').map(c => 'k' + c),
-  ...'n x s f l'.split(' ').map(c => 'p' + c),
-  ...'n k t p l'.split(' ').map(c => 'x' + c),
-  ...'n k t p l'.split(' ').map(c => 's' + c),
-  ...'n k t p l'.split(' ').map(c => 'f' + c),
+  ...'k t p'.split(' ').flatMap(c => 'n x s f l'.split(' ').map(c1 => c + c1)),
+  ...'x s f'.split(' ').flatMap(c => 'n k t p l'.split(' ').map(c1 => c + c1)),
   ...'n c d b h z v'.split(' ').map(c => 'l' + c),
 ];
 
 const compareWords = (w, w1) => {
-  const c = w.charAt(0)
-  const c1 = w1.charAt(0)
+  const c = w.charAt(0);
+  const c1 = w1.charAt(0);
 
-  const result = [...cs, ...vs].indexOf(c) - [...cs, ...vs].indexOf(c1)
+  const result = [...cs, ...vs].indexOf(c) - [...cs, ...vs].indexOf(c1);
   if (result == 0)
-    return compareWords(w.slice(1), w1.slice(1))
+    return compareWords(w.slice(1), w1.slice(1));
   else
-    return result
-}
+    return result;
+};
 
 const allowed = x =>
   !new RegExp(`^[nl][${cs.join('')}]`).test(x);
