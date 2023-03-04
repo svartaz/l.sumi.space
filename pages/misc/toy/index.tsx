@@ -34,13 +34,13 @@ export default () => {
           </tr>
           <tr>
             <th>無聲摩擦</th>
-            <td>x [x~ʂ]</td>
+            <td>x</td>
             <td>s</td>
             <td>f</td>
           </tr>
           <tr>
             <th>有聲摩擦</th>
-            <td>h [ɣ~ʐ]</td>
+            <td>h [ɣ]</td>
             <td>z</td>
             <td>v</td>
           </tr>
@@ -62,36 +62,65 @@ export default () => {
           </tr>
           <tr>
             <th>高</th>
-            <td>ǐ [i]</td>
-            <td>ǔ [y]</td>
-            <td>i [ɨ]</td>
+            <td>i</td>
+            <td>y</td>
+            <td></td>
             <td>u</td>
           </tr>
 
           <tr>
             <th></th>
-            <td>ě</td>
-            <td>ǒ</td>
             <td>e</td>
+            <td>ö</td>
+            <td></td>
             <td>o</td>
           </tr>
 
           <tr>
             <th>低</th>
-            <td>ǎ</td>
-            <td></td>
+            <td>ä</td>
             <td></td>
             <td>a</td>
+            <td></td>
           </tr>
         </table>
       </div>
     </Section>
 
-    <Section title='文法'>
-      <pre>
-        VP       ← verb | verb '{translate('VERB')}' (preposition verb)* ({translate('END VERB')})?<br />
-        sentence ← VP (preposition VP)*
-      </pre>
+    <Section title='格'>
+      <table>
+        <tr>
+          <th></th>
+          <th>出格</th>
+          <th>主格</th>
+          <th>入格</th>
+        </tr>
+        <tr>
+          <th>移動</th>
+          <td>*から</td>
+          <td>*が往く</td>
+          <td>*まで</td>
+        </tr>
+        <tr>
+          <th>授受</th>
+          <td>*が</td>
+          <td>*を與へる</td>
+          <td>*に</td>
+        </tr>
+        <tr>
+          <th>思考</th>
+          <td></td>
+          <td>*が考へる</td>
+          <td>*を</td>
+        </tr>
+        <tr>
+          <th>感情</th>
+          <td>*を</td>
+          <td>*が感ずる</td>
+          <td></td>
+        </tr>
+      </table>
+
     </Section>
 
     <Section title='例'>
@@ -105,46 +134,46 @@ export default () => {
         {
           [
             [
-              'i speak.',
-              'I SPEAK',
+              'i speak',
+              `FROM I SPEAK`,
             ],
             [
-              'i speak truth.',
-              'I SPEAK( PATIENT TRUE',
+              'i speak truth',
+              `FROM I _O TRUE SPEAK`,
             ],
             [
-              'i speak truth to you.',
-              'I SPEAK( PATIENT TRUE TO THOU',
+              'i speak truth to you',
+              `FROM I TO THOU _O TRUE SPEAK`,
             ],
             [
-              'i am a speaker of truth.',
-              'I HABITUAL SPEAK( PATIENT TRUE',
+              'i speak not',
+              `FROM I NOT SPEAK`,
             ],
             [
-              'thou dost not know it.',
-              'THOU (NOT KNOW)( PATIENT IT',
+              'i speak that which thou knowst',
+              `FROM I _O THAT THOU WHAT KNOW SPEAK`,
             ],
             [
-              'i speak that which thou know not.',
-              'I SPEAK( PATIENT PASSIVE (NOT KNOW)( PATIENT THOU',
+              'i speak truth which thou knowst',
+              `FROM I _O TRUE AND THAT FROM THOU _O WHAT KNOW SPEAK`,
             ],
             [
-              'i speak truth which thou know not.',
-              'I SPEAK( PATIENT PASSIVE TRUE (NOT KNOW)( PATIENT THOU',
+              'i spoke',
+              `FROM THAT FROM I SPEAK TO NOW BEFORE`,
             ],
             [
-              'i spoke.',
-              'I SPEAK( ADVERB BEFORE',
+              'i speak when thou see me',
+              `FROM THAT FROM I SPEAK TO THAT FROM I TO THOU SEE ZERO-BEFORE`,
             ],
             [
-              'i speak when thou see me.',
-              'I SPEAK ADVERB NOW'
+              'every person likes someone',
+              `FROM MAX PERSON _O MORE ZERO PERSON GLAD`,
             ],
-          ].map(([en, code], i) =>
-            <tr key={i}>
+          ].map(([en, medium], i) =>
+            <tr>
               <td>{en}</td>
-              <td>{code}</td>
-              <td>{translate(code)}</td>
+              <td style={{ fontFamily: 'Noto Sans Mono' }}>{medium}</td>
+              <td>{translate(medium)}</td>
             </tr>
           )
         }

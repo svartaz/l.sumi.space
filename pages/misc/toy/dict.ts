@@ -1,7 +1,7 @@
 import Random from "../../../lib/random";
 
 const cs = 'g n m c d b k t p x s f h z v l'.split(' ');
-const vs = 'ı e a o u ǐ ě ǎ ǒ ǔ'.split(' ');
+const vs = 'i y u e ö o a ä'.split(' ');
 const ccs = [
   ...'c d b h z v l'.split(' ').map(c => 'n' + c),
   ...'k t p'.split(' ').flatMap(c => 'n x s f l'.split(' ').map(c1 => c + c1)),
@@ -10,14 +10,22 @@ const ccs = [
 ];
 
 const compareWords = (w, w1) => {
-  const c = w.charAt(0);
-  const c1 = w1.charAt(0);
+  if (w == w1)
+    return 0
+  else if (w == '')
+    return -1
+  else if (w1 == '')
+    return 1
+  else {
+    const c = w.charAt(0);
+    const c1 = w1.charAt(0);
 
-  const result = [...cs, ...vs].indexOf(c) - [...cs, ...vs].indexOf(c1);
-  if (result == 0)
-    return compareWords(w.slice(1), w1.slice(1));
-  else
-    return result;
+    const result = [...cs, ...vs].indexOf(c) - [...cs, ...vs].indexOf(c1);
+    if (result == 0)
+      return compareWords(w.slice(1), w1.slice(1));
+    else
+      return result;
+  }
 };
 
 const allowed = x =>
@@ -44,55 +52,28 @@ for (const k in signifierss)
 import { dictBase } from "./dict-base";
 export const dict = (() => {
   let d = {};
-
-  const categories = [...new Set(Object.values(dictBase).filter(([x]) => x.hasOwnProperty('random')).map(v => v[1]))]
   const random = new Random();
-
   const usedWords = []
 
   for (const [k, [x, category, klass, mean]] of Object.entries(dictBase))
     if (typeof x == 'string') {
       usedWords.push(x)
       d[k] = [x, klass, mean]
-    }
-
-  for (const category of categories) {
-    const usedInitials = []
-
-    for (const [k, [x, c, klass, mean]] of Object.entries(dictBase)) {
-      if (c == category) {
-        for (let i = 0; ; i++) {
-          console.log(`${category}\t${JSON.stringify(x)}\t${i}`)
-
-          if (x.hasOwnProperty('random')) {
-            const w = random.choose(signifierss[x.random])
-            const initial = w.match(new RegExp(`^[${cs.join('')}]+`))[0]
-
-            if (category != '' && usedInitials.includes(initial) || usedWords.includes(w))
-              continue
-
-            usedInitials.push(initial)
-            usedWords.push(w)
-            d[k] = [w, klass, mean]
-            break
-          } else {
-            // FIXME
-          }
+    } else if (x.hasOwnProperty('random')) {
+      const w = (() => {
+        for (let i = 0; i < 1000; i++) {
+          const w = random.choose(signifierss[x.random])
+          if (usedWords.includes(w))
+            continue;
+          else
+            return w;
         }
-      }
+        throw 'failed: generate word'
+      })()
+      usedWords.push(w)
+      d[k] = [w, klass, mean]
     }
-  }
   console.log('dict generated')
-
-  const translate = s =>
-    Object.entries(d).reduce((acc, [key, [word]]) =>
-      acc.replace(new RegExp(`(?<![_A-Z])${key.toUpperCase()}(?![_A-Z])`, 'g'), word)
-      , s)
-
-  for (const [k, [x, c, klass, mean]] of Object.entries(dictBase)) {
-    if (x.hasOwnProperty('compound'))
-      d[k] = [translate(x), klass, mean]
-  }
 
   const dSorted = Object.fromEntries(
     Object.entries(d).sort(([key, [word]], [key1, [word1]]) =>
@@ -105,6 +86,12 @@ export const dict = (() => {
 })()
 
 export const translate = s =>
-  Object.entries(dict).reduce((acc, [key, [word]]) =>
-    acc.replace(new RegExp(`(?<![_A-Z])${key.toUpperCase()}(?![_A-Z])`, 'g'), word)
-    , s)
+  s
+    .replace(/(?<![_A-Z])[_A-Z]+(?![_A-Z])/g, x => {
+      const k = x.toLowerCase()
+      if (dict.hasOwnProperty(k))
+        return dict[k][0];
+      else
+        return x;
+    })
+    .replace(/=/g, '');
