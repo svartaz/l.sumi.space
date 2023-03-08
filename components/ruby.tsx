@@ -44,6 +44,9 @@ const dict = {
   關: 'kuan',
   係: 'kèi',
   行: 'cjag',
+
+  一: 'it',
+  覧: 'lám',
 }
 
 export const Ruby = props =>

@@ -15,7 +15,7 @@ body
 
 #__next
   color: white
-  font-family: 'Zen Kaku Gothic New', sans-serif, 'Noto Emoji'
+  font-family: 'Zen Kaku Gothic New', 'Noto Sans', sans-serif, 'Noto Emoji'
   font-weight: 300
   box-sizing: border-box
 
@@ -154,8 +154,9 @@ ul:not(ul *)
 
 li
   list-style-type: square
-  padding-top: 0.25em
-  padding-bottom: 0.25em
+
+li + li
+  margin-top: 0.125em
 
 .tables
   display: flex
