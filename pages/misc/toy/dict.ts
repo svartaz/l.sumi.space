@@ -1,13 +1,8 @@
 import Random from "../../../lib/random";
 
-const cs = 'g n m c d b k t p x s f h z v l'.split(' ');
-const vs = 'i y u e ö o a ä'.split(' ');
-const ccs = [
-  ...'c d b h z v l'.split(' ').map(c => 'n' + c),
-  ...'k t p'.split(' ').flatMap(c => 'n x s f l'.split(' ').map(c1 => c + c1)),
-  ...'x s f'.split(' ').flatMap(c => 'n k t p l'.split(' ').map(c1 => c + c1)),
-  ...'n c d b h z v'.split(' ').map(c => 'l' + c),
-];
+const cs = 'g n m c d b q k t p h x s f j z v r'.split(' ');
+const vs = 'i y w u e ö o ä a'.split(' ');
+// í ý ẃ ú é ǿ ó á
 
 const compareWords = (w, w1) => {
   if (w == w1)
@@ -28,26 +23,22 @@ const compareWords = (w, w1) => {
   }
 };
 
-const allowed = x =>
-  !new RegExp(`^[nl][${cs.join('')}]`).test(x);
+export const notAllowed = [
+  '[kxj][äöy]',
+  '[gm](?!V)',
+]
+const isAllowed = x =>
+  !new RegExp(
+    notAllowed
+      .join('|')
+      .replace(/C/g, `[${cs.join('')}]`)
+      .replace(/V/g, `[${vs.join('')}]`)
+  ).test(x);
 
-const cvs = cs.flatMap(c => vs.map(v => c + v)).filter(allowed);
-const ccvs = ccs.flatMap(cc => vs.map(v => cc + v)).filter(allowed);
-const signifierss = {
-  'c': cs,
-  'v': vs,
-  'cv': cvs,
-  'ccv': ccvs,
-  'cvc': cvs.flatMap(cv => cs.map(c => cv + c)),
-  'cvcv': cvs.flatMap(cv => cvs.map(cv1 => cv + cv1)).filter(allowed),
-  'cxxcv': [
-    ...ccvs.flatMap(ccv => cvs.map(cv => ccv + cv)).filter(allowed),
-    ...cvs.flatMap(cv => ccvs.map(ccv => cv + ccv)).filter(allowed),
-  ],
-};
-
-for (const k in signifierss)
-  console.log(k + ': ' + signifierss[k].length);
+const cvs = cs.flatMap(c => vs.map(v => c + v)).filter(isAllowed)
+const cvcs = cvs.flatMap(cv => cs.map(c => cv + c)).filter(isAllowed)
+console.log(`CV: ${cvs.length}`);
+console.log(`CVC: ${cvcs.length}`);
 
 import { dictBase } from "./dict-base";
 export const dict = (() => {
@@ -62,8 +53,10 @@ export const dict = (() => {
     } else if (x.hasOwnProperty('random')) {
       const w = (() => {
         for (let i = 0; i < 1000; i++) {
-          const w = random.choose(signifierss[x.random])
-          if (usedWords.includes(w))
+          const w = x.random
+            .replace(/C/g, () => random.choose(cs))
+            .replace(/V/g, () => random.choose(vs))
+          if (!isAllowed(w) || usedWords.includes(w))
             continue;
           else
             return w;
