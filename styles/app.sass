@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Emoji:wght@300;400;500;600;700&family=Noto+Sans+Mono:wght@100;200;300;400;500;600;700;800;900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Noto+Emoji:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans+Mono:wght@100;200;300;400;500;600;700;800;900&family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap')
 
 $color: #222
 
@@ -15,7 +15,7 @@ body
 
 #__next
   color: white
-  font-family: 'Zen Kaku Gothic New', 'Noto Sans', sans-serif, 'Noto Emoji'
+  font-family: 'Noto Sans', 'Zen Kaku Gothic New', 'Noto Sans Arabic', sans-serif, 'Noto Emoji'
   font-weight: 300
   box-sizing: border-box
 
@@ -112,12 +112,13 @@ a
   justify-content: space-evenly
   align-items: center
 
-.v, .v-parent *
+.v, .v-parent *, thead tr th
   writing-mode: vertical-lr
 
 table
   border-collapse: collapse
-  border: 1px solid
+  //border-left: 1px solid
+  //border-top: 1px solid
   margin-left: auto
   margin-right: auto
   max-width: 80%
@@ -125,7 +126,7 @@ table
     th
       text-align: right
     td
-      vertical-align: top
+      vertical-align: center
     td, th
       border: 1px solid #FFF2
       padding: .5em
@@ -136,6 +137,20 @@ table
 
       &[rowspan]
         vertical-align: middle
+
+  tr:first-child
+    td, th
+      border-top: none
+  tr
+    *:first-child
+      border-left: none
+
+  tr:last-child
+    td, th
+      border-bottom: none
+  tr
+    *:last-child
+      border-right: none
 
 .twitter-tweet
   max-width: 250px !important

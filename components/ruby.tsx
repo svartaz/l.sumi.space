@@ -47,6 +47,11 @@ const dict = {
 
   一: 'it',
   覧: 'lám',
+
+  言: 'gen',
+  母: 'mú',
+  資: 'si',
+  格: 'kak',
 }
 
 export const Ruby = props =>

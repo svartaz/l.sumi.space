@@ -20,11 +20,4 @@ export default () => <>
       <li><Link href='char/2'><a>lon</a></Link></li>
     </ul>
   </Section>
-
-  <Section title='雜多'>
-    <ul>
-      <li><Link href='misc/ja'><a>suzuli, mitulu</a></Link></li>
-      <li><Link href='char/2'><a>lon</a></Link></li>
-    </ul>
-  </Section>
 </>

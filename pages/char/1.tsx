@@ -245,6 +245,7 @@ export default () => <>
       <TwitterTweetEmbed tweetId='1151805582556352513' options={{ theme: "dark" }} /> {/**/}
       <div className={style.nontweet}>
         <img src='/char-1/20190423.png'></img>
+        2018-12-04
       </div>
       <div className={style.nontweet}>
         <blockquote className="twitter-tweet" data-theme="dark" data-conversation="none"><p>わかんなかったとこは, 捏造した <a href="https://t.co/MPDLpSVi1Q">pic.twitter.com/MPDLpSVi1Q</a></p>&mdash; 一人 (@nasu_zoi) <a href="https://twitter.com/nasu_zoi/status/1069800047636856832?ref_src=twsrc%5Etfw">2018年12月4日</a></blockquote>
@@ -253,6 +254,7 @@ export default () => <>
       </div>
       <div className={style.nontweet}>
         <img src='/char-1/20180801.png'></img>
+        2018-08-01
       </div>
     </div>
   </Section>

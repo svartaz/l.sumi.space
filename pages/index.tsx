@@ -14,24 +14,56 @@ export default () => <>
     </div>
 
     <ul>
-      <li><Rubies>程序員</Rubies></li>
-      <li><Rubies>語學趣味者</Rubies></li>
-      <ul>
-        <li>EN: B2</li>
-        <ul>
-          <li>英檢 準1級 2555 (CE2021)</li>
-          <li>TOEIC L&R 900 (CE2022)</li>
-        </ul>
-        <li>CMN: A2</li>
-        <ul>
-          <li>HSK 4級 235 (CE2021)</li>
-        </ul>
-        <li>FR, ID, FA, YUE, JBO: pre-A1</li>
-      </ul>
-      <li><Rubies>近代自由主義者</Rubies></li>
-      <li><Rubies>同性愛者</Rubies></li>
+      <li><Rubies>程序</Rubies></li>
+      <li><Rubies>語學</Rubies></li>
+      <li><Rubies>近代自由主義</Rubies></li>
+      <li><Rubies>同性愛</Rubies></li>
     </ul>
   </div>
+
+  <Section title='languages'>
+    <table>
+      <tr className='v-parent'>
+        <th><Rubies>言語</Rubies></th>
+        <th>CEFR</th>
+        <th><Rubies>資格</Rubies></th>
+      </tr>
+      <tr>
+        <th>Ja</th>
+        <td><Rubies>母語</Rubies></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>En</th>
+        <td>B2</td>
+        <td>
+          <ul>
+            <li>英檢 準1級 2555 (CE2021)</li>
+            <li>TOEIC L&R 900 (CE2022)</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>Cmn</th>
+        <td>A2</td>
+        <td>
+          <ul>
+            <li>HSK 4級 235 (CE2021)</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>Fr</th>
+        <td>A1</td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>Id, Fa, Yue, Jbo</th>
+        <td>pre-A1</td>
+        <td></td>
+      </tr>
+    </table>
+  </Section>
 
   <Section title='accounts'>
     <ul>
