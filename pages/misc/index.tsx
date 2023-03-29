@@ -1,10 +1,8 @@
 import Link from 'next/link'
-import { Section } from '../../components/page'
+import { Page, Section } from '../../components/page'
 import { Rubies, Ruby } from '../../components/ruby'
-import { NextSeo } from 'next-seo'
 
-export default () => <>
-  <NextSeo title='fav' />
+export default () => <Page title='fav'>
 
   <Section title='日本語'>
     <ul>
@@ -20,4 +18,4 @@ export default () => <>
       <li><Link href='char/2'><a>lon</a></Link></li>
     </ul>
   </Section>
-</>
+</Page>

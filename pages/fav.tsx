@@ -1,9 +1,7 @@
 import { NextSeo } from "next-seo"
-import { Section } from "../components/page"
+import { Page, Section } from "../components/page"
 
-export default () => <>
-  <NextSeo title='fav' />
-
+export default () => <Page title='fav'>
   <Section title='文獻'>
     <ul>
       <li>2007 <a href='https://cruel.org/economist/courier200712.html'>自由のためなら人が死んでもいい</a></li>
@@ -46,4 +44,4 @@ export default () => <>
       <li>2022 <a href='https://www.pokemon.co.jp/ex/sv/ja/'>ポケットモンスター スカーレット&バイオレット</a></li>
     </ul>
   </Section>
-</>
+</Page >

@@ -1,9 +1,8 @@
 import { NextSeo } from 'next-seo'
 import Link from 'next/link'
+import { Page } from '../components/page'
 
-export default () => <>
-  <NextSeo title='works' />
-
+export default () => <Page title='works'>
   <table>
     <tr>
       <th>以前のpage</th>
@@ -40,4 +39,4 @@ export default () => <>
       </td>
     </tr>
   </table>
-</>
+</Page>

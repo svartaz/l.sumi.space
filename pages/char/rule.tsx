@@ -1,11 +1,9 @@
 import Link from 'next/link'
 import { Page, Section } from '../../components/page'
 import { Rubies, Ruby } from '../../components/ruby'
-import { NextSeo } from 'next-seo'
 
 export default () => <Page title='rule'>
-  以下は正式な物でなく、法的文書でもありません。
-  作者が讀み手の良心に働きかける事を目的とします。
+  <p>以下は正式な物でなく、法的文書でもありません。あなたの良心に働きかける事を目的とします。</p>
 
   <ul>
     <li>閲覽可能な者を差別的に制限しない事。</li>
