@@ -1,60 +1,100 @@
 import { Page, Section } from '../../../components/page';
-import { dict, notAllowed, translate } from './dict';
+import { dict, ipa, notAllowed, translate } from './dict';
 
-const Sample = props => <table>{
-  props.data.map(([klass, ja, l]) => <tr>
-    <td>{klass}</td>
-    <td>{ja}</td>
-    <td>{l}</td>
-    <td>{translate(l)}</td>
-  </tr>)
-}</table>
+console.log(translate(`DO _QUOTE sumi _QUOTE I PERIOD DO IN _QUOTE 'J' 'P' _QUOTE OF NATION PERIOD`))
 
-const title = 'toy language'
-export default () => <Page title='toy language'>
+const TranslateRuby = props => <span>{
+  props.datum
+    .split(/(?<=[_A-Z])(?=[^_A-Z])|(?<=[^_A-Z])(?=[_A-Z])/g)
+    .map(it => /[_A-Z]+/.test(it) ? <ruby>{translate(it)}<rt style={{ fontFamily: 'Noto Sans Mono', color: 'gray', fontWeight: 100 }}>{it}</rt></ruby> : it)
+}</span>
+
+const Sample = props => <table>
+  <thead>
+    <tr>
+      <th>型</th>
+      <th>Ja</th>
+      <th>譯</th>
+      <th>音</th>
+    </tr>
+  </thead>
+  {
+    props.data.map(([klass, ja, l]) => {
+      const t = translate(l)
+      return <tr>
+        <td>{klass}</td>
+        <td>{ja}</td>
+        <td><TranslateRuby datum={l} /></td>
+        <td>[{ipa(t)}]</td>
+      </tr>
+    })
+  }</table>
+
+export default () => <Page title={dict._language.name}>
+  <p>制作途中。あらゆる 要素は かはりうる。</p>
+  <Section title='版'>
+    <table>
+      <tr>
+        <th>版</th>
+        <th>内容</th>
+      </tr>
+      <tr>
+        <td>2023XXXX</td>
+        <td>初出</td>
+      </tr>
+    </table>
+  </Section>
+
   <Section title='字素と音素'>
     <div className='tables'>
       <table>
         <tr className='v-parent'>
           <th></th>
           <th>舌背</th>
+          <th>反舌</th>
           <th>舌端</th>
           <th>脣</th>
         </tr>
         <tr>
           <th>鼻</th>
           <td>g [ŋ]</td>
+          <td></td>
           <td>n</td>
           <td>m</td>
         </tr>
         <tr>
           <th>有聲破裂</th>
-          <td>c [g]</td>
+          <td>c [g,ɣ]</td>
+          <td></td>
           <td>d</td>
           <td>b</td>
         </tr>
         <tr>
           <th>無聲破裂</th>
-          <td>k</td>
+          <td>q [k]</td>
+          <td>k [tɕ,tʂ]</td>
           <td>t</td>
           <td>p</td>
         </tr>
         <tr>
           <th>無聲摩擦</th>
-          <td>x</td>
+          <td>h [h,x]</td>
+          <td>x [ɕ,ʂ]</td>
           <td>s</td>
           <td>f</td>
         </tr>
         <tr>
           <th>有聲摩擦</th>
           <td></td>
+          <td>j [ʑ,ʐ]</td>
           <td>z</td>
-          <td>v</td>
+          <td>v [v,β,w]</td>
         </tr>
         <tr>
-          <th>彈</th>
+          <th>接近</th>
           <td></td>
-          <td>r [ɾ,l]</td>
+          <td>l [ɾ,l]</td>
+          <td></td>
           <td></td>
         </tr>
       </table>
@@ -71,21 +111,21 @@ export default () => <Page title='toy language'>
           <th>高</th>
           <td>i</td>
           <td>y</td>
-          <td>w</td>
+          <td>w [ɨ,ə]</td>
           <td>u</td>
         </tr>
 
         <tr>
           <th></th>
           <td>e</td>
-          <td>ö</td>
-          <td>(ǝ)</td>
+          <td>ø</td>
+          <td></td>
           <td>o</td>
         </tr>
 
         <tr>
           <th>低</th>
-          <td>ä</td>
+          <td></td>
           <td></td>
           <td>a</td>
           <td></td>
@@ -93,79 +133,156 @@ export default () => <Page title='toy language'>
       </table>
     </div>
 
-    許容しない字列
+    許容しない 字列
     <ul>{
       notAllowed.map(x => <li>{x}</li>)
     }</ul>
   </Section>
 
-  <Section title='文法'>
+  <Section title='構文'>
+    <p>文の 基本は <em>動句</em>なり。</p>
     <Sample data={[
       [
-        '項',
-        '我',
+        '動句',
+        'A われなり',
+        'DO I',
+      ],
+      [
+        '名詞',
+        'A 眞なり',
+        'DO TRUE',
+      ],
+      [
+        '動句',
+        'A Bを あたへる',
+        'DO GIVE',
+      ],
+    ]} />
+
+    <p>動句から 助詞<TranslateRuby datum='DO' />を のぞき <em>名詞</em>を える。
+      <br />これ 動句の Aに いるべき ものを あらはす。</p>
+    <Sample data={[
+      [
+        '名詞',
+        'われ',
         'I',
       ],
       [
-        '項',
-        '汝',
-        'THOU',
-      ],
-      [
-        '述',
-        'AはBを與ふ',
-        'GIVE-_PREDICATE',
-      ],
-      [
-        '文',
-        '我は與ふ',
-        'I [DER] GIVE-_PREDICATE',
-      ],
-      [
-        '文',
-        '我は汝に與ふ',
-        'I [DER] THOU AS TAKE GIVE-_PREDICATE',
-      ],
-      [
-        '述',
-        'Aは眞である',
-        'TRUE-_PREDICATE',
-      ],
-      [
-        '項',
+        '名詞',
         '眞實',
         'TRUE',
       ],
       [
-        '文',
-        '我は汝に眞實を與ふ',
-        'I [DER] TRUE [DEN] THOU AS TAKE GIVE-_PREDICATE',
+        '名詞',
+        '供與者',
+        'GIVE',
       ],
+    ]} />
 
+    <p>動句の もつ 空欄A・Bに 名詞を いれ <em>文</em>を える。
+      <br />A・Bと 名詞の 對應は 詞順や 助詞で あらはす。</p>
+
+    <p>[…]は省略可能要素</p>
+    <Sample data={[
       [
-        '述',
-        'AはBは求む',
-        'WANT-_PREDICATE',
+        '文',
+        '（たれか なにかを）あたへる',
+        'DO GIVE',
       ],
       [
         '文',
-        '我は汝の求む物を與ふ',
-        'I [DER] (WHAT DEN THOU [DER] WANT-_PREDICATE) [DEN] GIVE-_PREDICATE',
+        'われ（なにかを）あたへる',
+        'I [DER] DO GIVE',
       ],
       [
         '文',
-        '我は汝の求む眞實を與ふ',
-        'I [DER] TRUE AND (WHAT DEN THOU [DER] WANT-_PREDICATE) DEN GIVE-_PREDICATE',
+        '（たれか）眞實を あたへる',
+        'TRUE DEN DO GIVE',
       ],
       [
         '文',
-        '我は與へたり',
-        'I [DER] _TENSE NEGATIVE GIVE-_PREDICATE',
+        'われ 眞實を あたへる',
+        'I [DER] TRUE [DEN] THOU AS TAKE DO GIVE',
       ],
       [
         '文',
-        '我は與へず',
-        'I [DER] SO_MUCH ZERO GIVE-_PREDICATE',
+        '眞實を われ あたへる',
+        'TRUE DEN I [DER] THOU DO GIVE',
+      ],
+    ]} />
+
+    <p>特定の 詞を 文に 前置し 名句を える。</p>
+    <Sample data={[
+      [
+        '名句',
+        '眞實を あたへる もの',
+        'WHAT [DER] TRUE [DEN] DO GIVE',
+      ],
+      [
+        '名句',
+        'わが あたへる もの',
+        'WHAT DEN I [DER] DO GIVE',
+      ],
+      [
+        '文',
+        'わが あたへる もの 眞實なり (≡われ 眞實を あたへる)',
+        'WHAT DEN I [DER] DO GIVE DO TRUE',
+      ],
+      [
+        '動句',
+        'A 文 ‘あたへる’ なりて Bを 意味する',
+        'DO THAT DO GIVE',
+      ],
+    ]} />
+
+    <p>特定の 詞で 借用を はさんで 名句を える。
+      <br />現實の 發話では 所作で あらはし 省略して よい。</p>
+    <Sample data={[
+      [
+        '動句',
+        'A 字列 ‘sumi’ なりて Bを 意味する',
+        'DO _QUOTE sumi [_QUOTE]',
+      ],
+      [
+        '文',
+        'われ sumiなり',
+        'I DEN DO _QUOTE sumi [_QUOTE]',
+      ],
+    ]} />
+
+
+    <p>ほかの 助詞で 動句が 内包しない 名句を 追加する。
+      <br />特定の 詞を 名句に 前置し 關聯する 助詞を 得る。</p>
+
+    <Sample data={[
+      [
+        '名句',
+        'なれ',
+        'THOU',
+      ],
+      [
+        '動句',
+        'なれについては われ あたへる',
+        'I [DER] THOU ABOUT DO GIVE',
+      ],
+      [
+        '文',
+        'われ なれに あたへる',
+        'I [DER] THOU AS TAKE DO GIVE',
+      ],
+    ]} />
+
+    <p>（雜多な例文）</p>
+    <Sample data={[
+      [
+        '文',
+        'われ 日本國に すむ',
+        `I [DER] _QUOTE 'J' 'P' _QUOTE OF NATION [DEN] DO IN`,
+      ],
+      [
+        '文',
+        'いろ なき みどりの かんがへ 猛烈に ねむる',
+        `SO_MUCH ZERO COLOUR AND GREEN AND _SWAP THINK DO FIGURATIVE ANGER OF NOT WAKE`,
       ],
     ]} />
   </Section>
@@ -176,16 +293,22 @@ export default () => <Page title='toy language'>
         <th></th>
         <th></th>
         <th>音</th>
-        <th>類</th>
+        <th>IPA</th>
+        <th>源</th>
+        <th>型</th>
         <th>義</th>
+        <th>版</th>
       </tr>
-      {Object.entries(dict).map(([k, [word, klass, mean]]: any, i) =>
+      {Object.entries(dict).map(([k, { name, type, named, etymology, version }]: any, i) =>
         <tr key={i}>
           <th>{i}</th>
           <th>{k.toUpperCase()}</th>
-          <td>{word}</td>
-          <td>{klass}</td>
-          <td>{mean}</td>
+          <td>{name}</td>
+          <td>[{ipa(name)}]</td>
+          <td>{etymology}</td>
+          <td>{type}</td>
+          <td>{named}</td>
+          <td>{version}</td>
         </tr>
       )}
     </table>
