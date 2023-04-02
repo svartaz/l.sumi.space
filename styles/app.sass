@@ -115,6 +115,9 @@ a
 .v, .v-parent *, thead tr th
   writing-mode: vertical-lr
 
+th:not(thead *)
+  text-align: right
+
 table
   border-collapse: collapse
   //border-left: 1px solid
@@ -123,8 +126,6 @@ table
   margin-right: auto
   max-width: 80%
   tr
-    th
-      text-align: right
     td
       vertical-align: center
     td, th
