@@ -18,7 +18,7 @@ export default ({ Component, props }) => {
   useEffect(() => {
     tocbot.init({
       contentSelector: 'main',
-      headingSelector: 'h3',
+      headingSelector: 'h2',
       hasInnerContainers: true,
       scrollContainer: 'main'
     })

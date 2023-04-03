@@ -1,4 +1,4 @@
 export const Section = props => <section>
-  <h3 id={encodeURIComponent(props.title)}>{props.title}</h3>
+  <h2 id={encodeURIComponent(props.title)}>{props.title}</h2>
   {props.children}
 </section>

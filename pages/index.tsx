@@ -1,4 +1,4 @@
-import { Page } from '../components/page';
+import { useState } from 'react';
 import { Section } from '../components/section';
 import { dict, ipa, notAllowed, translate } from '../lib/dict';
 
@@ -11,14 +11,12 @@ const TranslateRuby = props => <span>{
 }</span>
 
 const Sample = props => <table>
-  <thead>
-    <tr>
-      <th>型</th>
-      <th>Ja</th>
-      <th>譯</th>
-      <th>音</th>
-    </tr>
-  </thead>
+  <tr>
+    <th>type</th>
+    <th>Ja</th>
+    <th>{(dict._language as any).name}</th>
+    <th>IPA</th>
+  </tr>
   {
     props.data.map(([klass, ja, l]) => {
       const t = translate(l)
@@ -31,291 +29,321 @@ const Sample = props => <table>
     })
   }</table>
 
-export default () => <>
-  <p>制作途中。あらゆる 要素は かはりうる。</p>
-  <Section title='版'>
-    <table>
-      <tr>
-        <th>版</th>
-        <th>内容</th>
-      </tr>
-      <tr>
-        <td>2023XXXX</td>
-        <td>初出</td>
-      </tr>
-    </table>
-  </Section>
+export default () => {
+  const defaultCode = 'I _LANGUAGE DO KNOW'
+  const [translated, setTranslated] = useState(translate(defaultCode))
 
-  <Section title='字素と音素'>
-    <div className='tables'>
+  return <>
+    <p>under construction.
+      <br />i wrote this article in <em>english without articles</em>.</p>
+    <Section title='revision'>
       <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th>舌背</th>
-            <th>反舌</th>
-            <th>舌端</th>
-            <th>脣</th>
-          </tr>
-        </thead>
         <tr>
-          <th>鼻</th>
-          <td>g [ŋ]</td>
-          <td></td>
-          <td>n</td>
-          <td>m</td>
+          <th>verison</th>
+          <th>content</th>
         </tr>
         <tr>
-          <th>有聲破裂</th>
-          <td>c [g,ɣ]</td>
-          <td></td>
-          <td>d</td>
-          <td>b</td>
-        </tr>
-        <tr>
-          <th>無聲破裂</th>
-          <td>q [k]</td>
-          <td>k [tɕ,tʂ]</td>
-          <td>t</td>
-          <td>p</td>
-        </tr>
-        <tr>
-          <th>無聲摩擦</th>
-          <td>h [h,x]</td>
-          <td>x [ɕ,ʂ]</td>
-          <td>s</td>
-          <td>f</td>
-        </tr>
-        <tr>
-          <th>有聲摩擦</th>
-          <td></td>
-          <td>j [ʑ,ʐ]</td>
-          <td>z</td>
-          <td>v [v,β,w]</td>
-        </tr>
-        <tr>
-          <th>接近</th>
-          <td></td>
-          <td>l [ɾ,l]</td>
-          <td></td>
-          <td></td>
+          <td>2023XXXX</td>
+          <td>initialisation</td>
         </tr>
       </table>
+    </Section>
 
-      <table>
-        <thead>
+    <Section title='graphemes & phonemes'>
+      <div className='tables'>
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>velar</th>
+              <th>retroflex</th>
+              <th>dental</th>
+              <th>labial</th>
+            </tr>
+          </thead>
+          <tr>
+            <th>nasal</th>
+            <td>g [ŋ]</td>
+            <td></td>
+            <td>n</td>
+            <td>m</td>
+          </tr>
+          <tr>
+            <th>voiced plosive</th>
+            <td>c [g,ɣ]</td>
+            <td></td>
+            <td>d</td>
+            <td>b</td>
+          </tr>
+          <tr>
+            <th>unvoiced plosive</th>
+            <td>q [k]</td>
+            <td>k [tɕ,tʂ]</td>
+            <td>t</td>
+            <td>p</td>
+          </tr>
+          <tr>
+            <th>unvoiced fricative</th>
+            <td>h [h,x]</td>
+            <td>x [ɕ,ʂ]</td>
+            <td>s</td>
+            <td>f</td>
+          </tr>
+          <tr>
+            <th>voiced fricative</th>
+            <td></td>
+            <td>j [ʑ,ʐ]</td>
+            <td>z</td>
+            <td>v [v,β,w]</td>
+          </tr>
+          <tr>
+            <th>approximant</th>
+            <td></td>
+            <td>l [ɾ,l]</td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>front unround</th>
+              <th>front round</th>
+              <th></th>
+              <th>back</th>
+            </tr>
+          </thead>
+          <tr>
+            <th>closed</th>
+            <td>i</td>
+            <td>y</td>
+            <td>w [ɨ,ə]</td>
+            <td>u</td>
+          </tr>
+
           <tr>
             <th></th>
-            <th>前舌非円唇</th>
-            <th>前舌円唇</th>
-            <th></th>
-            <th>後舌</th>
+            <td>e</td>
+            <td>ø</td>
+            <td></td>
+            <td>o</td>
           </tr>
-        </thead>
-        <tr>
-          <th>高</th>
-          <td>i</td>
-          <td>y</td>
-          <td>w [ɨ,ə]</td>
-          <td>u</td>
-        </tr>
 
+          <tr>
+            <th>open</th>
+            <td></td>
+            <td></td>
+            <td>a</td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+
+      <p>forbidden sequence</p>
+      <ul>{
+        notAllowed.map(x => <li>{x}</li>)
+      }</ul>
+    </Section>
+
+    <Section title='syntax'>
+      <p>any sentrence have <em>verb</em>.</p>
+      <Sample data={[
+        [
+          'verb',
+          'S is me',
+          'DO I',
+        ],
+        [
+          'verb',
+          'S is true',
+          'DO TRUE',
+        ],
+        [
+          'verb',
+          'S give O',
+          'DO GIVE',
+        ],
+      ]} />
+
+      <p>remove prefix <TranslateRuby datum='DO' /> from verb to get <em>noun</em>.</p>
+      <Sample data={[
+        [
+          'noun',
+          'i',
+          'I',
+        ],
+        [
+          'noun',
+          'truth',
+          'TRUE',
+        ],
+        [
+          'noun',
+          'giver',
+          'GIVE',
+        ],
+      ]} />
+
+      <p>order of words and <em>markers</em> tell <em>case</em> of noun in <em>sentence</em>.
+        <br />without markers, noun before verb is <em>subject</em> and after verb is <em>object</em>.</p>
+
+      <p>[…] is optional.</p>
+      <Sample data={[
+        [
+          'sentence',
+          '(someone) give (something)',
+          'DO GIVE',
+        ],
+        [
+          'sentence',
+          'i give (something)',
+          'I [DER] DO GIVE',
+        ],
+        [
+          'sentence',
+          'i give (something)',
+          'DO GIVE I DER',
+        ],
+        [
+          'sentence',
+          '(someone) give truth',
+          'DO GIVE TRUE [DEN]',
+        ],
+        [
+          'sentence',
+          '(someone) give truth',
+          'TRUE DEN DO GIVE',
+        ],
+        [
+          'sentence',
+          'i give truth',
+          'I [DER] TRUE [DEN] DO GIVE',
+        ],
+        [
+          'sentence',
+          'i give truth',
+          'I [DER] DO GIVE TRUE [DEN]',
+        ],
+        [
+          'sentence',
+          'truth, i give',
+          'TRUE DEN I [DER] DO GIVE',
+        ],
+        [
+          'sentence',
+          'truth, i give',
+          'DO GIVE TRUE [DEN] I [DER]',
+        ],
+      ]} />
+
+      <p>turn sentence into <em>clause</em> and use it as verb.
+        <br />in clause, verb must come last.</p>
+      <Sample data={[
+        [
+          'clause noun',
+          'that which give true',
+          'WHAT [DER] TRUE [DEN] DO GIVE',
+        ],
+        [
+          'clause noun',
+          'that which i give',
+          'WHAT DEN I [DER] DO GIVE',
+        ],
+        [
+          'sentence',
+          'that which i give is truth',
+          'WHAT DEN I [DER] DO GIVE DO TRUE',
+        ],
+        [
+          'clause verb',
+          'S is that (someone) give (something)',
+          'DO THAT DO GIVE',
+        ],
+      ]} />
+
+      <p>quote foreign word.</p>
+      <Sample data={[
+        [
+          'verb',
+          'S is string ‘sumi’ meaning O',
+          'DO _QUOTE sumi [_QUOTE]',
+        ],
+        [
+          'sentence',
+          '‘sumi’ means me',
+          'DO _QUOTE sumi _QUOTE I',
+        ],
+      ]} />
+
+
+      <p>add noun which is neither S nor O.</p>
+      <Sample data={[
+        [
+          'noun',
+          'thou',
+          'THOU',
+        ],
+        [
+          'sentence',
+          'related to thee, i give (something)',
+          'I [DER] THOU ABOUT DO GIVE',
+        ],
+        [
+          'sentence',
+          'i give (something) to thee (= with thee being taker)',
+          'I [DER] THOU AS TAKE DO GIVE',
+        ],
+      ]} />
+
+      <p>(miscellaneous)</p>
+      <Sample data={[
+        [
+          'sentence',
+          'i am in japan',
+          `I [DER] DO IN _QUOTE 'J' 'P' _QUOTE OF NATION [DEN]`,
+        ],
+        [
+          'sentence',
+          'colorless green ideas sleep furiously',
+          `SO_MUCH ZERO COLOUR AND GREEN AND _SWAP THINK DO FIGURATIVE ANGER OF NOT WAKE`,
+        ],
+      ]} />
+    </Section >
+
+    <Section title='convert'>
+      <div className='textareas'>
+        <textarea defaultValue={defaultCode} onChange={event => setTranslated(translate(event.target.value))}></textarea>
+        <textarea value={translated} readOnly></textarea>
+      </div>
+    </Section>
+
+    <Section title='lexicon'>
+      <table>
         <tr>
           <th></th>
-          <td>e</td>
-          <td>ø</td>
-          <td></td>
-          <td>o</td>
+          <th></th>
+          <th>meaner</th>
+          <th>IPA</th>
+          <th>etymology</th>
+          <th>type</th>
+          <th>meant</th>
+          <th>version</th>
         </tr>
-
-        <tr>
-          <th>低</th>
-          <td></td>
-          <td></td>
-          <td>a</td>
-          <td></td>
-        </tr>
+        {Object.entries(dict).map(([k, { name, type, named, etymology, version }]: any, i) =>
+          <tr key={i}>
+            <th>{i}</th>
+            <th>{k.toUpperCase()}</th>
+            <td>{name}</td>
+            <td>[{ipa(name)}]</td>
+            <td>{etymology}</td>
+            <td>{type}</td>
+            <td>{named}</td>
+            <td>{version}</td>
+          </tr>
+        )}
       </table>
-    </div>
-
-    許容しない 字列
-    <ul>{
-      notAllowed.map(x => <li>{x}</li>)
-    }</ul>
-  </Section>
-
-  <Section title='構文'>
-    <p>文の 基本は <em>動句</em>なり。</p>
-    <Sample data={[
-      [
-        '動句',
-        'A われなり',
-        'DO I',
-      ],
-      [
-        '名詞',
-        'A 眞なり',
-        'DO TRUE',
-      ],
-      [
-        '動句',
-        'A Bを あたへる',
-        'DO GIVE',
-      ],
-    ]} />
-
-    <p>動句から 助詞<TranslateRuby datum='DO' />を のぞき <em>名詞</em>を える。
-      <br />これ 動句の Aに いるべき ものを あらはす。</p>
-    <Sample data={[
-      [
-        '名詞',
-        'われ',
-        'I',
-      ],
-      [
-        '名詞',
-        '眞實',
-        'TRUE',
-      ],
-      [
-        '名詞',
-        '供與者',
-        'GIVE',
-      ],
-    ]} />
-
-    <p>動句の もつ 空欄A・Bに 名詞を いれ <em>文</em>を える。
-      <br />A・Bと 名詞の 對應は 詞順や 助詞で あらはす。</p>
-
-    <p>[…]は省略可能要素</p>
-    <Sample data={[
-      [
-        '文',
-        '（たれか なにかを）あたへる',
-        'DO GIVE',
-      ],
-      [
-        '文',
-        'われ（なにかを）あたへる',
-        'I [DER] DO GIVE',
-      ],
-      [
-        '文',
-        '（たれか）眞實を あたへる',
-        'TRUE DEN DO GIVE',
-      ],
-      [
-        '文',
-        'われ 眞實を あたへる',
-        'I [DER] TRUE [DEN] THOU AS TAKE DO GIVE',
-      ],
-      [
-        '文',
-        '眞實を われ あたへる',
-        'TRUE DEN I [DER] THOU DO GIVE',
-      ],
-    ]} />
-
-    <p>特定の 詞を 文に 前置し 名句を える。</p>
-    <Sample data={[
-      [
-        '名句',
-        '眞實を あたへる もの',
-        'WHAT [DER] TRUE [DEN] DO GIVE',
-      ],
-      [
-        '名句',
-        'わが あたへる もの',
-        'WHAT DEN I [DER] DO GIVE',
-      ],
-      [
-        '文',
-        'わが あたへる もの 眞實なり (≡われ 眞實を あたへる)',
-        'WHAT DEN I [DER] DO GIVE DO TRUE',
-      ],
-      [
-        '動句',
-        'A 文 ‘あたへる’ なりて Bを 意味する',
-        'DO THAT DO GIVE',
-      ],
-    ]} />
-
-    <p>特定の 詞で 借用を はさんで 名句を える。
-      <br />現實の 發話では 所作で あらはし 省略して よい。</p>
-    <Sample data={[
-      [
-        '動句',
-        'A 字列 ‘sumi’ なりて Bを 意味する',
-        'DO _QUOTE sumi [_QUOTE]',
-      ],
-      [
-        '文',
-        'われ sumiなり',
-        'I DEN DO _QUOTE sumi [_QUOTE]',
-      ],
-    ]} />
-
-
-    <p>ほかの 助詞で 動句が 内包しない 名句を 追加する。
-      <br />特定の 詞を 名句に 前置し 關聯する 助詞を 得る。</p>
-
-    <Sample data={[
-      [
-        '名句',
-        'なれ',
-        'THOU',
-      ],
-      [
-        '動句',
-        'なれについては われ あたへる',
-        'I [DER] THOU ABOUT DO GIVE',
-      ],
-      [
-        '文',
-        'われ なれに あたへる',
-        'I [DER] THOU AS TAKE DO GIVE',
-      ],
-    ]} />
-
-    <p>（雜多な例文）</p>
-    <Sample data={[
-      [
-        '文',
-        'われ 日本國に すむ',
-        `I [DER] _QUOTE 'J' 'P' _QUOTE OF NATION [DEN] DO IN`,
-      ],
-      [
-        '文',
-        'いろ なき みどりの かんがへ 猛烈に ねむる',
-        `SO_MUCH ZERO COLOUR AND GREEN AND _SWAP THINK DO FIGURATIVE ANGER OF NOT WAKE`,
-      ],
-    ]} />
-  </Section>
-
-  <Section title='辭書'>
-    <table>
-      <tr>
-        <th></th>
-        <th></th>
-        <th>音</th>
-        <th>IPA</th>
-        <th>源</th>
-        <th>型</th>
-        <th>義</th>
-        <th>版</th>
-      </tr>
-      {Object.entries(dict).map(([k, { name, type, named, etymology, version }]: any, i) =>
-        <tr key={i}>
-          <th>{i}</th>
-          <th>{k.toUpperCase()}</th>
-          <td>{name}</td>
-          <td>[{ipa(name)}]</td>
-          <td>{etymology}</td>
-          <td>{type}</td>
-          <td>{named}</td>
-          <td>{version}</td>
-        </tr>
-      )}
-    </table>
-  </Section>
-</>
+    </Section>
+  </>
+}
