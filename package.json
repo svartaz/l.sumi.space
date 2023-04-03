@@ -15,7 +15,8 @@
   "dependencies": {
     "next": "^12.1.6",
     "next-share": "^0.19.0",
-    "react-twitter-embed": "^4.0.4"
+    "react-twitter-embed": "^4.0.4",
+    "tocbot": "^4.20.1"
   },
   "devDependencies": {
     "@chakra-ui/react": "^2.3.2",

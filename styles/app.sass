@@ -10,13 +10,12 @@ html
 
 body
   margin: 0
-  background-color: $color
   height: 100%
 
 #__next
-  color: white
+  color: black
   font-family: 'Noto Sans', 'Zen Kaku Gothic New', 'Noto Sans Arabic', sans-serif, 'Noto Emoji'
-  font-weight: 300
+  font-weight: 400
   box-sizing: border-box
 
   //margin-inline-start: auto
@@ -26,86 +25,47 @@ body
   max-height: 100%
 
   display: flex
-  flex-direction: column
-  row-gap: 1em
+  flex-direction: row
+  gap: 1em
 
-header, main, footer, section
+nav
+  width: 12em
+  min-height: 100%
+
+nav, main, section
   border-block-start: 1px solid
   border-inline-start: 1px solid
   padding-block-start: 1em
   padding-inline-start: 1em
   margin: 0
 
-header
-  position: sticky
-
-  display: flex
-  gap: 1em
-  align-items: flex-end
-  justify-content: space-evenly
-  flex-wrap: wrap
-
-  a
-    text-decoration: none
-    font-weight: 500
-    text-transform: uppercase
-    padding-inline-start: 0.5em
-    padding-inline-end: 0.5em
-
-  .active
-    background-color: white
-    color: $color
-
-  div.separate
-    border-left: 1px solid white
-    height: 22px
-
-  .time
-    font-family: 'Noto Sans Mono', monospace
-
 main
   flex-grow: 1
   overflow: auto
 
-main, section
+nav, main, section
   display: flex
   flex-direction: column
   row-gap: 1em
 
-pre
-  font: inherit
-  font-family: 'Noto Sans Mono', monospace
-  border: 1px solid #FFF2
-  padding: 1em
+h1 a
+  text-decoration: none
 
-footer
-  .share
-    display: flex
-    gap: 1em
-    justify-content: right
+h1, h2, h3
+  font-weight: inherit
 
-h1, h2, h3, h4, h5, h6, th
+th
   font-weight: 500
 
 h1, h2, h3, h4, h5, h6
-  font: inherit
   text-transform: uppercase
   margin: 0
   padding: 0
 
 a
-  color: white
+  color: inherit
 
-.center
-  margin-left: auto
-  margin-right: auto
-
-.evenly
-  display: flex
-  justify-content: space-evenly
-  align-items: center
-
-.v, .v-parent *, thead tr th
+thead tr th
   writing-mode: vertical-lr
   text-align: right
 
@@ -118,12 +78,11 @@ table
   //border-top: 1px solid
   margin-left: auto
   margin-right: auto
-  max-width: 80%
   tr
     td
       vertical-align: center
     td, th
-      border: 1px solid #FFF2
+      border: 1px solid lightgray
       padding: .5em
       word-wrap: normal
 
@@ -147,14 +106,6 @@ table
     *:last-child
       border-right: none
 
-.twitter-tweet
-  max-width: 250px !important
-  margin: 0 !important
-
-hr
-  height: 1px
-  border-color: #FFF
-
 ul
   list-style-position: inside
   margin: 0
@@ -172,6 +123,13 @@ li + li
   display: flex
   justify-content: space-evenly
 
+p
+  margin: 0
+
+rt
+  font-family: 'Noto Sans Mono'
+  color: darkgray
+
 textarea
   color: inherit
   background-color: inherit
@@ -184,3 +142,20 @@ select
   background-color: inherit
   outline: none
   font: inherit
+
+.toc-list
+  padding: 0
+  margin: 0
+
+.toc-list-item
+  list-style-position: outside
+  list-style-type: none
+  border-left: 5px lightgray solid
+  padding-left: 1em
+  margin: 0
+
+.is-active-li
+  border-left: 5px black solid
+
+.toc-link
+  text-decoration: none

@@ -1,4 +1,5 @@
-import { Page, Section } from '../components/page';
+import { Page } from '../components/page';
+import { Section } from '../components/section';
 import { dict, ipa, notAllowed, translate } from '../lib/dict';
 
 console.debug(translate(`I DO CAUSE THAT THOU _LANGUAGE DO KNOW`))
@@ -6,7 +7,7 @@ console.debug(translate(`I DO CAUSE THAT THOU _LANGUAGE DO KNOW`))
 const TranslateRuby = props => <span>{
   props.datum
     .split(/(?<=[_A-Z])(?=[^_A-Z])|(?<=[^_A-Z])(?=[_A-Z])/g)
-    .map(it => /[_A-Z]+/.test(it) ? <ruby>{translate(it)}<rt style={{ fontFamily: 'Noto Sans Mono', color: 'gray', fontWeight: 100 }}>{it}</rt></ruby> : it)
+    .map(it => /[_A-Z]+/.test(it) ? <ruby>{translate(it)}<rt>{it}</rt></ruby> : it)
 }</span>
 
 const Sample = props => <table>
@@ -30,7 +31,7 @@ const Sample = props => <table>
     })
   }</table>
 
-export default () => <Page title={(dict._language as any).name}>
+export default () => <>
   <p>制作途中。あらゆる 要素は かはりうる。</p>
   <Section title='版'>
     <table>
@@ -48,13 +49,15 @@ export default () => <Page title={(dict._language as any).name}>
   <Section title='字素と音素'>
     <div className='tables'>
       <table>
-        <tr className='v-parent'>
-          <th></th>
-          <th>舌背</th>
-          <th>反舌</th>
-          <th>舌端</th>
-          <th>脣</th>
-        </tr>
+        <thead>
+          <tr>
+            <th></th>
+            <th>舌背</th>
+            <th>反舌</th>
+            <th>舌端</th>
+            <th>脣</th>
+          </tr>
+        </thead>
         <tr>
           <th>鼻</th>
           <td>g [ŋ]</td>
@@ -100,13 +103,15 @@ export default () => <Page title={(dict._language as any).name}>
       </table>
 
       <table>
-        <tr className='v-parent'>
-          <th></th>
-          <th>前舌非円唇</th>
-          <th>前舌円唇</th>
-          <th></th>
-          <th>後舌</th>
-        </tr>
+        <thead>
+          <tr>
+            <th></th>
+            <th>前舌非円唇</th>
+            <th>前舌円唇</th>
+            <th></th>
+            <th>後舌</th>
+          </tr>
+        </thead>
         <tr>
           <th>高</th>
           <td>i</td>
@@ -313,4 +318,4 @@ export default () => <Page title={(dict._language as any).name}>
       )}
     </table>
   </Section>
-</Page>
+</>
