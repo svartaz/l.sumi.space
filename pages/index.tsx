@@ -1,7 +1,7 @@
-import { Page, Section } from '../../../components/page';
-import { dict, ipa, notAllowed, translate } from './dict';
+import { Page, Section } from '../components/page';
+import { dict, ipa, notAllowed, translate } from '../lib/dict';
 
-console.log(translate(`DO _QUOTE sumi _QUOTE I PERIOD DO IN _QUOTE 'J' 'P' _QUOTE OF NATION PERIOD`))
+console.debug(translate(`I DO CAUSE THAT THOU _LANGUAGE DO KNOW`))
 
 const TranslateRuby = props => <span>{
   props.datum
@@ -30,7 +30,7 @@ const Sample = props => <table>
     })
   }</table>
 
-export default () => <Page title={dict._language.name}>
+export default () => <Page title={(dict._language as any).name}>
   <p>制作途中。あらゆる 要素は かはりうる。</p>
   <Section title='版'>
     <table>

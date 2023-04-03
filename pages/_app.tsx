@@ -36,16 +36,11 @@ export default ({ Component, props }) => {
     />
 
     <header>
+      <Link href='/'>root</Link>
     </header>
 
     <main>
       <Component {...props} />
     </main>
-
-    <footer>
-      <div className='sign' style={{ float: 'left' }}>
-        © 2022 sumi
-      </div>
-    </footer>
   </>
 }

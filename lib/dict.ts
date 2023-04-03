@@ -1,4 +1,4 @@
-import Random from "../../../lib/random";
+import Random from "./random";
 
 const cs = 'g n m c d b q k t p h x s f j z v l'.split(' ');
 const vs = 'i y w u e ø o a'.split(' ');
@@ -98,7 +98,7 @@ export const translate = s =>
     .replace(/(?<![_A-Z])[_A-Z]+(?![_A-Z])/g, it => {
       const k = it.toLowerCase()
       if (dict.hasOwnProperty(k))
-        return dict[k].name;
+        return (dict[k] as any).name;
       else
         return it;
     })
