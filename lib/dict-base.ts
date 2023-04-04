@@ -47,9 +47,7 @@ export const dictBase = {
 
   i: { name: 'va', category: 'pronoun', type: 'noun', named: 'i', version: 0, etymology: 'Jpn わ' },
   thou: { name: 'ty', category: 'pronoun', type: 'noun', named: 'thou', version: 0, etymology: 'french tu' },
-  he: { name: 'si', category: 'pronoun', type: 'noun', named: 'this', version: 0, etymology: '' },
-  he1: { name: 'se', category: 'pronoun', type: 'noun', named: 'that', version: 0, etymology: '' },
-  he2: { name: 'sa', category: 'pronoun', type: 'noun', named: 'yon', version: 0, etymology: '' },
+  he: { name: 'si', category: 'pronoun', type: '* number: noun', named: 'he', version: 0, etymology: '' },
   now: { name: 'CV', category: 'pronoun', type: 'noun', named: 'now', version: 0, etymology: '' },
   here: { name: 'CV', category: 'pronoun', type: 'noun', named: 'here', version: 0, etymology: '' },
   something: { name: 'CV', category: 'pronoun', type: 'noun', named: '', version: 0, etymology: '' },

@@ -19,7 +19,7 @@ body
   box-sizing: border-box
 
   padding: 1em
-  max-height: 100%
+  height: 100%
 
   display: flex
   flex-direction: row
@@ -36,31 +36,23 @@ nav, main, section
   padding-block-start: 1em
   padding-inline-start: 1em
   margin: 0
+  display: flex
+  flex-direction: column
+  gap: 1em
 
 main
   flex-grow: 1
   overflow: auto
+  margin-left: auto
+  margin-right: auto
 
-nav, main, section
-  display: flex
-  flex-direction: column
-  row-gap: 1em
-
-h1
-  font-size: 120%
+h1, h2
   a
     text-decoration: none
 
-h2
+h1, h2, h3
   font-size: 120%
-
-h1, h2
   font-weight: inherit
-
-th
-  font-weight: 500
-
-h1, h2
   text-transform: uppercase
   margin: 0
   padding: 0
@@ -81,10 +73,13 @@ table
   tr
     border-bottom: 1px solid lightgray
 
+    th
+      font-weight: 600
+
     td
       vertical-align: center
     td, th
-      padding: .5em
+      padding: 0.5em
       word-wrap: normal
 
       &[colspan]
@@ -95,7 +90,7 @@ table
         vertical-align: middle
         border: 1px solid lightgray
 
-  tr:not(:first-child) th
+  tr th:first-child
     text-align: right
 
 ul
@@ -124,19 +119,36 @@ rt
 
 .textareas
   width: 100%
+  height: 100%
   display: flex
   flex-direction: row
   gap: 1em
 
   textarea
     flex: 1
-    height: 16em
+    height: 100%
     color: inherit
     background-color: inherit
     outline: none
     resize: none
     font: inherit
     border-color: lightgray
+
+ul.pages
+  pading: 0
+  margin: 0
+  li
+    list-style-position: outside
+    list-style-type: none
+    border-left: 4px transparent solid
+    margin: 0
+    padding: 0.25em
+    padding-left: 1em
+    a
+      text-decoration: none
+
+.active-page
+  border-left: 4px black solid !important
 
 .toc-list
   padding: 0
@@ -145,13 +157,13 @@ rt
 .toc-list-item
   list-style-position: outside
   list-style-type: none
-  border-left: 5px lightgray solid
-  padding-left: 1em
+  border-left: 4px lightgray solid
   margin: 0
   padding: 0.25em
+  padding-left: 1em
 
 .is-active-li
-  border-left: 5px black solid
+  border-left: 4px black solid
 
 .toc-link
   text-decoration: none

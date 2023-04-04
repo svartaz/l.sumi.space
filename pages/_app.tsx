@@ -3,10 +3,6 @@ import { useRouter } from 'next/router'
 import { DefaultSeo } from 'next-seo'
 import '../styles/app.sass'
 import tocbot from 'tocbot'
-import {
-  TwitterShareButton,
-  TwitterIcon,
-} from 'next-share'
 import Script from 'next/script'
 import Link from 'next/link'
 
@@ -18,7 +14,7 @@ export default ({ Component, props }) => {
   useEffect(() => {
     tocbot.init({
       contentSelector: 'main',
-      headingSelector: 'h2',
+      headingSelector: 'h3',
       hasInnerContainers: true,
       scrollContainer: 'main'
     })
@@ -52,9 +48,13 @@ export default ({ Component, props }) => {
     />
 
     <nav>
-      <h1><Link href='/'>{title}</Link></h1>
+      <h1 style={{ paddingLeft: '1em', borderLeft: router.pathname == '/' ? '4px solid black' : '4px solid transparent' }}><a href='/'>{title}</a></h1>
+      <ul className='pages'>
+        <li className={router.pathname == '/grammar' ? 'active-page' : ''}><a href='/grammar'>grammar</a></li>
+        <li className={router.pathname == '/lexicon' ? 'active-page' : ''}><a href='/lexicon'>lexicon</a></li>
+        <li className={router.pathname == '/converter' ? 'active-page' : ''}><a href='/converter'>converter</a></li>
+      </ul>
       <div className='js-toc'></div>
-
       <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" className="twitter-share-button" data-show-count="true">Tweet</a><Script async src="https://platform.twitter.com/widgets.js"></Script>
     </nav>
 
