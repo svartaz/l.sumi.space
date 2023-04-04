@@ -94,7 +94,7 @@ export const dict = (() => {
 
 export const translate = s =>
   s
-    .replace(/'[A-ZØ]'/g, x => letters[x.charAt(1).toLowerCase()].name)
+    .replace(/'[A-QØS-Z]'/g, it => letters[it.charAt(1).toLowerCase()].name)
     .replace(/(?<![_A-Z])[_A-Z]+(?![_A-Z])/g, it => {
       const k = it.toLowerCase()
       if (dict.hasOwnProperty(k))
@@ -102,7 +102,7 @@ export const translate = s =>
       else
         return it;
     })
-//.replace(/[a-zȧø]/g, it => letters[it].cyrl)
+//.replace(/[a-zø]/g, it => letters[it].cyrl)
 
 export const ipa = s =>
   s

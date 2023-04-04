@@ -6,23 +6,30 @@ console.debug(translate(`I DO CAUSE THAT THOU _LANGUAGE DO KNOW`))
 
 const TranslateRuby = props => <span>{
   props.datum
-    .split(/(?<=[_A-Z])(?=[^_A-Z])|(?<=[^_A-Z])(?=[_A-Z])/g)
-    .map(it => /[_A-Z]+/.test(it) ? <ruby>{translate(it)}<rt>{it}</rt></ruby> : it)
+    .split(/(?<=[_A-Z'])(?=[^_A-Z'])|(?<=[^_A-Z'])(?=[_A-Z'])/g)
+    .map(it => /[_A-Z']+/.test(it) ? <ruby>{translate(it)}<rt>{it}</rt></ruby> : it)
 }</span>
 
-const Sample = props => <table>{
-  props.data.map(([type, eng, l]) =>
-    <tr>
-      <th>{type}</th>
-      <td>{eng}</td>
-      <td><TranslateRuby datum={l} /></td>
-      <td>[{ipa(translate(l))}]</td>
-    </tr>
-  )
-}</table>
+const Sample = props => <table>
+  <tr>
+    <th style={{ textAlign: 'center' }}>type</th>
+    <th>Eng</th>
+    <th>{(dict._language as any).name}</th>
+    <th>IPA</th>
+  </tr>
+  {
+    props.data.map(([type, eng, l]) =>
+      <tr>
+        <td>{type}</td>
+        <td>{eng}</td>
+        <td><TranslateRuby datum={l} /></td>
+        <td>[{ipa(translate(l))}]</td>
+      </tr>
+    )
+  }
+</table>
 
 export default () => <Page title='grammar'>
-  <p>english in this article <em>have</em> no article, personal conjugation, or number.</p>
   <Section title='grapheme'>
     <div className='tables'>
       <table>
@@ -121,27 +128,15 @@ export default () => <Page title='grammar'>
     }</ul>
   </Section>
 
-  <Section title='syntax'>
-    <p>any sentrence have <dfn>verb</dfn>.</p>
+  <Section title='accent'>
+    <p>in every word, the 0st syllable is low and the rest is high.</p>
     <Sample data={[
-      [
-        'verb',
-        'S is me',
-        'DO I',
-      ],
-      [
-        'verb',
-        'S is true',
-        'DO TRUE',
-      ],
-      [
-        'verb',
-        'S give O',
-        'DO GIVE',
-      ],
+      ['noun', 'this language', '_LANGUAGE']
     ]} />
+  </Section>
 
-    <p>remove word <TranslateRuby datum='DO' /> from verb to get <dfn>noun</dfn>.</p>
+  <Section title='word order'>
+    <p>basic word order is SOV.</p>
     <Sample data={[
       [
         'noun',
@@ -150,99 +145,130 @@ export default () => <Page title='grammar'>
       ],
       [
         'noun',
-        'truth',
-        'TRUE',
-      ],
-      [
-        'noun',
-        'giver',
-        'GIVE',
-      ],
-    ]} />
-
-    <p>order of words and <dfn>postnouns</dfn> tell <dfn>case</dfn> of noun in <dfn>sentence</dfn>.
-      <br />without postnoun, noun before verb is <dfn>subject</dfn> and after verb is <dfn>object</dfn>.</p>
-
-    <p>[…] is optional.</p>
-    <Sample data={[
-      [
-        'sentence',
-        '(sth) give (sth)',
-        'DO GIVE',
-      ],
-      [
-        'sentence',
-        'i give (sth)',
-        'I [DER] DO GIVE',
-      ],
-      [
-        'sentence',
-        'i give (sth)',
-        'DO GIVE I DER',
-      ],
-      [
-        'sentence',
-        '(sth) give truth',
-        'DO GIVE TRUE [DEN]',
-      ],
-      [
-        'sentence',
-        '(sth) give truth',
-        'TRUE DEN DO GIVE',
-      ],
-      [
-        'sentence',
-        'i give truth',
-        'I [DER] TRUE [DEN] DO GIVE',
-      ],
-      [
-        'sentence',
-        'i give truth',
-        'I [DER] DO GIVE TRUE [DEN]',
-      ],
-      [
-        'sentence',
-        'truth, i give',
-        'TRUE DEN I [DER] DO GIVE',
-      ],
-      [
-        'sentence',
-        'truth, i give',
-        'DO GIVE TRUE [DEN] I [DER]',
-      ],
-    ]} />
-
-    <p>turn sentence into verb, which is <dfn>clause</dfn>.
-      <br />in clause, verb must come last.</p>
-    <Sample data={[
-      [
-        'noun',
-        'what give truth',
-        'WHAT [DER] TRUE [DEN] DO GIVE',
-      ],
-      [
-        'noun',
-        'what i give',
-        'WHAT DEN I [DER] DO GIVE',
-      ],
-      [
-        'sentence',
-        'what i give is true',
-        'WHAT DEN I [DER] DO GIVE DO TRUE',
+        'thou',
+        'THOU',
       ],
       [
         'verb',
-        'S is that (sth) give (sth)',
-        'DO THAT DO GIVE',
+        'S sees O',
+        'DO SEE',
+      ],
+      [
+        'sentence',
+        'i see thee',
+        'I THOU DO SEE',
       ],
     ]} />
 
-    <p>quote foreign word.</p>
+    <p>SVO is also possible.</p>
+    <Sample data={[
+      [
+        'sentence',
+        'i see thee',
+        'I DO SEE THOU',
+      ],
+    ]} />
+
+    <p>ye can omit S and O.</p>
+    <Sample data={[
+      [
+        'sentence',
+        '_ sees _',
+        'DO SEE',
+      ],
+      [
+        'sentence',
+        'i see _',
+        'I DO SEE',
+      ],
+      [
+        'sentence',
+        '_ sees thee',
+        'DO SEE THOU',
+      ],
+    ]} />
+
+    <p>ye can use <dfn>postnouns</dfn> to change the word order.</p>
+    <Sample data={[
+      [
+        'postnoun',
+        '(subject)',
+        'DER',
+      ],
+      [
+        'postnoun',
+        '(object)',
+        'DEN',
+      ],
+      [
+        'verb',
+        'i see _',
+        'DO SEE I DER',
+      ],
+      [
+        'verb',
+        'i see thee',
+        'THOU DEN I DO SEE',
+      ],
+    ]} />
+  </Section>
+
+  <Section title='noun'>
+    <p>ye get agent nouns by removing ‹{translate('DO')}› from verbs.</p>
+    <Sample data={[
+      [
+        'noun',
+        'seer',
+        'SEE',
+      ],
+      [
+        'sentence',
+        'the seer is me',
+        'SEE DO I',
+      ],
+    ]} />
+
+  </Section>
+
+  <Section title='clause'>
+    <p>some words turn a sentence into a noun, which is a <dfn>clause</dfn>.
+      <br />in clauses, verbs must come last.</p>
+    <Sample data={[
+      [
+        'noun',
+        'what sees me',
+        'WHAT I DO SEE',
+      ],
+      [
+        'noun',
+        'what i see',
+        'WHAT DEN I DO SEE',
+      ],
+      [
+        'sentence',
+        'what i see is thee',
+        'WHAT DEN I DO SEE DO THOU',
+      ],
+      [
+        'noun',
+        'that i see thee',
+        'THAT I THOU DO SEE',
+      ],
+      [
+        'sentence',
+        'i like to see thee',
+        'I DO GLAD THAT I THOU DO SEE',
+      ],
+    ]} />
+  </Section>
+
+  <Section title='quote'>
+    <p>quote a string and make it a noun.</p>
     <Sample data={[
       [
         'verb',
         'S is string ‘sumi’ meaning O',
-        'DO _QUOTE sumi [_QUOTE]',
+        'DO _QUOTE sumi _QUOTE',
       ],
       [
         'sentence',
@@ -250,28 +276,98 @@ export default () => <Page title='grammar'>
         'DO _QUOTE sumi _QUOTE I',
       ],
     ]} />
+  </Section>
 
-
-    <p>add noun which is neither S nor O.</p>
+  <Section title='postnouns'>
+    <p>ye can add nouns related to the event which ye describe.</p>
     <Sample data={[
       [
-        'noun',
-        'thou',
-        'THOU',
+        'verb',
+        'S gives O',
+        'DO GIVE',
+      ],
+      [
+        'verb',
+        'S is it',
+        'DO HE',
       ],
       [
         'sentence',
-        'i give (sth) in relation to thee',
-        'I [DER] THOU ABOUT DO GIVE',
-      ],
-      [
-        'sentence',
-        'i give (sth) to thee (= with thee being taker)',
-        'I [DER] THOU AS TAKE DO GIVE',
+        'i give it in relation to thee',
+        'I HE THOU ABOUT DO GIVE',
       ],
     ]} />
 
-    <p>(miscellaneous)</p>
+    <p>ye may turn nouns into postnouns.</p>
+    <Sample data={[
+      [
+        'sentence',
+        'i give it to thee (= with thee being a taker)',
+        'I HE THOU AS TAKE DO GIVE',
+      ],
+    ]} />
+  </Section>
+
+  <Section title='number'>
+    <p>put numbers before nouns.
+      <br />by default, the number of a noun is at least 1</p>
+    <Sample data={[
+      [
+        'verb',
+        'S is person',
+        'DO PERSON',
+      ],
+      [
+        'noun',
+        'no person',
+        'ZERO PERSON',
+      ],
+      [
+        'noun',
+        'some person(s)',
+        'ONE AT_MOST PERSON',
+      ],
+      [
+        'noun',
+        'every person',
+        'MAX PERSON',
+      ],
+    ]} />
+  </Section >
+
+  <Section title='degree'>
+    <p>some nouns take a <em>degree</em>.</p>
+
+    <Sample data={[
+      [
+        'verb',
+        'S is long',
+        'DO LONG',
+      ],
+      [
+        'verb',
+        'S is long',
+        'DO SO_MUCH HIGH LONG',
+      ],
+      [
+        'verb',
+        'S has normal length',
+        'DO SO_MUCH NORMAL LONG',
+      ],
+      [
+        'verb',
+        'S is short',
+        'DO SO_MUCH LOW LONG',
+      ],
+      [
+        'verb',
+        'S is not long',
+        'DO SO_MUCH LESS NORMAL LONG',
+      ],
+    ]}></Sample>
+  </Section>
+
+  <Section title='miscellaneous'>
     <Sample data={[
       [
         'sentence',
@@ -281,8 +377,8 @@ export default () => <Page title='grammar'>
       [
         'sentence',
         'colorless green ideas sleep furiously',
-        `SO_MUCH ZERO COLOUR AND GREEN AND _SWAP THINK DO FIGURATIVE ANGER OF NOT WAKE`,
+        'SO_MUCH ZERO COLOUR AND GREEN AND _SWAP THINK DO FIGURATIVE ANGER OF NOT WAKE',
       ],
     ]} />
   </Section >
-</Page>
+</Page >

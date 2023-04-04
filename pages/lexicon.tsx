@@ -16,7 +16,7 @@ export default () => <Page title='lexicon'>
     {Object.entries(dict).map(([k, { name, type, named, etymology, version }]: any, i) =>
       <tr key={i}>
         <th>{i}</th>
-        <th>{k.toUpperCase()}</th>
+        <th style={{ textAlign: 'left' }}>{k.toUpperCase()}</th>
         <td>{name}</td>
         <td>[{ipa(name)}]</td>
         <td>{etymology}</td>

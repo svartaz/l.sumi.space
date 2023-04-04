@@ -6,10 +6,11 @@ export default () => <Page title=''>
   <table>
     <tr>
       <th>verison</th>
+      <th>date</th>
       <th>content</th>
     </tr>
     <tr>
-      <td>2023XXXX</td>
+      <td>2023-mm-dd</td>
       <td>initialisation</td>
     </tr>
   </table>
