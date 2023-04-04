@@ -13,16 +13,16 @@ const TranslateRuby = props => <span>{
 const Sample = props => <table>
   <tr>
     <th>type</th>
-    <th>Ja</th>
+    <th>Eng</th>
     <th>{(dict._language as any).name}</th>
     <th>IPA</th>
   </tr>
   {
-    props.data.map(([klass, ja, l]) => {
+    props.data.map(([klass, eng, l]) => {
       const t = translate(l)
       return <tr>
         <td>{klass}</td>
-        <td>{ja}</td>
+        <td>{eng}</td>
         <td><TranslateRuby datum={l} /></td>
         <td>[{ipa(t)}]</td>
       </tr>
@@ -35,7 +35,7 @@ export default () => {
 
   return <>
     <p>under construction.
-      <br />i wrote this article in <em>english without articles</em>.</p>
+      <br />english in this article <em>have not</em> article, personal conjugation, or number.</p>
     <Section title='revision'>
       <table>
         <tr>
@@ -49,7 +49,7 @@ export default () => {
       </table>
     </Section>
 
-    <Section title='graphemes & phonemes'>
+    <Section title='grapheme'>
       <div className='tables'>
         <table>
           <thead>
@@ -148,7 +148,7 @@ export default () => {
     </Section>
 
     <Section title='syntax'>
-      <p>any sentrence have <em>verb</em>.</p>
+      <p>any sentrence have <dfn>verb</dfn>.</p>
       <Sample data={[
         [
           'verb',
@@ -167,7 +167,7 @@ export default () => {
         ],
       ]} />
 
-      <p>remove prefix <TranslateRuby datum='DO' /> from verb to get <em>noun</em>.</p>
+      <p>remove word <TranslateRuby datum='DO' /> from verb to get <dfn>noun</dfn>.</p>
       <Sample data={[
         [
           'noun',
@@ -186,34 +186,34 @@ export default () => {
         ],
       ]} />
 
-      <p>order of words and <em>markers</em> tell <em>case</em> of noun in <em>sentence</em>.
-        <br />without markers, noun before verb is <em>subject</em> and after verb is <em>object</em>.</p>
+      <p>order of words and <dfn>postnouns</dfn> tell <dfn>case</dfn> of noun in <dfn>sentence</dfn>.
+        <br />without postnoun, noun before verb is <dfn>subject</dfn> and after verb is <dfn>object</dfn>.</p>
 
       <p>[…] is optional.</p>
       <Sample data={[
         [
           'sentence',
-          '(someone) give (something)',
+          '(sth) give (sth)',
           'DO GIVE',
         ],
         [
           'sentence',
-          'i give (something)',
+          'i give (sth)',
           'I [DER] DO GIVE',
         ],
         [
           'sentence',
-          'i give (something)',
+          'i give (sth)',
           'DO GIVE I DER',
         ],
         [
           'sentence',
-          '(someone) give truth',
+          '(sth) give truth',
           'DO GIVE TRUE [DEN]',
         ],
         [
           'sentence',
-          '(someone) give truth',
+          '(sth) give truth',
           'TRUE DEN DO GIVE',
         ],
         [
@@ -238,27 +238,27 @@ export default () => {
         ],
       ]} />
 
-      <p>turn sentence into <em>clause</em> and use it as verb.
+      <p>turn sentence into verb, which is <dfn>clause</dfn>.
         <br />in clause, verb must come last.</p>
       <Sample data={[
         [
-          'clause noun',
-          'that which give true',
+          'noun',
+          'what give truth',
           'WHAT [DER] TRUE [DEN] DO GIVE',
         ],
         [
-          'clause noun',
-          'that which i give',
+          'noun',
+          'what i give',
           'WHAT DEN I [DER] DO GIVE',
         ],
         [
           'sentence',
-          'that which i give is truth',
+          'what i give is true',
           'WHAT DEN I [DER] DO GIVE DO TRUE',
         ],
         [
-          'clause verb',
-          'S is that (someone) give (something)',
+          'verb',
+          'S is that (sth) give (sth)',
           'DO THAT DO GIVE',
         ],
       ]} />
@@ -287,12 +287,12 @@ export default () => {
         ],
         [
           'sentence',
-          'related to thee, i give (something)',
+          'i give (sth) in relation to thee',
           'I [DER] THOU ABOUT DO GIVE',
         ],
         [
           'sentence',
-          'i give (something) to thee (= with thee being taker)',
+          'i give (sth) to thee (= with thee being taker)',
           'I [DER] THOU AS TAKE DO GIVE',
         ],
       ]} />

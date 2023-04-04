@@ -145,7 +145,7 @@ export const ipa = s =>
 
     .replace(/J/g, 'ʐ')
     .replace(/Z/g, 'z')
-    .replace(/V/g, 'β')
+    .replace(/V/g, 'v')
 
     .replace(/L/g, 'ɾ')
 

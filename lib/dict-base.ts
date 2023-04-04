@@ -33,7 +33,7 @@ export const dictBase = {
   comma: { name: 'CV', category: '', type: '', named: '', version: 0, etymology: '' },
   period: { name: 'CV', category: '', type: '', named: '', version: 0, etymology: '' },
 
-  about: { name: 'fa', category: '', type: 'mark', named: '', version: 0, etymology: 'Jpn は' },
+  about: { name: 'nw', category: '', type: 'mark', named: '', version: 0, etymology: 'Kor 는' },
   der: { name: 'de', category: '', type: 'mark', named: '', version: 0, etymology: 'Deu der' },
   den: { name: 'la', category: '', type: 'mark', named: '', version: 0, etymology: 'Fas را' },
   _swap: { name: 'ta', category: '', type: '* noun: noun', named: '', version: 0, etymology: 'Fin -taan' },
@@ -42,7 +42,7 @@ export const dictBase = {
   _tense: { name: 'CV', category: '', type: '', named: '-:past, 0:present, +:future', version: 0, etymology: '' },
   _aspect: { name: 'CV', category: '', type: '', named: 'min:beign, max:end', version: 0, etymology: '' },
 
-  do: { name: 'xa', category: '', type: '* noun: verb', named: '', version: 0, etymology: 'Ltc 者' },
+  do: { name: 'fa', category: '', type: '* noun: verb', named: '', version: 0, etymology: 'Lat facere' },
   as: { name: 'CV', category: '', type: '* noun: mark', named: '', version: 0, etymology: '' },
 
   i: { name: 'va', category: 'pronoun', type: 'noun', named: 'i', version: 0, etymology: 'Jpn わ' },
