@@ -13,6 +13,9 @@ body
   height: 100%
 
 #__next
+  height: 100%
+
+#app
   color: black
   font-family: 'Noto Sans', 'Zen Kaku Gothic New', 'Noto Sans Arabic', sans-serif, 'Noto Emoji'
   font-weight: 400
@@ -26,15 +29,18 @@ body
   gap: 1em
 
 nav
-  width: 12em
+  width: 8em
   max-width: 20%
-  min-height: 100%
+  height: 100%
+  overflow-wrap: break-word
 
-nav, main, section
+main, section
   border-block-start: 1px solid
   border-inline-start: 1px solid
   padding-block-start: 1em
   padding-inline-start: 1em
+
+nav, main, section
   margin: 0
   display: flex
   flex-direction: column
@@ -45,6 +51,14 @@ main
   overflow: auto
   margin-left: auto
   margin-right: auto
+
+#app.no-nav
+  padding: 0
+  nav
+    display: none
+  main
+    border: none
+    padding: 1em
 
 h1, h2
   a
@@ -68,10 +82,9 @@ table
   border-collapse: collapse
   margin-left: auto
   margin-right: auto
-  max-width: 60%
 
   tr
-    border-bottom: 1px solid lightgray
+    border-bottom: 1px solid #0002
 
     th
       font-weight: 600
@@ -84,11 +97,11 @@ table
 
       &[colspan]
         text-align: center
-        border: 1px solid lightgray
+        border: 1px solid #0002
 
       &[rowspan]
         vertical-align: middle
-        border: 1px solid lightgray
+        border: 1px solid #0002
 
   tr th:first-child
     text-align: right
@@ -109,6 +122,7 @@ li + li
 .tables
   display: flex
   justify-content: space-evenly
+  flex-wrap: wrap
 
 p
   margin: 0
@@ -132,7 +146,7 @@ rt
     outline: none
     resize: none
     font: inherit
-    border-color: lightgray
+    border-color: #0002
 
 
 ul.pages
@@ -158,7 +172,7 @@ ul.pages
 .toc-list-item
   list-style-position: outside
   list-style-type: none
-  border-left: 4px lightgray solid
+  border-left: 4px #0002 solid
   margin: 0
   padding: 0.25em
   padding-left: 0.5em
@@ -168,3 +182,18 @@ ul.pages
 
 .toc-link
   text-decoration: none
+
+.toggle
+  position: absolute
+  left: 1em
+  bottom: 1em
+  width: 4em
+  height: 4em
+  border-radius: 100px
+  background-color: #0002
+  display: flex
+  align-items: center
+  justify-content: center
+
+  span
+    font-size: 200%

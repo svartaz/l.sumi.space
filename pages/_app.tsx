@@ -3,13 +3,14 @@ import { DefaultSeo } from 'next-seo'
 import '../styles/app.sass'
 import Script from 'next/script'
 import Link from 'next/link'
+import { useState } from 'react'
 
 const title = 'sumi language (TBD)'
 export default ({ Component, props }) => {
   const router = useRouter()
-  const path = router.pathname
+  const [navVisible, setNavVisible] = useState(true)
 
-  return <>
+  return <div id='app' className={navVisible ? '' : 'no-nav'}>
     <DefaultSeo
       titleTemplate={`${title} - %s`}
       defaultTitle={title}
@@ -48,5 +49,12 @@ export default ({ Component, props }) => {
     <main>
       <Component {...props} />
     </main>
-  </>
+
+    <div
+      className='toggle'
+      onClick={() => setNavVisible(it => !it)}
+    >
+      <span>{navVisible ? '⇤' : '⇥'}</span>
+    </div>
+  </div>
 }
