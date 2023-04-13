@@ -1,7 +1,7 @@
 import Random from "./random";
 
-const cs = 'g n m c d b q k t p h x s f j z v l'.split(' ');
-const vs = 'i y w u e ø o a'.split(' ');
+export const cs = 'g c q h k x j n d t s z l m b p f v'.split(' ');
+export const vs = 'i e a o u w ø y'.split(' ');
 
 const compareWords = (w: string, w1: string) => {
   if (w == w1)
@@ -23,7 +23,13 @@ const compareWords = (w: string, w1: string) => {
 }
 
 export const notAllowed = [
-  '[kxj][wøy]'
+  '(..)\\1',
+  'y.w|w.y',
+  '[ieaouwøy]b[ieaouwøy]',
+  '[sz]i',
+  '[gcqhkxj]w',
+  'g[iy]',
+  '[kxj][wou]',
 ]
 const isAllowed = x =>
   !new RegExp(
@@ -46,21 +52,22 @@ export const dict = (() => {
   const random = new Random();
   const usedWords = []
 
-  for (const [k, { name, ...rest }] of Object.entries(dictBase))
-    if (typeof name == 'string' && !/[CV]/.test(name)) {
-      if (usedWords.includes(name))
-        throw `${name} used twice`
-      usedWords.push(name)
-      d[k] = { name, ...rest }
+  for (const [k, { signifier, ...rest }] of Object.entries(dictBase))
+    if (typeof signifier == 'string' && !/[CV]/.test(signifier)) {
+      if (usedWords.includes(signifier))
+        throw `${signifier} used twice`
+      if (notAllowed.some(p => new RegExp(p).test(signifier)))
+        throw `${signifier} not allowed`
+      usedWords.push(signifier)
+      d[k] = { signifier, ...rest }
       delete dictBase[k]
     }
 
-  for (const [k, { name, ...rest }] of Object.entries(dictBase))
-    if (typeof name == 'string') {
-      //console.log(k, name)
+  for (const [k, { signifier, ...rest }] of Object.entries(dictBase))
+    if (typeof signifier == 'string') {
       const n: string = (() => {
         for (let i = 0; i < 1000; i++) {
-          const n = name
+          const n = signifier
             .replace(/C/g, () => random.choose(cs))
             .replace(/V/g, () => random.choose(vs))
           if (!isAllowed(n) || usedWords.includes(n))
@@ -71,20 +78,20 @@ export const dict = (() => {
         throw 'failed: generate word'
       })()
       usedWords.push(n)
-      d[k] = { name: n, ...rest }
+      d[k] = { signifier: n, ...rest }
     }
-  for (const [k, { name, ...rest }] of Object.entries(dictBase))
-    if (name.hasOwnProperty('alias')) {
-      const n = (name as any).alias
-        .replace(/[A-Z_]+/g, k => d[k.toLowerCase()].name)
+  for (const [k, { signifier, ...rest }] of Object.entries(dictBase))
+    if (signifier.hasOwnProperty('alias')) {
+      const n = (signifier as any).alias
+        .replace(/[A-Z_]+/g, k => d[k.toLowerCase()].signifier)
       //.replace(/-(.)/g, (x, m) => m.toUpperCase())
-      d[k] = { name: n, ...rest }
+      d[k] = { signifier: n, ...rest }
     }
   console.log('dict generated')
 
   const dSorted = Object.fromEntries(
     Object.entries(d).sort(([k, v]: any, [k1, v1]: any) =>
-      compareWords(v.name, v1.name)
+      compareWords(v.signifier, v1.signifier)
     )
   )
   console.log('dict sorted')
@@ -98,7 +105,7 @@ export const translate = s =>
     .replace(/(?<![_A-Z])[_A-Z]+(?![_A-Z])/g, it => {
       const k = it.toLowerCase()
       if (dict.hasOwnProperty(k))
-        return (dict[k] as any).name;
+        return (dict[k] as any).signifier;
       else
         return it;
     })
@@ -111,7 +118,7 @@ export const ipa = s =>
     .replace(/(?<![GNMCDBQKTPHXSFJZVLIEAOUWØY])([GNMCDBQKTPHXSFJZVL][IEAOUWØY])(?=[GNMCDBQKTPHXSFJZVLIEAOUWØY])/g, '$1ꜛ')
 
     .replace(/(?<=[IEAOUWØY])C(?=[IEAOUWØY])/g, 'ɣ')
-    .replace(/X(?=[IY])/g, 'ç')
+    .replace(/H(?=[IY])/g, 'ç')
 
     .replace(/KI/g, 'tɕI')
     .replace(/KO/g, 'tɕØ')

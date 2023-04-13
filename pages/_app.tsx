@@ -5,7 +5,7 @@ import Script from 'next/script'
 import Link from 'next/link'
 import { useState } from 'react'
 
-const title = 'sumi language (TBD)'
+const title = 'sumi language 2023'
 export default ({ Component, props }) => {
   const router = useRouter()
   const [navVisible, setNavVisible] = useState(true)
@@ -38,9 +38,17 @@ export default ({ Component, props }) => {
     <nav>
       <h1 style={{ paddingLeft: '0.5em', borderLeft: router.pathname == '/' ? '4px solid black' : '4px solid transparent' }}><Link href='/'>{title}</Link></h1>
       <ul className='pages'>
-        <li className={router.pathname == '/grammar' ? 'active-page' : ''}><Link href='/grammar'>grammar</Link></li>
-        <li className={router.pathname == '/lexicon' ? 'active-page' : ''}><Link href='/lexicon'>lexicon</Link></li>
-        <li className={router.pathname == '/converter' ? 'active-page' : ''}><Link href='/converter'>converter</Link></li>
+        {
+          Object.entries({
+            grammar: '文法',
+            lexicon: '詞彙',
+            convert: '變換器',
+            misc: '雜記',
+          })
+            .map(([k, v]) =>
+              <li className={router.pathname == ('/' + k) ? 'active-page' : ''}><Link href={'/' + k}>{v}</Link></li>
+            )
+        }
       </ul>
       <div className='js-toc'></div>
       <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" className="twitter-share-button" data-show-count="true">Tweet</a><Script async src="https://platform.twitter.com/widgets.js"></Script>

@@ -1,8 +1,9 @@
 import { Section } from '../components/section';
-import { dict, ipa, notAllowed, translate } from '../lib/dict';
+import { cs, dict, notAllowed, translate, vs } from '../lib/dict';
 import { Page } from '../components/page';
+import style from './style.module.sass'
 
-console.debug(translate(`I DO CAUSE THAT THOU _LANGUAGE DO KNOW`))
+console.log(translate(`I BY THOU _LANGUAGE DO KNOW`))
 
 const TranslateRuby = props => <span>{
   props.datum
@@ -12,373 +13,471 @@ const TranslateRuby = props => <span>{
 
 const Sample = props => <table>
   <tr>
-    <th style={{ textAlign: 'center' }}>type</th>
-    <th>Eng</th>
-    <th>{(dict._language as any).name}</th>
-    <th>IPA</th>
+    <th style={{ textAlign: 'center' }}>型</th>
+    <th>{(dict._language as any).signifier}</th>
+    <th>譯</th>
   </tr>
   {
     props.data.map(([type, eng, l]) =>
       <tr>
         <td>{type}</td>
-        <td>{eng}</td>
         <td><TranslateRuby datum={l} /></td>
-        <td>[{ipa(translate(l))}]</td>
+        <td>{eng}</td>
       </tr>
     )
   }
 </table>
 
-export default () => <Page title='grammar'>
-  <Section title='grapheme'>
-    <div className='tables'>
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th>velar</th>
-            <th>retroflex</th>
-            <th>dental</th>
-            <th>labial</th>
-          </tr>
-        </thead>
-        <tr>
-          <th>nasal</th>
-          <td>g [ŋ]</td>
-          <td></td>
-          <td>n</td>
-          <td>m</td>
-        </tr>
-        <tr>
-          <th>voiced plosive</th>
-          <td>c [g,ɣ]</td>
-          <td></td>
-          <td>d</td>
-          <td>b</td>
-        </tr>
-        <tr>
-          <th>unvoiced plosive</th>
-          <td>q [k]</td>
-          <td>k [tɕ,tʂ]</td>
-          <td>t</td>
-          <td>p</td>
-        </tr>
-        <tr>
-          <th>unvoiced fricative</th>
-          <td>h [h,x]</td>
-          <td>x [ɕ,ʂ]</td>
-          <td>s</td>
-          <td>f</td>
-        </tr>
-        <tr>
-          <th>voiced fricative</th>
-          <td></td>
-          <td>j [ʑ,ʐ]</td>
-          <td>z</td>
-          <td>v [v,β,w]</td>
-        </tr>
-        <tr>
-          <th>approximant</th>
-          <td></td>
-          <td>l [ɾ,l]</td>
-          <td></td>
-          <td></td>
-        </tr>
-      </table>
-
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th>front unround</th>
-            <th>front round</th>
-            <th></th>
-            <th>back</th>
-          </tr>
-        </thead>
-        <tr>
-          <th>closed</th>
-          <td>i</td>
-          <td>y</td>
-          <td>w [ɨ,ə]</td>
-          <td>u</td>
-        </tr>
-
+export default () => <Page title='文法'>
+  <Section title='音韻'>
+    <ul>
+      <li>字素と音素は一致する.</li>
+      <li>以下の表で[…]は國際音聲記號である.</li>
+    </ul>
+    <table>
+      <thead>
         <tr>
           <th></th>
-          <td>e</td>
-          <td>ø</td>
-          <td></td>
-          <td>o</td>
+          <th>硬口蓋</th>
+          <th>軟口蓋<br />反舌</th>
+          <th>齒</th>
+          <th>脣</th>
         </tr>
+      </thead>
+      <tr>
+        <th>鼻</th>
+        <td>g [ŋ]</td>
+        <td></td>
+        <td>n</td>
+        <td>m</td>
+      </tr>
+      <tr>
+        <th>有聲破裂</th>
+        <td>c [g,ɣ]</td>
+        <td></td>
+        <td>d</td>
+        <td>b</td>
+      </tr>
+      <tr>
+        <th>無聲破裂</th>
+        <td>q [k]</td>
+        <td></td>
+        <td>t</td>
+        <td>p</td>
+      </tr>
+      <tr>
+        <th>無聲破擦</th>
+        <td></td>
+        <td>k [tɕ,tʂ]</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <th>無聲摩擦</th>
+        <td>h [h,x]</td>
+        <td>x [ɕ,ʂ]</td>
+        <td>s</td>
+        <td>f</td>
+      </tr>
+      <tr>
+        <th>有聲摩擦</th>
+        <td>r [ʁ,ɣ]</td>
+        <td>j [ʑ,ʐ]</td>
+        <td>z</td>
+        <td>v [v,β,w]</td>
+      </tr>
+      <tr>
+        <th>接近</th>
+        <td></td>
+        <td></td>
+        <td>l [ɾ,l]</td>
+        <td></td>
+      </tr>
+    </table>
 
+    <table>
+      <thead>
         <tr>
-          <th>open</th>
-          <td></td>
-          <td></td>
-          <td>a</td>
-          <td></td>
+          <th></th>
+          <th>非圓脣前舌</th>
+          <th>圓脣前舌</th>
+          <th>中舌<br />非圓脣後舌</th>
+          <th>圓脣後舌</th>
         </tr>
-      </table>
-    </div>
+      </thead>
+      <tr>
+        <th>狹</th>
+        <td>i</td>
+        <td>y [y,ju]</td>
+        <td>w [ɨ,ɯ]</td>
+        <td>u</td>
+      </tr>
 
-    <p>forbidden sequence</p>
-    <ul>{
-      notAllowed.map(x => <li>{x}</li>)
-    }</ul>
+      <tr>
+        <th></th>
+        <td>e</td>
+        <td>ø [ø,jo]</td>
+        <td></td>
+        <td>o</td>
+      </tr>
+
+      <tr>
+        <th>廣</th>
+        <td></td>
+        <td></td>
+        <td>a</td>
+        <td></td>
+      </tr>
+    </table>
+
+    <ul>
+      <li>音節はCVである.</li>
+      <li>詞は(CV)+である.</li>
+      <li>以下の音節は無い.</li>
+    </ul>
+
+    <table className={style.cv}>
+      <tr>
+        <th></th>
+        {
+          vs.map(v => <th>{v}</th>)
+        }
+      </tr>
+      {
+        cs.map(c => <tr>
+          <th>{c}</th>{
+            vs.map(v =>
+              notAllowed.some(p => new RegExp(p).test(c + v)) ?
+                <td style={{ backgroundColor: 'lightgray' }}><del>{c + v}</del></td>
+                : <td>{c + v}</td>
+            )
+          }</tr>)
+      }
+    </table>
+
+    <ul>
+      <li>詞頭の音節は低く殘りは高い.</li>
+    </ul>
   </Section>
 
-  <Section title='accent'>
-    <p>in every word, the 0st syllable is low and the rest is high.</p>
-    <Sample data={[
-      ['noun', 'this language', '_LANGUAGE']
-    ]} />
-  </Section>
-
-  <Section title='word order'>
-    <p>basic word order is SOV.</p>
+  <Section title='詞順'>
+    <ul>
+      <li><dfn>文</dfn>は必ず<dfn>關係</dfn> (言はゆる動詞) を持つ.</li>
+      <li>關係は<dfn>項</dfn> (言はゆる名詞) の關係を示す.</li>
+      <li>基本詞順はSOV.</li>
+    </ul>
     <Sample data={[
       [
-        'noun',
-        'i',
+        '項',
+        'われ',
         'I',
       ],
       [
-        'noun',
-        'thou',
+        '項',
+        'なれ',
         'THOU',
       ],
       [
-        'verb',
-        'S sees O',
+        '關係',
+        'SはOを見る',
         'DO SEE',
       ],
       [
-        'sentence',
-        'i see thee',
+        '文',
+        'われはなれを見る',
         'I THOU DO SEE',
       ],
     ]} />
 
-    <p>SVO is also possible.</p>
+    <ul>
+      <li>SVOとVOSも可能 (Vの直後はOとなる).</li>
+    </ul>
     <Sample data={[
       [
-        'sentence',
-        'i see thee',
+        '文',
+        'われは見る, なれを',
         'I DO SEE THOU',
+      ],
+      [
+        '文',
+        '見る, なれをわれは',
+        'DO SEE THOU I',
       ],
     ]} />
 
-    <p>ye can omit S and O.</p>
+    <ul>
+      <li>SとOは省略可能.</li>
+    </ul>
     <Sample data={[
       [
-        'sentence',
-        '_ sees _',
+        '文',
+        '見る',
         'DO SEE',
       ],
       [
-        'sentence',
-        'i see _',
+        '文',
+        'われは見る',
         'I DO SEE',
       ],
       [
-        'sentence',
-        '_ sees thee',
+        '文',
+        'なれを見る',
         'DO SEE THOU',
       ],
     ]} />
+  </Section>
 
-    <p>ye can use <dfn>postnouns</dfn> to change the word order.</p>
+  <Section title='項化'>
+    <ul>
+      <li>關係から ‘{translate('DO')}’ を消すとそのSに相當する項を得る.</li>
+    </ul>
     <Sample data={[
       [
-        'postnoun',
-        '(subject)',
+        '關係',
+        'Sは人である',
+        'DO PERSON',
+      ],
+      [
+        '項',
+        '人',
+        'PERSON',
+      ],
+    ]} />
+  </Section>
+
+  <Section title='助項'>
+    <ul>
+      <li><dfn>基本助項</dfn>は詞順の變更を許す.</li>
+    </ul>
+    <Sample data={[
+      [
+        '助項',
+        '(主)',
         'DER',
       ],
       [
-        'postnoun',
-        '(object)',
+        '助項',
+        '(客)',
         'DEN',
       ],
       [
-        'verb',
-        'i see _',
-        'DO SEE I DER',
-      ],
-      [
-        'verb',
-        'i see thee',
+        '文',
+        'なれをわれは見る',
         'THOU DEN I DO SEE',
       ],
-    ]} />
-  </Section>
-
-  <Section title='noun'>
-    <p>ye get agent nouns by removing ‹{translate('DO')}› from verbs.</p>
-    <Sample data={[
       [
-        'noun',
-        'seer',
-        'SEE',
-      ],
-      [
-        'sentence',
-        'the seer is me',
-        'SEE DO I',
+        '文',
+        'われは見るなれを',
+        'DO SEE I DER THOU',
       ],
     ]} />
 
-  </Section>
-
-  <Section title='clause'>
-    <p>some words turn a sentence into a noun, which is a <dfn>clause</dfn>.
-      <br />in clauses, verbs must come last.</p>
+    <ul>
+      <li>基本助項でない助項は<dfn>應用助項</dfn>であり, 文に項を附加する.</li>
+    </ul>
     <Sample data={[
       [
-        'noun',
-        'what sees me',
-        'WHAT I DO SEE',
-      ],
-      [
-        'noun',
-        'what i see',
-        'WHAT DEN I DO SEE',
-      ],
-      [
-        'sentence',
-        'what i see is thee',
-        'WHAT DEN I DO SEE DO THOU',
-      ],
-      [
-        'noun',
-        'that i see thee',
-        'THAT I THOU DO SEE',
-      ],
-      [
-        'sentence',
-        'i like to see thee',
-        'I DO GLAD THAT I THOU DO SEE',
-      ],
-    ]} />
-  </Section>
-
-  <Section title='quote'>
-    <p>quote a string and make it a noun.</p>
-    <Sample data={[
-      [
-        'verb',
-        'S is string ‘sumi’ meaning O',
-        'DO _QUOTE sumi _QUOTE',
-      ],
-      [
-        'sentence',
-        '‘sumi’ means me',
-        'DO _QUOTE sumi _QUOTE I',
-      ],
-    ]} />
-  </Section>
-
-  <Section title='postnouns'>
-    <p>ye can add nouns related to the event which ye describe.</p>
-    <Sample data={[
-      [
-        'verb',
-        'S gives O',
+        '關係',
+        'SはOを與へる',
         'DO GIVE',
       ],
       [
-        'verb',
-        'S is it',
+        '關係',
+        'Sは彼である',
         'DO HE',
       ],
       [
-        'sentence',
-        'i give it in relation to thee',
+        '助項',
+        '(が關聯して)',
+        'ABOUT',
+      ],
+      [
+        '文',
+        'われは彼をなれに關して與へる',
         'I HE THOU ABOUT DO GIVE',
       ],
     ]} />
 
-    <p>ye may turn nouns into postnouns.</p>
+    <ul>
+      <li>‘{translate('AS')}’ は項を助項に變へる.</li>
+    </ul>
     <Sample data={[
       [
-        'sentence',
-        'i give it to thee (= with thee being a taker)',
+        '文',
+        'われは彼をなれに (=なれが受けて) 與へる',
         'I HE THOU AS TAKE DO GIVE',
       ],
     ]} />
   </Section>
 
-  <Section title='number'>
-    <p>put numbers before nouns.
-      <br />by default, the number of a noun is at least 1</p>
+  <Section title='量'>
+    <ul>
+      <li><dfn>量</dfn>は項の前に來る數であり項が意味するものの數量を示す.</li>
+    </ul>
     <Sample data={[
       [
-        'verb',
-        'S is person',
-        'DO PERSON',
-      ],
-      [
-        'noun',
-        'no person',
+        '項',
+        '0人',
         'ZERO PERSON',
       ],
       [
-        'noun',
-        'some person(s)',
+        '項',
+        '1人以上',
         'ONE AT_MOST PERSON',
       ],
       [
-        'noun',
-        'every person',
+        '項',
+        '各人',
         'MAX PERSON',
       ],
     ]} />
-  </Section >
+  </Section>
 
-  <Section title='degree'>
-    <p>some nouns take a <em>degree</em>.</p>
-
+  <Section title='極'>
+    <ul>
+      <li><dfn>極</dfn>は項が意味するものの程度を示す.</li>
+      <li>それぞれの項は暗黙的な極を持つ.</li>
+      <li>‘{translate('_DEGREE')}’ は直後の數を極に變へる.</li>
+    </ul>
     <Sample data={[
       [
-        'verb',
-        'S is long',
+        '數',
+        '主觀的に通常の數',
+        'NORMAL',
+      ],
+      [
+        '數',
+        '主觀的に通常を超える數',
+        'HIGH',
+      ],
+      [
+        '關係',
+        'Sは長い',
         'DO LONG',
       ],
       [
-        'verb',
-        'S is long',
-        'DO SO_MUCH HIGH LONG',
+        '關係',
+        'Sは長い',
+        'DO _DEGREE HIGH LONG',
       ],
       [
-        'verb',
-        'S has normal length',
-        'DO SO_MUCH NORMAL LONG',
+        '關係',
+        'Sは通常程度に長い',
+        'DO _DEGREE NORMAL LONG',
       ],
       [
-        'verb',
-        'S is short',
-        'DO SO_MUCH LOW LONG',
+        '關係',
+        'Sは短い (低程度に長い)',
+        'DO _DEGREE LOW LONG',
       ],
       [
-        'verb',
-        'S is not long',
-        'DO SO_MUCH LESS NORMAL LONG',
+        '關係',
+        'Sは長くない',
+        'DO _DEGREE LESS NORMAL LONG',
+      ],
+      [
+        '項',
+        '長くないもの',
+        '_DEGREE LESS NORMAL LONG',
       ],
     ]}></Sample>
   </Section>
 
-  <Section title='miscellaneous'>
+  <Section title='疑問文'>
+    <ul>
+      <li>‘{translate('WHAT')}’ は<dfn>項疑問文</dfn>を作る.</li>
+    </ul>
     <Sample data={[
       [
-        'sentence',
-        'i am in japan',
-        `I [DER] DO IN _QUOTE 'J' 'P' _QUOTE OF NATION [DEN]`,
+        '文',
+        'なれは何を恐る?',
+        'THOU WHAT DO FEAR',
       ],
       [
-        'sentence',
-        'colorless green ideas sleep furiously',
-        'SO_MUCH ZERO COLOUR AND GREEN AND _SWAP THINK DO FIGURATIVE ANGER OF NOT WAKE',
+        '文',
+        '(返答) 時を.',
+        'TIME DEN',
+      ],
+    ]}></Sample>
+
+    <ul>
+      <li>‘{translate('HOW_MUCH')}’ は<dfn>數疑問文</dfn>を作る.</li>
+    </ul>
+    <Sample data={[
+      [
+        '文',
+        'なれは人か?',
+        'THOU DO _DEGREE HOW_MUCH PERSON',
+      ],
+      [
+        '文',
+        '— 人である.',
+        'DO PERSON',
+      ],
+      [
+        '文',
+        '— 人でない (人-度0である).',
+        'DO _DEGREE ZERO PERSON',
       ],
     ]} />
-  </Section >
+  </Section>
+
+  <Section title='節'>
+    <ul>
+      <li>‘{translate('THAT')}’ は文を項に變へ, それは<dfn>節</dfn>である.</li>
+      <li>節の中で關係は最後にある.</li>
+    </ul>
+    <Sample data={[
+      [
+        '項',
+        'われがなれを見ること',
+        'THAT I THOU DO SEE',
+      ],
+      [
+        '文',
+        'われはなれを見ることを好む',
+        'I DO LIKE THAT I THOU DO SEE',
+      ],
+    ]} />
+
+    <ul>
+      <li>項疑問文はその答へとなる項でもある.</li>
+      <li>ただし疑問部は文頭に來る.</li>
+    </ul>
+    <Sample data={[
+      [
+        '文 | 項',
+        'なれは何を知る? | なれが何を知るもの',
+        'WHAT DEN THOU DO KNOW',
+      ],
+      [
+        '關係',
+        'SはOを恐れる',
+        'FEAR',
+      ],
+      [
+        '項',
+        'われはなれが知るものを恐れる',
+        'I DO FEAR WHAT DEN THOU DO KNOW',
+      ],
+    ]} />
+  </Section>
+
+  <Section title='引用'>
+    <ul>
+      <li><dfn>引用</dfn>は字列を項に變へる.</li>
+    </ul>
+    <Sample data={[
+      [
+        '關係',
+        'Sは字列 ‘sumi’ であるOを意味する',
+        'DO _QUOTE sumi _QUOTE',
+      ],
+      [
+        '文',
+        '‘sumi’ はわれを意味する',
+        'DO _QUOTE sumi _QUOTE I',
+      ],
+    ]} />
+  </Section>
 </Page >
