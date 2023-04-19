@@ -1,8 +1,5 @@
 import Random from "./random";
 
-export const cs = 'g c q h k x j n d t s z l m b p f v'.split(' ');
-export const vs = 'i e a o u w ø y'.split(' ');
-
 const compareWords = (w: string, w1: string) => {
   if (w == w1)
     return 0
@@ -23,13 +20,12 @@ const compareWords = (w: string, w1: string) => {
 }
 
 export const notAllowed = [
+  `[^${[...cs, ...vs].join('')}]`,
   '(..)\\1',
-  'y.w|w.y',
-  '[ieaouwøy]b[ieaouwøy]',
-  '[sz]i',
-  '[gcqhkxj]w',
-  'g[iy]',
-  '[kxj][wou]',
+  '[wâôû].[wâôû]',
+  'g[âôy]',
+  '[szxj][wâôy]',
+  '[gckhfv]w'
 ]
 const isAllowed = x =>
   !new RegExp(
@@ -46,7 +42,7 @@ console.log(`CV: ${cvs.length}`);
 console.log(`CVC: ${cvcs.length}`);
 console.log(`CVCV: ${cvcvs.length}`);
 
-import { dictBase, letters } from "./dict-base";
+import { cs, dictBase, letters, vs } from "./dict-base";
 export const dict = (() => {
   let d = {};
   const random = new Random();
@@ -57,7 +53,7 @@ export const dict = (() => {
       if (usedWords.includes(signifier))
         throw `${signifier} used twice`
       if (notAllowed.some(p => new RegExp(p).test(signifier)))
-        throw `${signifier} not allowed`
+        throw `${signifier} (${k}) not allowed`
       usedWords.push(signifier)
       d[k] = { signifier, ...rest }
       delete dictBase[k]
@@ -86,7 +82,27 @@ export const dict = (() => {
         .replace(/[A-Z_]+/g, k => d[k.toLowerCase()].signifier)
       //.replace(/-(.)/g, (x, m) => m.toUpperCase())
       d[k] = { signifier: n, ...rest }
+    } else if (signifier.hasOwnProperty('affix')) {
+      for (let i = 0; i < 1000; i++) {
+        const n = (signifier as any).affix
+          .replace(/C/g, () => random.choose(cs))
+          .replace(/V/g, () => random.choose(vs))
+          .replace(/-/, d[(signifier as any).main].signifier)
+        console.log(n)
+        if (!isAllowed(n)) {
+          console.debug(`${k}: '${n}' is not allowed`)
+          continue
+        } else if (usedWords.includes(n)) {
+          console.debug(`${k}: '${n}' is used`)
+          continue
+        }
+        else {
+          d[k] = { signifier: n, ...rest }
+          break
+        }
+      }
     }
+
   console.log('dict generated')
 
   const dSorted = Object.fromEntries(
@@ -114,23 +130,11 @@ export const translate = s =>
 export const ipa = s =>
   s
     .toUpperCase()
-    .replace(/[^ A-QS-ZØ]+/g, '')
-    .replace(/(?<![GNMCDBQKTPHXSFJZVLIEAOUWØY])([GNMCDBQKTPHXSFJZVL][IEAOUWØY])(?=[GNMCDBQKTPHXSFJZVLIEAOUWØY])/g, '$1ꜛ')
+    .replace(/[^ A-PS-ZÔÂ]+/g, '')
+    .replace(/(?<![A-PS-ZÔÂ])([BCDFGHJ-NPSTVXZÔÂ][IEAOUWÂÔY])(?=[A-PS-ZÔÂ])/g, '$1ꜛ')
 
-    .replace(/(?<=[IEAOUWØY])C(?=[IEAOUWØY])/g, 'ɣ')
+    .replace(/(?<=[IEAOUWÂÔY])C(?=[IEAOUWÂÔY])/g, 'ɣ')
     .replace(/H(?=[IY])/g, 'ç')
-
-    .replace(/KI/g, 'tɕI')
-    .replace(/KO/g, 'tɕØ')
-    .replace(/KU/g, 'tɕY')
-
-    .replace(/XI/g, 'ɕI')
-    .replace(/XO/g, 'ɕØ')
-    .replace(/XU/g, 'ɕY')
-
-    .replace(/JI/g, 'ʑI')
-    .replace(/JO/g, 'ʑØ')
-    .replace(/JU/g, 'ʑY')
 
     .replace(/G/g, 'ŋ')
     .replace(/N/g, 'n')
@@ -140,17 +144,16 @@ export const ipa = s =>
     .replace(/D/g, 'd')
     .replace(/B/g, 'b')
 
-    .replace(/Q/g, 'k')
-    .replace(/K/g, 'tʂ')
+    .replace(/K/g, 'k')
     .replace(/T/g, 't')
     .replace(/P/g, 'p')
 
     .replace(/H/g, 'x')
-    .replace(/X/g, 'ʂ')
+    .replace(/X/g, 'ʃ')
     .replace(/S/g, 's')
     .replace(/F/g, 'f')
 
-    .replace(/J/g, 'ʐ')
+    .replace(/J/g, 'ʒ')
     .replace(/Z/g, 'z')
     .replace(/V/g, 'v')
 
@@ -162,7 +165,8 @@ export const ipa = s =>
     .replace(/U/g, 'u')
 
     .replace(/E/g, 'e')
-    .replace(/Ø/g, 'ø')
+    .replace(/Ô/g, 'ø')
     .replace(/O/g, 'o')
 
+    .replace(/Â/g, 'ja')
     .replace(/A/g, 'a')

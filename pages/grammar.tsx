@@ -1,7 +1,8 @@
 import { Section } from '../components/section';
-import { cs, dict, notAllowed, translate, vs } from '../lib/dict';
+import { dict, notAllowed, translate } from '../lib/dict';
 import { Page } from '../components/page';
 import style from './style.module.sass'
+import { cs, vs } from '../lib/dict-base';
 
 console.log(translate(`I BY THOU _LANGUAGE DO KNOW`))
 
@@ -39,7 +40,6 @@ export default () => <Page title='文法'>
         <tr>
           <th></th>
           <th>硬口蓋</th>
-          <th>軟口蓋<br />反舌</th>
           <th>齒</th>
           <th>脣</th>
         </tr>
@@ -47,50 +47,37 @@ export default () => <Page title='文法'>
       <tr>
         <th>鼻</th>
         <td>g [ŋ]</td>
-        <td></td>
         <td>n</td>
         <td>m</td>
       </tr>
       <tr>
         <th>有聲破裂</th>
         <td>c [g,ɣ]</td>
-        <td></td>
         <td>d</td>
         <td>b</td>
       </tr>
       <tr>
         <th>無聲破裂</th>
-        <td>q [k]</td>
-        <td></td>
+        <td>k</td>
         <td>t</td>
         <td>p</td>
       </tr>
       <tr>
-        <th>無聲破擦</th>
-        <td></td>
-        <td>k [tɕ,tʂ]</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
         <th>無聲摩擦</th>
-        <td>h [h,x]</td>
-        <td>x [ɕ,ʂ]</td>
+        <td>x</td>
         <td>s</td>
         <td>f</td>
       </tr>
       <tr>
         <th>有聲摩擦</th>
-        <td>r [ʁ,ɣ]</td>
-        <td>j [ʑ,ʐ]</td>
+        <td></td>
         <td>z</td>
-        <td>v [v,β,w]</td>
+        <td>v</td>
       </tr>
       <tr>
         <th>接近</th>
         <td></td>
-        <td></td>
-        <td>l [ɾ,l]</td>
+        <td>l</td>
         <td></td>
       </tr>
     </table>
@@ -116,14 +103,14 @@ export default () => <Page title='文法'>
       <tr>
         <th></th>
         <td>e</td>
-        <td>ø [ø,jo]</td>
+        <td>ô [ø,jo]</td>
         <td></td>
         <td>o</td>
       </tr>
 
       <tr>
         <th>廣</th>
-        <td></td>
+        <td>â [ja]</td>
         <td></td>
         <td>a</td>
         <td></td>
@@ -308,6 +295,20 @@ export default () => <Page title='文法'>
         'I HE THOU AS TAKE DO GIVE',
       ],
     ]} />
+  </Section>
+
+  <Section title='數'>
+    <Sample data={
+      'ZERO ONE TWO THREE FOUR FIVE SIX SEVEN EIGHT NINE'.split(' ').map((k, i) => ['數', i, k])
+        .concat([
+          [
+            '數',
+            'E',
+            'EXP',
+          ],
+        ])
+
+    } />
   </Section>
 
   <Section title='量'>

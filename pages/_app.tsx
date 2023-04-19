@@ -4,8 +4,9 @@ import '../styles/app.sass'
 import Script from 'next/script'
 import Link from 'next/link'
 import { useState } from 'react'
+import { dict } from '../lib/dict'
 
-const title = 'sumi language 2023'
+const title = (dict._language as any).signifier
 export default ({ Component, props }) => {
   const router = useRouter()
   const [navVisible, setNavVisible] = useState(true)

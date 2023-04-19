@@ -1,22 +1,24 @@
+export const cs = [...'gckhxjndtszlmbpfv'];
+export const vs = [...'ieaouwâôy'];
+
 export const letters = {
   a: { name: 'hela' },
+  â: { name: 'lâ' },
   b: { name: 'ba' },
   c: { name: 'ca' },
+  g: { name: 'ga' },
   d: { name: 'da' },
   e: { name: 'le' },
   f: { name: 'fa' },
-  g: { name: 'ga' },
-  h: { name: 'ha' },
+  z: { name: 'za' },
   i: { name: 'li' },
-  j: { name: 'ja' },
   k: { name: 'ka' },
   l: { name: 'la' },
   m: { name: 'ma' },
   n: { name: 'na' },
   o: { name: 'lo' },
+  ô: { name: 'lô' },
   p: { name: 'pa' },
-  q: { name: 'qa' },//ҁ
-  ø: { name: 'rø' },
   s: { name: 'sa' },
   t: { name: 'ta' },
   u: { name: 'lu' },
@@ -24,20 +26,14 @@ export const letters = {
   w: { name: 'lw' },
   x: { name: 'xa' },
   y: { name: 'ly' },
-  z: { name: 'za' },
 }
+//hjqrwy
 
 const alphabets = {
   cyrl: 'абгдєфңхiжчлмнопкюстувъшѵз',
   deva: 'अबगदएफङहइझचलमनओपकऔथतउभईषऊध',
   hang: 'ㅏㅃㄲㄸㅓㅸㅇㅎㅣㅆㅈㄹㅁㄴㅗㅂㄱㅛ!ㄷㅜㅹㅡㅅㅠㅿ',
 }
-
-/*
-Lat
-  A B	C	D	E	F	G	H	I	K	L	M	N	O	P	Q	R	S	T	V	X
-    b k d   f c x   k l m n   p q r s t v k
-*/
 
 export const dictBase = {
   _language: { signifier: 'CVCV', category: '', type: 'noun', signifiee: 'S is this language', version: 0, etymology: '' },
@@ -47,8 +43,8 @@ export const dictBase = {
   do: { signifier: 'CV', category: '', type: 'verb/noun', signifiee: '', version: 0, etymology: '' },
   as: { signifier: 'CV', category: '', type: 'postnoun/noun', signifiee: '', version: 0, etymology: '' },
 
-  i: { signifier: 'jy', category: 'pronoun', type: 'noun', signifiee: 'i', version: 0, etymology: '' },
-  thou: { signifier: 'tw', category: 'pronoun', type: 'noun', signifiee: 'thou', version: 0, etymology: '' },
+  i: { signifier: 'je', category: 'pronoun', type: 'noun', signifiee: 'i', version: 0, etymology: '' },
+  thou: { signifier: 'ti', category: 'pronoun', type: 'noun', signifiee: 'thou', version: 0, etymology: '' },
   he: { signifier: 'so', category: 'pronoun', type: 'noun/number', signifiee: 'he', version: 0, etymology: 'Ja そ' },
   now: { signifier: 'CV', category: 'pronoun', type: 'noun', signifiee: 'now', version: 0, etymology: '' },
   here: { signifier: 'CV', category: 'pronoun', type: 'noun', signifiee: 'here', version: 0, etymology: '' },
@@ -93,22 +89,22 @@ export const dictBase = {
 
   how_much: { signifier: 'CV', category: '', type: 'numeral', signifiee: '', version: 0, etymology: '' },
 
-  zero: { signifier: 'li', category: 'digit', type: 'numeral', signifiee: '0', version: 0, etymology: 'Cmn 零' },
-  one: { signifier: 've', category: 'digit', type: 'numeral', signifiee: '1', version: 0, etymology: 'proto-indo-european' },
-  two: { signifier: 'da', category: 'digit', type: 'numeral', signifiee: '2', version: 0, etymology: 'proto-indo-european' },
-  three: { signifier: 'to', category: 'digit', type: 'numeral', signifiee: '3', version: 0, etymology: 'proto-indo-european' },
-  four: { signifier: 'qu', category: 'digit', type: 'numeral', signifiee: '4', version: 0, etymology: 'proto-indo-european' },
-  five: { signifier: 'pw', category: 'digit', type: 'numeral', signifiee: '5', version: 0, etymology: 'proto-indo-european' },
-  six: { signifier: 'sø', category: 'digit', type: 'numeral', signifiee: '6', version: 0, etymology: 'proto-indo-european' },
-  seven: { signifier: 'zy', category: 'digit', type: 'numeral', signifiee: '7', version: 0, etymology: 'proto-indo-european' },
-  eight: { signifier: 'ki', category: 'digit', type: 'numeral', signifiee: '8', version: 0, etymology: 'proto-indo-european' },
-  nine: { signifier: 'ne', category: 'digit', type: 'numeral', signifiee: '9', version: 0, etymology: 'proto-indo-european' },
-  ten: { signifier: 'ga', category: 'digit', type: 'numeral', signifiee: '10', version: 0, etymology: '' },
-  eleven: { signifier: 'vo', category: 'digit', type: 'numeral', signifiee: '11', version: 0, etymology: '' },
-  twelve: { signifier: 'hu', category: 'digit', type: 'numeral', signifiee: '12', version: 0, etymology: '' },
-  thirteen: { signifier: 'bw', category: 'digit', type: 'numeral', signifiee: '13', version: 0, etymology: '' },
-  fourteen: { signifier: 'jø', category: 'digit', type: 'numeral', signifiee: '14', version: 0, etymology: '' },
-  fifteen: { signifier: 'xy', category: 'digit', type: 'numeral', signifiee: '15', version: 0, etymology: '' },
+  zero: { signifier: cs[0] + 'V', category: 'digit', type: 'numeral', signifiee: '0', version: 0, etymology: 'Cmn 零' },
+  one: { signifier: cs[4] + 'V', category: 'digit', type: 'numeral', signifiee: '1', version: 0, etymology: 'proto-indo-european' },
+  two: { signifier: cs[8] + 'V', category: 'digit', type: 'numeral', signifiee: '2', version: 0, etymology: 'proto-indo-european' },
+  three: { signifier: cs[12] + 'V', category: 'digit', type: 'numeral', signifiee: '3', version: 0, etymology: 'proto-indo-european' },
+  four: { signifier: cs[1] + 'V', category: 'digit', type: 'numeral', signifiee: '4', version: 0, etymology: 'proto-indo-european' },
+  five: { signifier: cs[5] + 'V', category: 'digit', type: 'numeral', signifiee: '5', version: 0, etymology: 'proto-indo-european' },
+  six: { signifier: cs[9] + 'V', category: 'digit', type: 'numeral', signifiee: '6', version: 0, etymology: 'proto-indo-european' },
+  seven: { signifier: cs[13] + 'V', category: 'digit', type: 'numeral', signifiee: '7', version: 0, etymology: 'proto-indo-european' },
+  eight: { signifier: cs[2] + 'V', category: 'digit', type: 'numeral', signifiee: '8', version: 0, etymology: 'proto-indo-european' },
+  nine: { signifier: cs[6] + 'V', category: 'digit', type: 'numeral', signifiee: '9', version: 0, etymology: 'proto-indo-european' },
+  ten: { signifier: cs[10] + 'V', category: 'digit', type: 'numeral', signifiee: '10', version: 0, etymology: '' },
+  eleven: { signifier: cs[14] + 'V', category: 'digit', type: 'numeral', signifiee: '11', version: 0, etymology: '' },
+  twelve: { signifier: cs[3] + 'V', category: 'digit', type: 'numeral', signifiee: '12', version: 0, etymology: '' },
+  thirteen: { signifier: cs[7] + 'V', category: 'digit', type: 'numeral', signifiee: '13', version: 0, etymology: '' },
+  fourteen: { signifier: cs[11] + 'V', category: 'digit', type: 'numeral', signifiee: '14', version: 0, etymology: '' },
+  fifteen: { signifier: cs[15] + 'V', category: 'digit', type: 'numeral', signifiee: '15', version: 0, etymology: '' },
 
   exp: { signifier: 'CV', category: 'number', type: 'numeral', signifiee: 'E', version: 0, etymology: '' },
 
@@ -230,6 +226,8 @@ export const dictBase = {
   human: { signifier: 'CVCV', category: 'creature', type: 'noun', signifiee: 'S is human', version: 0, etymology: '' },
   animal: { signifier: 'CVCV', category: 'creature', type: 'noun', signifiee: 'S is animal', version: 0, etymology: '' },
   plant: { signifier: 'CVCV', category: 'creature', type: 'noun', signifiee: 'S is plant', version: 0, etymology: '' },
+
+  part: { signifier: 'CVCV', category: '', type: 'noun', signifiee: 'S is part of O', version: 0, etymology: '' },
 
   hair: { signifier: 'CVCV', category: 'body/head', type: 'noun', signifiee: 'S have hair O', version: 0, etymology: '' },
   brain: { signifier: 'CVCV', category: 'body/head', type: 'noun', signifiee: 'S have brain O', version: 0, etymology: '' },
