@@ -1,10 +1,10 @@
 import { Section } from '../components/section';
-import { dict, notAllowed, translate } from '../lib/dict';
+import { dict, translate } from '../lib/dict';
 import { Page } from '../components/page';
 import style from './style.module.sass'
-import { cs, vs } from '../lib/dict-base';
+import { cs, isAllowed, vs } from '../lib/phoneme';
 
-console.log(translate(`I BY THOU _LANGUAGE DO KNOW`))
+console.log(translate(`I BY THOU _LANGUAGE DO _FUTURE KNOW`))
 
 const TranslateRuby = props => <span>{
   props.datum
@@ -39,7 +39,8 @@ export default () => <Page title='文法'>
       <thead>
         <tr>
           <th></th>
-          <th>硬口蓋</th>
+          <th>軟口蓋</th>
+          <th>反舌</th>
           <th>齒</th>
           <th>脣</th>
         </tr>
@@ -47,35 +48,41 @@ export default () => <Page title='文法'>
       <tr>
         <th>鼻</th>
         <td>g [ŋ]</td>
+        <td></td>
         <td>n</td>
         <td>m</td>
       </tr>
       <tr>
         <th>有聲破裂</th>
         <td>c [g,ɣ]</td>
+        <td></td>
         <td>d</td>
         <td>b</td>
       </tr>
       <tr>
         <th>無聲破裂</th>
-        <td>k</td>
+        <td>q [k]</td>
+        <td>k [tʂ]</td>
         <td>t</td>
         <td>p</td>
       </tr>
       <tr>
         <th>無聲摩擦</th>
-        <td>x</td>
+        <td>h [x]</td>
+        <td>x [ʂ]</td>
         <td>s</td>
         <td>f</td>
       </tr>
       <tr>
         <th>有聲摩擦</th>
         <td></td>
+        <td>j [ʐ]</td>
         <td>z</td>
         <td>v</td>
       </tr>
       <tr>
         <th>接近</th>
+        <td></td>
         <td></td>
         <td>l</td>
         <td></td>
@@ -88,7 +95,7 @@ export default () => <Page title='文法'>
           <th></th>
           <th>非圓脣前舌</th>
           <th>圓脣前舌</th>
-          <th>中舌<br />非圓脣後舌</th>
+          <th>中舌</th>
           <th>圓脣後舌</th>
         </tr>
       </thead>
@@ -96,7 +103,7 @@ export default () => <Page title='文法'>
         <th>狹</th>
         <td>i</td>
         <td>y [y,ju]</td>
-        <td>w [ɨ,ɯ]</td>
+        <td>w [ɨ]</td>
         <td>u</td>
       </tr>
 
@@ -120,7 +127,7 @@ export default () => <Page title='文法'>
     <ul>
       <li>音節はCVである.</li>
       <li>詞は(CV)+である.</li>
-      <li>以下の音節は無い.</li>
+      <li>缺く音節は以下である.</li>
     </ul>
 
     <table className={style.cv}>
@@ -134,9 +141,9 @@ export default () => <Page title='文法'>
         cs.map(c => <tr>
           <th>{c}</th>{
             vs.map(v =>
-              notAllowed.some(p => new RegExp(p).test(c + v)) ?
-                <td style={{ backgroundColor: 'lightgray' }}><del>{c + v}</del></td>
-                : <td>{c + v}</td>
+              isAllowed(c + v)
+                ? <td>{c + v}</td>
+                : <td style={{ backgroundColor: 'lightgray' }}><del>{c + v}</del></td>
             )
           }</tr>)
       }
@@ -148,27 +155,45 @@ export default () => <Page title='文法'>
   </Section>
 
   <Section title='詞順'>
+    <svg height={254} width={504} style={{ margin: '0 auto' }}>
+      <g transform='translate(1,1)'>
+        <rect x={0} y={0} width={100} height={50} stroke='black' fill='none' />
+        <text x={50} y={25} textAnchor='middle' dominantBaseline='middle'>項</text>
+
+        <rect x={100} y={0} width={50} height={50} stroke='black' fill='none' />
+        <text x={125} y={25} textAnchor='middle' dominantBaseline='middle'>助項</text>
+
+        <path d='M 150 25 L 200 25 L 200 100 L 250 100' stroke='black' fill='none' />
+
+        <text x={50} y={100} textAnchor='middle' dominantBaseline='middle'>⋮</text>
+        <text x={125} y={100} textAnchor='middle' dominantBaseline='middle'>⋮</text>
+
+        <rect x={0} y={150} width={100} height={50} stroke='black' fill='none' />
+        <text x={50} y={175} textAnchor='middle' dominantBaseline='middle'>項</text>
+
+        <rect x={100} y={150} width={50} height={50} stroke='black' fill='none' />
+        <text x={125} y={175} textAnchor='middle' dominantBaseline='middle'>助項</text>
+
+        <path d='M 150 175 L 200 175 L 200 100 L 250 100' stroke='black' fill='none' />
+
+        <rect x={250} y={75} width={50} height={50} stroke='black' fill='none' />
+        <text x={275} y={100} textAnchor='middle' dominantBaseline='middle'>‹{translate('DO')}›</text>
+
+        <rect x={300} y={75} width={100} height={50} stroke='black' fill='none' />
+        <text x={350} y={100} textAnchor='middle' dominantBaseline='middle'>助關係*</text>
+
+        <rect x={400} y={75} width={100} height={50} stroke='black' fill='none' />
+        <text x={450} y={100} textAnchor='middle' dominantBaseline='middle'>項</text>
+      </g>
+    </svg>
+
+
     <ul>
       <li><dfn>文</dfn>は必ず<dfn>關係</dfn> (言はゆる動詞) を持つ.</li>
       <li>關係は<dfn>項</dfn> (言はゆる名詞) の關係を示す.</li>
       <li>基本詞順はSOV.</li>
     </ul>
     <Sample data={[
-      [
-        '項',
-        'われ',
-        'I',
-      ],
-      [
-        '項',
-        'なれ',
-        'THOU',
-      ],
-      [
-        '關係',
-        'SはOを見る',
-        'DO SEE',
-      ],
       [
         '文',
         'われはなれを見る',
@@ -182,12 +207,12 @@ export default () => <Page title='文法'>
     <Sample data={[
       [
         '文',
-        'われは見る, なれを',
+        'われはなれを見る',
         'I DO SEE THOU',
       ],
       [
         '文',
-        '見る, なれをわれは',
+        'われはなれを見る',
         'DO SEE THOU I',
       ],
     ]} />
@@ -216,7 +241,7 @@ export default () => <Page title='文法'>
 
   <Section title='項化'>
     <ul>
-      <li>關係から ‘{translate('DO')}’ を消すとそのSに相當する項を得る.</li>
+      <li>關係から ‹{translate('DO')}› を消すとそのSに相當する項を得る.</li>
     </ul>
     <Sample data={[
       [
@@ -249,50 +274,40 @@ export default () => <Page title='文法'>
       ],
       [
         '文',
-        'なれをわれは見る',
+        'われはなれを見る',
         'THOU DEN I DO SEE',
       ],
       [
         '文',
-        'われは見るなれを',
+        'われはなれを見る',
         'DO SEE I DER THOU',
       ],
     ]} />
 
     <ul>
       <li>基本助項でない助項は<dfn>應用助項</dfn>であり, 文に項を附加する.</li>
+      <li>‹{translate('AS')}› は項を助項に變へる.</li>
     </ul>
     <Sample data={[
       [
         '關係',
-        'SはOを與へる',
-        'DO GIVE',
-      ],
-      [
-        '關係',
-        'Sは彼である',
+        'Sはそれである',
         'DO HE',
       ],
       [
-        '助項',
-        '(が關聯して)',
-        'ABOUT',
+        '關係',
+        'SはOを持つ',
+        'DO HAVE',
+      ],
+      [
+        '關係',
+        'SはOを引き起こす',
+        'DO CAUSE',
       ],
       [
         '文',
-        'われは彼をなれに關して與へる',
-        'I HE THOU ABOUT DO GIVE',
-      ],
-    ]} />
-
-    <ul>
-      <li>‘{translate('AS')}’ は項を助項に變へる.</li>
-    </ul>
-    <Sample data={[
-      [
-        '文',
-        'われは彼をなれに (=なれが受けて) 與へる',
-        'I HE THOU AS TAKE DO GIVE',
+        'われを原因としてなれはそれを持つ',
+        'I AS CAUSE THOU HE DO HAVE',
       ],
     ]} />
   </Section>
@@ -338,7 +353,7 @@ export default () => <Page title='文法'>
     <ul>
       <li><dfn>極</dfn>は項が意味するものの程度を示す.</li>
       <li>それぞれの項は暗黙的な極を持つ.</li>
-      <li>‘{translate('_DEGREE')}’ は直後の數を極に變へる.</li>
+      <li>‹{translate('_DEGREE')}› は直後の數を極に變へる.</li>
     </ul>
     <Sample data={[
       [
@@ -384,9 +399,9 @@ export default () => <Page title='文法'>
     ]}></Sample>
   </Section>
 
-  <Section title='疑問文'>
+  <Section title='疑問'>
     <ul>
-      <li>‘{translate('WHAT')}’ は<dfn>項疑問文</dfn>を作る.</li>
+      <li>‹{translate('WHAT')}› は<dfn>項疑問文</dfn>を作る.</li>
     </ul>
     <Sample data={[
       [
@@ -396,13 +411,23 @@ export default () => <Page title='文法'>
       ],
       [
         '文',
-        '(返答) 時を.',
-        'TIME DEN',
+        '— 時を.',
+        'TIME',
+      ],
+      [
+        '文',
+        'われはなれにどう關係する?',
+        'I THOU DO WHAT',
+      ],
+      [
+        '文',
+        '— 好む.',
+        'DO LIKE',
       ],
     ]}></Sample>
 
     <ul>
-      <li>‘{translate('HOW_MUCH')}’ は<dfn>數疑問文</dfn>を作る.</li>
+      <li>‹{translate('HOW_MUCH')}› は<dfn>數疑問文</dfn>を作る.</li>
     </ul>
     <Sample data={[
       [
@@ -425,7 +450,7 @@ export default () => <Page title='文法'>
 
   <Section title='節'>
     <ul>
-      <li>‘{translate('THAT')}’ は文を項に變へ, それは<dfn>節</dfn>である.</li>
+      <li>‹{translate('THAT')}› は文を項に變へ, それは<dfn>節</dfn>である.</li>
       <li>節の中で關係は最後にある.</li>
     </ul>
     <Sample data={[
@@ -471,14 +496,34 @@ export default () => <Page title='文法'>
     <Sample data={[
       [
         '關係',
-        'Sは字列 ‘sumi’ であるOを意味する',
+        'Sは字列 ‹sumi› であるOを意味する',
         'DO _QUOTE sumi _QUOTE',
       ],
       [
         '文',
-        '‘sumi’ はわれを意味する',
+        '‹sumi› はわれを意味する',
         'DO _QUOTE sumi _QUOTE I',
       ],
     ]} />
   </Section>
+
+  <Section title='接續'>
+    <ul>
+      <li><dfn>接續</dfn>は文と文の關係を示す.</li>
+      <li>‹{translate('THAT')} 文<sub>0</sub> {translate('THAT')} 文<sub>1</sub> {translate('DO')} 項› ≡ ‹文<sub>0</sub> {translate('_CONNECT')} 項 文<sub>1</sub>›</li>
+    </ul>
+    <Sample data={[
+      [
+        '述',
+        'SはO以前である',
+        'DO BEFORE',
+      ],
+      [
+        '文',
+        '彼が死ぬ前に彼は幸福である',
+        'HE DO HAPPY _CONNECT BEFORE HE DO END LIVE',
+      ],
+    ]} />
+  </Section>
+
 </Page >

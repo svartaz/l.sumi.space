@@ -1,4 +1,5 @@
 import Random from "./random";
+import { cs, vs, isAllowed } from './phoneme'
 
 const compareWords = (w: string, w1: string) => {
   if (w == w1)
@@ -19,22 +20,6 @@ const compareWords = (w: string, w1: string) => {
   }
 }
 
-export const notAllowed = [
-  `[^${[...cs, ...vs].join('')}]`,
-  '(..)\\1',
-  '[wâôû].[wâôû]',
-  'g[âôy]',
-  '[szxj][wâôy]',
-  '[gckhfv]w'
-]
-const isAllowed = x =>
-  !new RegExp(
-    notAllowed
-      .join('|')
-      .replace(/C/g, `[${cs.join('')}]`)
-      .replace(/V/g, `[${vs.join('')}]`)
-  ).test(x);
-
 const cvs = cs.flatMap(c => vs.map(v => c + v)).filter(isAllowed)
 const cvcs = cvs.flatMap(cv => cs.map(c => cv + c)).filter(isAllowed)
 const cvcvs = cvcs.flatMap(cvc => vs.map(v => cvc + v)).filter(isAllowed)
@@ -42,7 +27,7 @@ console.log(`CV: ${cvs.length}`);
 console.log(`CVC: ${cvcs.length}`);
 console.log(`CVCV: ${cvcvs.length}`);
 
-import { cs, dictBase, letters, vs } from "./dict-base";
+import { dictBase, letters } from "./dict-base";
 export const dict = (() => {
   let d = {};
   const random = new Random();
@@ -52,7 +37,7 @@ export const dict = (() => {
     if (typeof signifier == 'string' && !/[CV]/.test(signifier)) {
       if (usedWords.includes(signifier))
         throw `${signifier} used twice`
-      if (notAllowed.some(p => new RegExp(p).test(signifier)))
+      if (!isAllowed(signifier))
         throw `${signifier} (${k}) not allowed`
       usedWords.push(signifier)
       d[k] = { signifier, ...rest }
@@ -130,8 +115,8 @@ export const translate = s =>
 export const ipa = s =>
   s
     .toUpperCase()
-    .replace(/[^ A-PS-ZÔÂ]+/g, '')
-    .replace(/(?<![A-PS-ZÔÂ])([BCDFGHJ-NPSTVXZÔÂ][IEAOUWÂÔY])(?=[A-PS-ZÔÂ])/g, '$1ꜛ')
+    .replace(/[^ A-QS-ZÔÂ]+/g, '')
+    .replace(/(?<![A-QS-ZÔÂ])([BCDFGHJ-NPSTVXZÔÂ][IEAOUWÂÔY])(?=[A-QS-ZÔÂ])/g, '$1ꜛ')
 
     .replace(/(?<=[IEAOUWÂÔY])C(?=[IEAOUWÂÔY])/g, 'ɣ')
     .replace(/H(?=[IY])/g, 'ç')
@@ -144,16 +129,17 @@ export const ipa = s =>
     .replace(/D/g, 'd')
     .replace(/B/g, 'b')
 
-    .replace(/K/g, 'k')
+    .replace(/Q/g, 'k')
+    .replace(/K/g, 'tʂ')
     .replace(/T/g, 't')
     .replace(/P/g, 'p')
 
-    .replace(/H/g, 'x')
-    .replace(/X/g, 'ʃ')
+    .replace(/H/g, 'h')
+    .replace(/X/g, 'ʂ')
     .replace(/S/g, 's')
     .replace(/F/g, 'f')
 
-    .replace(/J/g, 'ʒ')
+    .replace(/J/g, 'ʐ')
     .replace(/Z/g, 'z')
     .replace(/V/g, 'v')
 
