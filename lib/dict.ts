@@ -23,6 +23,7 @@ const compareWords = (w: string, w1: string) => {
 const cvs = cs.flatMap(c => vs.map(v => c + v)).filter(isAllowed)
 const cvcs = cvs.flatMap(cv => cs.map(c => cv + c)).filter(isAllowed)
 const cvcvs = cvcs.flatMap(cvc => vs.map(v => cvc + v)).filter(isAllowed)
+
 console.log(`CV: ${cvs.length}`);
 console.log(`CVC: ${cvcs.length}`);
 console.log(`CVCV: ${cvcvs.length}`);

@@ -30,289 +30,283 @@ const Sample = props => <table>
 </table>
 
 export default () => <Page title='文法'>
-  <Section title='音韻'>
-    <ul>
-      <li>字素と音素は一致する.</li>
-      <li>以下の表で[…]は國際音聲記號である.</li>
-    </ul>
-    <table>
-      <thead>
+  現在 統べての詞を亂擇生成して居, 内容更新の度に變化します
+
+  <Section title='音と字'>
+    <div className='item'>
+      子音: 以下に示すもの
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>軟口蓋</th>
+            <th>硬口蓋</th>
+            <th>齒</th>
+            <th>脣</th>
+          </tr>
+        </thead>
+        <tr>
+          <th>鼻</th>
+          <td>g [ŋ]</td>
+          <td></td>
+          <td>n</td>
+          <td>m</td>
+        </tr>
+        <tr>
+          <th>有聲破裂</th>
+          <td>c [g,ɣ]</td>
+          <td></td>
+          <td>d</td>
+          <td>b</td>
+        </tr>
+        <tr>
+          <th>無聲破裂</th>
+          <td>k</td>
+          <td></td>
+          <td>t</td>
+          <td>p</td>
+        </tr>
+        <tr>
+          <th>無聲摩擦</th>
+          <td>x [h,x,ç]</td>
+          <td>š [ɕ]</td>
+          <td>s</td>
+          <td>f</td>
+        </tr>
+        <tr>
+          <th>有聲摩擦</th>
+          <td></td>
+          <td>j [ʑ]</td>
+          <td>z</td>
+          <td>v [v,β,ʋ]</td>
+        </tr>
+        <tr>
+          <th>流</th>
+          <td></td>
+          <td></td>
+          <td>r [l,ɻ,ɾ,r]</td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+
+    <div className='item'>
+      母音: 以下に示すもの
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>非圓脣前舌</th>
+            <th>圓脣前舌</th>
+            <th>中舌</th>
+            <th>圓脣後舌</th>
+          </tr>
+        </thead>
+        <tr>
+          <th>狹</th>
+          <td>i</td>
+          <td>y [y,ju]</td>
+          <td>w [ɨ]</td>
+          <td>u</td>
+        </tr>
         <tr>
           <th></th>
-          <th>軟口蓋</th>
-          <th>反舌</th>
-          <th>齒</th>
-          <th>脣</th>
+          <td>e</td>
+          <td>ø [ø,jo]</td>
+          <td></td>
+          <td>o</td>
         </tr>
-      </thead>
-      <tr>
-        <th>鼻</th>
-        <td>g [ŋ]</td>
-        <td></td>
-        <td>n</td>
-        <td>m</td>
-      </tr>
-      <tr>
-        <th>有聲破裂</th>
-        <td>c [g,ɣ]</td>
-        <td></td>
-        <td>d</td>
-        <td>b</td>
-      </tr>
-      <tr>
-        <th>無聲破裂</th>
-        <td>q [k]</td>
-        <td>k [tʂ]</td>
-        <td>t</td>
-        <td>p</td>
-      </tr>
-      <tr>
-        <th>無聲摩擦</th>
-        <td>h [x]</td>
-        <td>x [ʂ]</td>
-        <td>s</td>
-        <td>f</td>
-      </tr>
-      <tr>
-        <th>有聲摩擦</th>
-        <td></td>
-        <td>j [ʐ]</td>
-        <td>z</td>
-        <td>v</td>
-      </tr>
-      <tr>
-        <th>接近</th>
-        <td></td>
-        <td></td>
-        <td>l</td>
-        <td></td>
-      </tr>
-    </table>
-
-    <table>
-      <thead>
         <tr>
-          <th></th>
-          <th>非圓脣前舌</th>
-          <th>圓脣前舌</th>
-          <th>中舌</th>
-          <th>圓脣後舌</th>
+          <th>廣</th>
+          <td></td>
+          <td></td>
+          <td>a</td>
+          <td></td>
         </tr>
-      </thead>
-      <tr>
-        <th>狹</th>
-        <td>i</td>
-        <td>y [y,ju]</td>
-        <td>w [ɨ]</td>
-        <td>u</td>
-      </tr>
+      </table>
+    </div>
 
-      <tr>
-        <th></th>
-        <td>e</td>
-        <td>ô [ø,jo]</td>
-        <td></td>
-        <td>o</td>
-      </tr>
+    <div className='item'>
+      音節: 子音 母音
+    </div>
 
-      <tr>
-        <th>廣</th>
-        <td>â [ja]</td>
-        <td></td>
-        <td>a</td>
-        <td></td>
-      </tr>
-    </table>
+    <div className='item'>
+      軟音: i | y | e | ø
+    </div>
 
-    <ul>
-      <li>音節はCVである.</li>
-      <li>詞は(CV)+である.</li>
-      <li>缺く音節は以下である.</li>
-    </ul>
+    <div className='item'>
+      (硬口蓋音 軟音) は存在しない
+    </div>
 
-    <table className={style.cv}>
-      <tr>
-        <th></th>
-        {
-          vs.map(v => <th>{v}</th>)
-        }
-      </tr>
-      {
-        cs.map(c => <tr>
-          <th>{c}</th>{
-            vs.map(v =>
-              isAllowed(c + v)
-                ? <td>{c + v}</td>
-                : <td style={{ backgroundColor: 'lightgray' }}><del>{c + v}</del></td>
-            )
-          }</tr>)
-      }
-    </table>
-
-    <ul>
-      <li>詞頭の音節は低く殘りは高い.</li>
-    </ul>
+    <div className='item'>
+      詞頭の音節は低く殘りは高い
+    </div>
   </Section>
 
-  <Section title='詞順'>
+  <Section title='文'>
     <svg height={254} width={504} style={{ margin: '0 auto' }}>
       <g transform='translate(1,1)'>
-        <rect x={0} y={0} width={100} height={50} stroke='black' fill='none' />
-        <text x={50} y={25} textAnchor='middle' dominantBaseline='middle'>項</text>
+        <rect x={0} y={0} width={50} height={50} stroke='black' fill='none' />
+        <text x={25} y={25} textAnchor='middle' dominantBaseline='middle'>數</text>
 
-        <rect x={100} y={0} width={50} height={50} stroke='black' fill='none' />
-        <text x={125} y={25} textAnchor='middle' dominantBaseline='middle'>助項</text>
+        <rect x={50} y={0} width={50} height={50} stroke='black' fill='none' />
+        <text x={75} y={25} textAnchor='middle' dominantBaseline='middle'>格標識</text>
 
-        <path d='M 150 25 L 200 25 L 200 100 L 250 100' stroke='black' fill='none' />
+        <rect x={100} y={0} width={100} height={50} stroke='black' fill='none' />
+        <text x={150} y={25} textAnchor='middle' dominantBaseline='middle'>文</text>
 
-        <text x={50} y={100} textAnchor='middle' dominantBaseline='middle'>⋮</text>
-        <text x={125} y={100} textAnchor='middle' dominantBaseline='middle'>⋮</text>
+        <path d='M 200 25 l 25 0 l 0 75 l 25 0' stroke='black' fill='none' />
 
-        <rect x={0} y={150} width={100} height={50} stroke='black' fill='none' />
-        <text x={50} y={175} textAnchor='middle' dominantBaseline='middle'>項</text>
+        <text x={100} y={100} textAnchor='middle' dominantBaseline='middle'>⋮</text>
+        <path d='M 200 100 l 50 0' stroke='black' fill='none' />
 
-        <rect x={100} y={150} width={50} height={50} stroke='black' fill='none' />
-        <text x={125} y={175} textAnchor='middle' dominantBaseline='middle'>助項</text>
+        <rect x={0} y={150} width={50} height={50} stroke='black' fill='none' />
+        <text x={25} y={175} textAnchor='middle' dominantBaseline='middle'>數</text>
 
-        <path d='M 150 175 L 200 175 L 200 100 L 250 100' stroke='black' fill='none' />
+        <rect x={50} y={150} width={50} height={50} stroke='black' fill='none' />
+        <text x={75} y={175} textAnchor='middle' dominantBaseline='middle'>格標識</text>
 
-        <rect x={250} y={75} width={50} height={50} stroke='black' fill='none' />
-        <text x={275} y={100} textAnchor='middle' dominantBaseline='middle'>‹{translate('DO')}›</text>
+        <rect x={100} y={150} width={100} height={50} stroke='black' fill='none' />
+        <text x={150} y={175} textAnchor='middle' dominantBaseline='middle'>文</text>
 
-        <rect x={300} y={75} width={100} height={50} stroke='black' fill='none' />
-        <text x={350} y={100} textAnchor='middle' dominantBaseline='middle'>助關係*</text>
+        <path d='M 200 175 l 25 0 l 0 -75 l 25 0' stroke='black' fill='none' />
+
+
+        <rect x={250} y={75} width={100} height={50} stroke='black' fill='none' />
+        <text x={300} y={100} textAnchor='middle' dominantBaseline='middle'>助關係*</text>
+
+        <rect x={350} y={75} width={50} height={50} stroke='black' fill='none' />
+        <text x={375} y={100} textAnchor='middle' dominantBaseline='middle'>極</text>
 
         <rect x={400} y={75} width={100} height={50} stroke='black' fill='none' />
-        <text x={450} y={100} textAnchor='middle' dominantBaseline='middle'>項</text>
+        <text x={450} y={100} textAnchor='middle' dominantBaseline='middle'>關係</text>
       </g>
     </svg>
 
+    <div className='item'>
+      文は1個の關係を持つ.
+      <hr />
+      <small>
+        terminology. 關係とは言はゆる動詞 (句) の事である.
+        普通は ‘動詞 verb’ と呼ぶが, ここでは詞 wordと句 phraseを區別しない方法を求めた.
+        次の候補は ‘述語 predicate’ だが, ‘語 language’ と紛らはしい.
+        ここではそれに近しい ‘關係’ とする.
+        verbとそのまま書く方法も有り實際そのために本文全體を英語で書く事も檢討したが, やはり日本語に拘る事とする.
+        能ふ限り普通のことば遣ひをしたいが, 已む無し.
+      </small>
+    </div>
 
-    <ul>
-      <li><dfn>文</dfn>は必ず<dfn>關係</dfn> (言はゆる動詞) を持つ.</li>
-      <li>關係は<dfn>項</dfn> (言はゆる名詞) の關係を示す.</li>
-      <li>基本詞順はSOV.</li>
-    </ul>
+    <div className='item'>
+      文: 文節* 關係
+    </div>
+
+    <div className='item'>
+      文節: 格標識 文
+    </div>
+
     <Sample data={[
       [
         '文',
-        'われはなれを見る',
-        'I THOU DO SEE',
-      ],
-    ]} />
-
-    <ul>
-      <li>SVOとVOSも可能 (Vの直後はOとなる).</li>
-    </ul>
-    <Sample data={[
-      [
-        '文',
-        'われはなれを見る',
-        'I DO SEE THOU',
+        '(何かが) (何かを) 見る',
+        'SEE',
       ],
       [
         '文',
-        'われはなれを見る',
-        'DO SEE THOU I',
-      ],
-    ]} />
-
-    <ul>
-      <li>SとOは省略可能.</li>
-    </ul>
-    <Sample data={[
-      [
-        '文',
-        '見る',
-        'DO SEE',
+        '我れは見る',
+        'DER I SEE',
       ],
       [
         '文',
-        'われは見る',
-        'I DO SEE',
-      ],
-      [
-        '文',
-        'なれを見る',
-        'DO SEE THOU',
+        '我れ汝れをは見る',
+        'DER I DEN THOU SEE',
       ],
     ]} />
   </Section>
 
-  <Section title='項化'>
-    <ul>
-      <li>關係から ‹{translate('DO')}› を消すとそのSに相當する項を得る.</li>
-    </ul>
+  <Section title='文節'>
+    <div className='item'>
+      文節はその文の ‹{translate('WHAT')}› を滿たす對象を意味する
+    </div>
+    <div className='item'>
+      文節中の ‹{translate('DER WHAT')}› を省略しても良い
+    </div>
+
     <Sample data={[
       [
         '關係',
-        'Sは人である',
-        'DO PERSON',
+        'DERは我れである',
+        'I',
       ],
       [
-        '項',
-        '人',
-        'PERSON',
+        '文節',
+        '我れが',
+        'DER (DER WHAT) I',
+      ],
+      [
+        '文節',
+        '我れを',
+        'DEN (DER WHAT) I',
+      ],
+      [
+        '關係',
+        'DERはDENを持つ',
+        'HAVE',
+      ],
+      [
+        '文節',
+        '(何かを) 持つものを',
+        'DEN (DER WHAT) HAVE',
+      ],
+      [
+        '文節',
+        'それを持つものを',
+        'DEN (DER WHAT) DEN HE HAVE',
+      ],
+      [
+        '文',
+        'それを持つものを見る',
+        'DEN (DER WHAT) DEN HE HAVE SEE',
       ],
     ]} />
   </Section>
 
-  <Section title='助項'>
-    <ul>
-      <li><dfn>基本助項</dfn>は詞順の變更を許す.</li>
-    </ul>
+  <Section title='格標識'>
+    <div className='item'>
+      ‹{translate('AS')}› は關係から格標識を作る
+    </div>
     <Sample data={[
-      [
-        '助項',
-        '(主)',
-        'DER',
-      ],
-      [
-        '助項',
-        '(客)',
-        'DEN',
-      ],
-      [
-        '文',
-        'われはなれを見る',
-        'THOU DEN I DO SEE',
-      ],
-      [
-        '文',
-        'われはなれを見る',
-        'DO SEE I DER THOU',
-      ],
-    ]} />
 
-    <ul>
-      <li>基本助項でない助項は<dfn>應用助項</dfn>であり, 文に項を附加する.</li>
-      <li>‹{translate('AS')}› は項を助項に變へる.</li>
-    </ul>
-    <Sample data={[
       [
-        '關係',
-        'Sはそれである',
-        'DO HE',
-      ],
-      [
-        '關係',
-        'SはOを持つ',
-        'DO HAVE',
+        '虛詞',
+        '(格標識を作る)',
+        'AS',
       ],
       [
         '關係',
         'SはOを引き起こす',
-        'DO CAUSE',
+        'CAUSE',
+      ],
+      [
+        '格標識',
+        'を原因として, に因り',
+        'AS CAUSE',
       ],
       [
         '文',
-        'われを原因としてなれはそれを持つ',
-        'I AS CAUSE THOU HE DO HAVE',
+        '汝れに因って我れは知る',
+        'AS CAUSE THOU DER I KNOW',
       ],
     ]} />
   </Section>
 
   <Section title='數'>
+    <div className='item'>
+      數は數詞を算用數字と同樣に列べて作る
+    </div>
+    <div className='item'>
+      ‹{translate('EXP')}› は小數や大きな數を作る
+    </div>
+
     <Sample data={
       'ZERO ONE TWO THREE FOUR FIVE SIX SEVEN EIGHT NINE'.split(' ').map((k, i) => ['數', i, k])
         .concat([
@@ -321,40 +315,56 @@ export default () => <Page title='文法'>
             'E',
             'EXP',
           ],
+          [
+            '數',
+            '321',
+            'THREE TWO ONE',
+          ],
+          [
+            '數',
+            '3.21',
+            'THREE TWO ONE EXP',
+          ],
+          [
+            '數',
+            '3.21E3 (=3210)',
+            'THREE TWO ONE ZERO EXP THREE',
+          ],
         ])
-
     } />
-  </Section>
 
-  <Section title='量'>
-    <ul>
-      <li><dfn>量</dfn>は項の前に來る數であり項が意味するものの數量を示す.</li>
-    </ul>
+    <div className='item'>
+      格標識の前の數は文節が指す對象の量を示す
+    </div>
     <Sample data={[
       [
-        '項',
-        '0人',
-        'ZERO PERSON',
+        '文節',
+        '0人が',
+        'ZERO DER PERSON',
       ],
       [
-        '項',
-        '1人以上',
-        'ONE AT_MOST PERSON',
+        '文節',
+        '1人以上が',
+        'ONE AT_MOST DER PERSON',
       ],
       [
-        '項',
-        '各人',
-        'MAX PERSON',
+        '文節',
+        '各人が',
+        'MAX DER PERSON',
       ],
     ]} />
   </Section>
 
   <Section title='極'>
-    <ul>
-      <li><dfn>極</dfn>は項が意味するものの程度を示す.</li>
-      <li>それぞれの項は暗黙的な極を持つ.</li>
-      <li>‹{translate('_DEGREE')}› は直後の數を極に變へる.</li>
-    </ul>
+    <div className='item'>
+      極は關係の程度を示す
+    </div>
+    <div className='item'>
+      關係は暗黙的な極を持つ
+    </div>
+    <div className='item'>
+      ‹{translate('_DEGREE')}› は數から極を作る
+    </div>
     <Sample data={[
       [
         '數',
@@ -369,81 +379,81 @@ export default () => <Page title='文法'>
       [
         '關係',
         'Sは長い',
-        'DO LONG',
+        'LONG',
       ],
       [
         '關係',
         'Sは長い',
-        'DO _DEGREE HIGH LONG',
+        '_DEGREE HIGH LONG',
       ],
       [
         '關係',
         'Sは通常程度に長い',
-        'DO _DEGREE NORMAL LONG',
+        '_DEGREE NORMAL LONG',
       ],
       [
         '關係',
         'Sは短い (低程度に長い)',
-        'DO _DEGREE LOW LONG',
+        '_DEGREE LOW LONG',
       ],
       [
         '關係',
         'Sは長くない',
-        'DO _DEGREE LESS NORMAL LONG',
-      ],
-      [
-        '項',
-        '長くないもの',
         '_DEGREE LESS NORMAL LONG',
       ],
-    ]}></Sample>
+      [
+        '文節',
+        '長くないものを',
+        'DEN _DEGREE LESS NORMAL LONG',
+      ],
+    ]} />
   </Section>
 
   <Section title='疑問'>
-    <ul>
-      <li>‹{translate('WHAT')}› は<dfn>項疑問文</dfn>を作る.</li>
-    </ul>
+    <div className='item'>
+      ‹{translate('_ASK WHAT')}› は關係を問ふ
+    </div>
     <Sample data={[
       [
         '文',
-        'なれは何を恐る?',
-        'THOU WHAT DO FEAR',
+        '何を恐る?',
+        'DEN _ASK WHAT FEAR',
       ],
       [
         '文',
-        '— 時を.',
+        '— 時を',
         'TIME',
       ],
       [
         '文',
-        'われはなれにどう關係する?',
-        'I THOU DO WHAT',
+        '我れは汝れに何である?',
+        'DEN I DER THOU _ASK WHAT',
       ],
       [
         '文',
         '— 好む.',
-        'DO LIKE',
+        'DEN THOU GLAD',
       ],
     ]}></Sample>
 
-    <ul>
-      <li>‹{translate('HOW_MUCH')}› は<dfn>數疑問文</dfn>を作る.</li>
-    </ul>
+    <div className='item'>
+      ‹{translate('_ASK HOW_MUCH')}› は數を問ふ
+    </div>
     <Sample data={[
       [
         '文',
-        'なれは人か?',
-        'THOU DO _DEGREE HOW_MUCH PERSON',
+        'なれは (どの程度) 人か?',
+        'DER THOU _DEGREE _ASK HOW_MUCH PERSON',
       ],
       [
         '文',
         '— 人である.',
-        'DO PERSON',
+        'NORMAL',
       ],
       [
         '文',
         '— 人でない (人-度0である).',
-        'DO _DEGREE ZERO PERSON',
+        'ZERO',
       ],
     ]} />
   </Section>

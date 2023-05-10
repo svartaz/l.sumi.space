@@ -1,17 +1,14 @@
-export const cs = [...'gcqhkxjndtszlmbpfv'];
-
-export const vs = [...'weaouiâôy'];
+export const cs = [...'gckx' + 'ndtszr' + 'šj' + 'mbpfv'];
+export const vs = [...'iywueøao' + ''];//íýẃúéǿáó
 
 export const isAllowed = (x: string) =>
   !new RegExp([
     `[^${[...cs, ...vs].join('')}]`,
-    '[gkxj][iâôy]',
-    '[dtszl]â',
-    '[sz]i',
-    '(..)\\1',
+    '[sz][ií]',
+    '[šj][wuaoẃúáó]',
+    '[íýẃúéǿáó].[íýẃúéǿáó]',
+    '[íýẃúéǿáó][gnm]',
   ]
     .join('|')
-    .replace(/C/g, cs.join(''))
-    .replace(/V/g, vs.join(''))
   )
     .test(x)
