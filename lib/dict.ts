@@ -64,16 +64,16 @@ export const dict = (() => {
     }
   for (const [k, { signifier, ...rest }] of Object.entries(dictBase))
     if (signifier.hasOwnProperty('alias')) {
-      const n = (signifier as any).alias
+      const n = signifier.alias
         .replace(/[A-Z_]+/g, k => d[k.toLowerCase()].signifier)
       //.replace(/-(.)/g, (x, m) => m.toUpperCase())
       d[k] = { signifier: n, ...rest }
     } else if (signifier.hasOwnProperty('affix')) {
       for (let i = 0; i < 1000; i++) {
-        const n = (signifier as any).affix
+        const n = signifier.affix
           .replace(/C/g, () => random.choose(cs))
           .replace(/V/g, () => random.choose(vs))
-          .replace(/-/, d[(signifier as any).main].signifier)
+          .replace(/-/, d[signifier.main].signifier)
         console.log(n)
         if (!isAllowed(n)) {
           console.debug(`${k}: '${n}' is not allowed`)
@@ -92,7 +92,8 @@ export const dict = (() => {
   console.log('dict generated')
 
   const dSorted = Object.fromEntries(
-    Object.entries(d).sort(([k, v]: any, [k1, v1]: any) =>
+    Object.entries(d).sort(([k, v], [k1, v1]) =>
+      // @ts-ignore
       compareWords(v.signifier, v1.signifier)
     )
   )
@@ -107,53 +108,7 @@ export const translate = s =>
     .replace(/(?<![_A-Z])[_A-Z]+(?![_A-Z])/g, it => {
       const k = it.toLowerCase()
       if (dict.hasOwnProperty(k))
-        return (dict[k] as any).signifier;
+        return dict[k].signifier;
       else
         return it;
     })
-//.replace(/[a-zø]/g, it => letters[it].cyrl)
-
-export const ipa = s =>
-  s
-    .toUpperCase()
-    .replace(/[^ A-QS-ZÔÂ]+/g, '')
-    .replace(/(?<![A-QS-ZÔÂ])([BCDFGHJ-NPSTVXZÔÂ][IEAOUWÂÔY])(?=[A-QS-ZÔÂ])/g, '$1ꜛ')
-
-    .replace(/(?<=[IEAOUWÂÔY])C(?=[IEAOUWÂÔY])/g, 'ɣ')
-    .replace(/H(?=[IY])/g, 'ç')
-
-    .replace(/G/g, 'ŋ')
-    .replace(/N/g, 'n')
-    .replace(/M/g, 'm')
-
-    .replace(/C/g, 'g')
-    .replace(/D/g, 'd')
-    .replace(/B/g, 'b')
-
-    .replace(/Q/g, 'k')
-    .replace(/K/g, 'tʂ')
-    .replace(/T/g, 't')
-    .replace(/P/g, 'p')
-
-    .replace(/H/g, 'h')
-    .replace(/X/g, 'ʂ')
-    .replace(/S/g, 's')
-    .replace(/F/g, 'f')
-
-    .replace(/J/g, 'ʐ')
-    .replace(/Z/g, 'z')
-    .replace(/V/g, 'v')
-
-    .replace(/L/g, 'ɾ')
-
-    .replace(/I/g, 'i')
-    .replace(/Y/g, 'y')
-    .replace(/W/g, 'ɨ')
-    .replace(/U/g, 'u')
-
-    .replace(/E/g, 'e')
-    .replace(/Ô/g, 'ø')
-    .replace(/O/g, 'o')
-
-    .replace(/Â/g, 'ja')
-    .replace(/A/g, 'a')

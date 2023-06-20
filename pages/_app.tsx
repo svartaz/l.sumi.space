@@ -6,7 +6,8 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { dict } from '../lib/dict'
 
-const title = (dict._language as any).signifier
+// @ts-ignore
+const title = dict._language.signifier
 export default ({ Component, props }) => {
   const router = useRouter()
   const [navVisible, setNavVisible] = useState(true)
@@ -43,8 +44,8 @@ export default ({ Component, props }) => {
           Object.entries({
             grammar: '文法',
             lexicon: '詞彙',
-            convert: '變換器',
-            misc: '雜記',
+            convert: '變換',
+            info: '情報',
           })
             .map(([k, v]) =>
               <li className={router.pathname == ('/' + k) ? 'active-page' : ''}><Link href={'/' + k}>{v}</Link></li>

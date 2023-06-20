@@ -10,7 +10,7 @@ export default () => <Page title=''>
     <tr>
       <td></td>
       <td></td>
-      <td>制作中</td>
+      <td></td>
     </tr>
   </table>
 </Page>
