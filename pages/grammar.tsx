@@ -146,7 +146,7 @@ export default () => <Page title='文法'>
     </div>
 
     <div>
-      c, j は母音間で摩擦音である. 他の破裂音は母音間に起こらない.
+      c は母音間で摩擦音である. 他の破裂音は母音間に起こらない.
     </div>
 
     <div>
@@ -160,45 +160,40 @@ export default () => <Page title='文法'>
       <li>副句: 量句 格標識 關係</li>
       <li>述句: {translate('DO')} 助關係 極句 關係</li>
     </ul>
-
   </Section>
 
   <Section title='詞順'>
     <div>
       基本の詞順は
       <div className='indent'>
-        {translate('DER')} V0 {translate('DEN')} V1 {translate('DO')} V2
+        V0 V1 V2
       </div>
       で
       <div className='indent'>
-        V0 は V1 を V2 する
+        V1 する者は V2 する者を V0 する
       </div>
       を意味する.
     </div>
     <div>
-      V<span style={{ fontStyle: 'italic' }}>n</span> は統べて關係であり, その前の格標識が格を示す.
-      それ故に詞順は自由である.
+      V<span style={{ fontStyle: 'italic' }}>n</span> は統べて關係である.
+      格標識を使って詞順を變へる事も可能である.
     </div>
 
     <Sample data={[
       [
         '我れは汝れを知る',
-        'DER I DEN THOU DO KNOW',
-      ],
-      [
-        '汝れを知る, 我れは',
-        'DEN THOU DO KNOW DER I',
+        'KNOW I THOU ≡ DER I KNOW THOU ≡ DER I DEN THOU KNOW ≡ …',
       ],
     ]} />
   </Section>
 
   <Section title='形容'>
     <div className='indent'>
-      V0 V1
+      V0 {translate('OF')} V1
     </div>
     は
     <div className='indent'>
-      V1的にV0である
+      V1 的に V0 する
     </div>
     を意味する.
     V0 と V1 の關係は曖昧である.
@@ -207,7 +202,7 @@ export default () => <Page title='文法'>
     <Sample data={[
       [
         '明るい (明るい-的な) 星を見る',
-        'DEN STAR BRIGHT DO SEE',
+        'SEE DEN SUN OF BRIGHT',
       ],
     ]} />
   </Section>
@@ -215,7 +210,7 @@ export default () => <Page title='文法'>
   <Section title='節'>
     <div>
       <div className='indent'>
-        {translate('THAT')} P ({translate('_CLOSE')})
+        {translate('THAT')} P ({translate('CLAUSE_END')})
       </div>
       は
       <div className='indent'>
@@ -227,55 +222,44 @@ export default () => <Page title='文法'>
     <Sample data={[
       [
         '我れは知る, 汝れが星を見るを',
-        'DER I DO KNOW DEN THAT DER THOU DEN STAR DO SEE',
+        'KNOW I THAT SEE THOU SUN (CLAUSE_END)',
       ],
       [
         '生きる事は食ふ事なり',
-        'DER THAT DO LIVE (_CLOSE) DO THAT DO EAT',
+        'THAT EAT CLAUSE_END THAT LIVE',
       ],
     ]} />
   </Section>
 
-  <Section title='關係節'>
+  <Section title='有格句'>
     <div>
       <div className='indent'>
-        K V {translate('WHICH')} P(… K1 {translate('WHAT')} …) ({translate('_CLOSE')})
+        {translate('WHICH')} P(… {translate('WHAT')} …) ({translate('CLAUSE_END')})
       </div>
-      は
-      <div className='indent'>
-        V であり, P を{translate('WHAT')}として滿たす物をKとして
-      </div>
-      を意味する.
-      <div className='indent'>
-        K1 {translate('WHAT')}
-      </div>
-      は K1 が {translate('DER')} または {translate('DEN')} でありもう一方が P に含まれるなら, 省略して良い.
+      は {translate('WHAT')} として P を滿たす關係を意味する.
+      節の右端の {translate('WHAT')} を省略しても良い.
     </div>
 
     <Sample data={[
       [
         '我れ知る, 汝れが見る星を',
-        'DER I DO KNOW DEN STAR WHICH DER THOU (DEN WHAT) DO SEE',
+        'KNOW I SUN WHICH SEE THOU (WHAT) (CLAUSE_END)',
       ],
     ]} />
   </Section>
 
-  <Section title='格標識'>
+  <Section title='副文'>
     <div>
       <div className='indent'>
-        {translate('AS')} V0 V1
+        {translate('WITH')} P ({translate('CLAUSE_END')})
       </div>
-      は
-      <div className='indent'>
-        V1 を V0 として
-      </div>
-      を意味する.
+      は主文に副次的な文を追加する.
     </div>
 
     <Sample data={[
       [
-        '汝れを原因として我れは知る',
-        'DER I DO KNOW AS CAUSE THOU',
+        '汝れが引き起こして我れは知る (汝れが我れに知らせる)',
+        'KNOW I WITH CAUSE THOU (CLAUSE_END)',
       ],
     ]} />
   </Section>
@@ -310,11 +294,15 @@ export default () => <Page title='文法'>
 
     <div>
       <div className='indent'>
-        N K V
+        N V
       </div>
       は
       <div className='indent'>
-        N 個の V を K として
+        N 個の V する者
+      </div>
+      または
+      <div className='indent'>
+        N 回 V する
       </div>
       を意味する.
     </div>
@@ -322,7 +310,7 @@ export default () => <Page title='文法'>
     <Sample data={[
       [
         '0人が知る (誰も知らない)',
-        'ZERO DER PERSON DO KNOW',
+        'KNOW ZERO PERSON',
       ],
     ]} />
   </Section>
@@ -332,7 +320,7 @@ export default () => <Page title='文法'>
       極は關係の程度を示す.
       關係は暗黙的な極を持つ.
       <div className='indent'>
-        {translate('DO')} N V
+        _DEGREE N V
       </div>
       は
       <div className='indent'>
@@ -355,24 +343,20 @@ export default () => <Page title='文法'>
         'LONG',
       ],
       [
-        'Sは長い',
-        'DO HIGH LONG',
+        '長い',
+        '_DEGREE HIGH LONG',
       ],
       [
-        'Sは通常程度に長い',
-        'DO NORMAL LONG',
+        '通常程度に長い',
+        '_DEGREE NORMAL LONG',
       ],
       [
-        'Sは短い (低程度に長い)',
-        'DO LOW LONG',
+        '短い (低程度に長い)',
+        '_DEGREE LOW LONG',
       ],
       [
-        'Sは長くない',
-        'DO LESS NORMAL LONG',
-      ],
-      [
-        '長くないものを',
-        'DEN LESS NORMAL LONG',
+        '長くない',
+        '_DEGREE LESS NORMAL LONG',
       ],
     ]} />
   </Section>
@@ -386,33 +370,47 @@ export default () => <Page title='文法'>
     </div>
     <Sample data={[
       [
-        '何を恐る?',
-        'DEN _ASK WHAT DO FEAR',
+        '我れは汝れの何だ?',
+        '_ASK WHAT I THOU',
       ],
       [
-        '— 時を',
-        '(DO) TIME',
+        '誰れが汝れを知る?',
+        'KNOW _ASK WHAT THOU',
       ],
-    ]}></Sample>
+      [
+        '我れは誰れを知る?',
+        'KNOW I _ASK WHAT',
+      ],
+    ]} />
 
     <div>
       <div className='indent'>
-        P(… {translate('_ASK HOW_MUCH')} …)
+        P(… {translate('_ASK WHETHER')} …)
       </div>
-      は {translate('HOW_MUCH')} を滿たす數を問ふ.
+      は {translate('_ASK WHETHER')} を滿たす數を問ふ.
     </div>
     <Sample data={[
       [
-        'なれは (どの程度) 人か?',
-        'DER THOU _DEGREE _ASK HOW_MUCH DO PERSON',
+        '幾人 見える?',
+        'SEE THOU _ASK WHETHER PERSON',
       ],
       [
-        '— 人である.',
-        'NORMAL',
+        'どれ程 長い?',
+        '_ASK WHETHER LONG',
+      ],
+    ]} />
+
+    <div>
+      文末の {translate('_ASK')} は文全體を問ふ.
+    </div>
+    <Sample data={[
+      [
+        '汝れは我れを知るか?',
+        'KNOW THOU I _ASK',
       ],
       [
-        '— 人でない (人-度0である).',
-        'ZERO',
+        'はい & いいえ (ToDo)',
+        '',
       ],
     ]} />
   </Section>
@@ -424,73 +422,63 @@ export default () => <Page title='文法'>
       </div>
       は
       <div className='indent'>
-        {translate('DER')} は F であり, {translate('DEN')} を表す
+        表現 F である
       </div>
       を意味する關係を作る.
     </div>
     <Sample data={[
       [
         '‹sumi› は我れを意味する',
-        'DO _QUOTE sumi _QUOTE DEN I',
+        'MEAN _QUOTE sumi _QUOTE I',
       ],
     ]} />
-  </Section>
-
-  <Section title='格交換'>
-    <div>
-      <div className='indent'>
-        {translate('DO')} K V
-      </div>
-      は V の {translate('DER')} と K を交換する.
-      {translate('AS, _SWAP')} も同樣の構造を持つ.
-    </div>
   </Section>
 
   <Section title='時制と相と法'>
     <Sample data={[
       [
         '生きた',
-        'DO _PAST LIVE',
+        '_PAST LIVE',
       ],
       [
         '生きる',
-        'DO _PRESENT LIVE',
+        '_PRESENT LIVE',
       ],
       [
         '生きむ',
-        'DO _FUTURE DO LIVE',
+        '_FUTURE LIVE',
       ],
       [
         '生まれて居ない',
-        'DO _BEFORE LIVE',
+        '_BEFORE LIVE',
       ],
       [
         '生まれる',
-        'DO _BEGIN LIVE',
+        '_BEGIN LIVE',
       ],
       [
         '生きて居る',
-        'DO _WHILE LIVE',
+        '_WHILE LIVE',
       ],
       [
         '死ぬ',
-        'DO _END LIVE',
+        '_END LIVE',
       ],
       [
         '死んで居る',
-        'DO _AFTER LIVE',
+        '_AFTER LIVE',
       ],
       [
         '生きてはならぬ',
-        'DO _MOOD ZERO LIVE',
+        '_MOOD ZERO LIVE',
       ],
       [
         '生きてよい',
-        'DO _MOOD ZERO LESS LIVE',
+        '_MOOD ZERO LESS LIVE',
       ],
       [
         '生きねばならぬ',
-        'DO _MOOD MAX LIVE',
+        '_MOOD MAX LIVE',
       ],
     ]} />
   </Section>
@@ -498,19 +486,19 @@ export default () => <Page title='文法'>
   <Section title='接續'>
     <div>
       接續は文と文の關係を示す.
+      <div className='indent'>
+        P0 {translate('_CONNECT')} V {translate('CLAUSE_END')} P1
+      </div>
       は
       <div className='indent'>
-        P0 {translate('_CONNECT')} V P1
-      </div>
-      <div className='indent'>
-        {translate('DER THAT')} P0 {translate('_CLOSE DEN THAT')} P1 {translate('DO')} V
+        V {translate('THAT')} P0 {translate('CLAUSE_END THAT')} P1 ({translate('CLAUSE_END')})
       </div>
       を表す.
     </div>
     <Sample data={[
       [
-        '彼が死んだ時に彼は幸福だった',
-        'DER HE DO _PAST _END LIVE _CONNECT TOGETHER DER HE DO _PAST _WHILE HAPPY',
+        '彼が死ぬ時に彼は幸福だった',
+        '_PAST _END LIVE HE _CONNECT TOGETHER CLAUSE_END _PAST _WHILE HAPPY HE',
       ],
     ]} />
   </Section>

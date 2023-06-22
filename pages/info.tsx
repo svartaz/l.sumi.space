@@ -16,7 +16,7 @@ for (const k in dict) {
 // @ts-ignore
 const frequencySorted = Object.entries(frequency).sort((a, b) => a[1] - b[1]).reverse()
 
-export default () => <Page title='詞彙'>
+export default () => <Page title='情報'>
   <Section title='頻度'>
     <div className={style.row}>
       {

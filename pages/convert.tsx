@@ -4,7 +4,7 @@ import { translate } from "../lib/dict";
 import { ipa } from "../lib/phoneme";
 
 export default () => {
-  const defaultValue = 'I _LANGUAGE DO KNOW'
+  const defaultValue = 'KNOW THOU _LANGUAGE'
   const defaultTranslated = translate(defaultValue)
   const [state, setState] = useState({
     translated: defaultTranslated,
@@ -19,7 +19,7 @@ export default () => {
     })
   }
 
-  return <Page title='變換器'>
+  return <Page title='變換'>
     <div className='textareas'>
       <textarea defaultValue={defaultValue} onChange={event => onChange(event.target.value)}></textarea>
       <textarea value={state.translated} readOnly></textarea>

@@ -45,6 +45,7 @@ export default ({ Component, props }) => {
             grammar: '文法',
             lexicon: '詞彙',
             convert: '變換',
+            translate: '飜譯',
             info: '情報',
           })
             .map(([k, v]) =>

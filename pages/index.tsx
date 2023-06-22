@@ -1,6 +1,6 @@
 import { Page } from '../components/page';
 
-export default () => <Page title=''>
+export default () => <Page title='sumiの言語'>
   <table>
     <tr>
       <th>版</th>

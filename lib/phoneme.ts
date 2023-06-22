@@ -61,11 +61,17 @@ export const ipa = s => s
 
 export const ja = s =>
   replaceAll(s, [
+    [/^あ/g, 'ra'],
+    [/^い/g, 'ri'],
+    [/^う/g, 'ru'],
+    [/^え/g, 're'],
+    [/^お/g, 'ro'],
+
     [/あ/g, 'ha'],
-    [/い/g, 'hi'],
-    [/う/g, 'hu'],
-    [/え/g, 'he'],
-    [/お/g, 'ho'],
+    [/い/g, 'ji'],
+    [/う/g, 'vu'],
+    [/え/g, 'je'],
+    [/お/g, 'vo'],
 
     [/か/g, 'qa'],
     [/き/g, 'qi'],
