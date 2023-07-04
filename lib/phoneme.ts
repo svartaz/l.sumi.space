@@ -1,7 +1,7 @@
 import { replaceAll } from "./util"
 
-export const cs = [...'cqh' + 'jx' + 'ndtsr' + 'mbpfv'];
-export const vs = [...'iyueøoa' + ''];
+export const cs = [...'cqh' + 'jkx' + 'ndtszr' + 'mbpfv'];
+export const vs = [...'iyaueøwo' + ''];
 
 export const isAllowed = (x: string) =>
   !new RegExp([

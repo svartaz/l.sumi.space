@@ -17,17 +17,15 @@ export default () => <Page title='詞彙'>
         <th>版</th>
       </tr>
       {
-        // @ts-ignore
-        Object.entries(dict).map(([k, { signifier, type, signifiee, etymology, version }], i) =>
+        [...dict.entries()].map(([k, { signifier, klass, signifiee, etymology, }], i) =>
           <tr key={i}>
             <th>{i}</th>
             <th style={{ textAlign: 'left' }}>{k.toUpperCase()}</th>
             <td>{signifier}</td>
             <td>[{ipa(signifier)}]</td>
             <td>{etymology}</td>
-            <td>{type}</td>
+            <td>{klass}</td>
             <td>{signifiee}</td>
-            <td>{version}</td>
           </tr>
         )
       }

@@ -14,8 +14,7 @@ const TranslateRuby = props => <span>{
 const Sample = props => <table>
   <tr>
     <th style={{ textAlign: 'center' }}>{
-      // @ts-ignore
-      dict._language.signifier
+      translate('_LANGUAGE')
     }</th>
     <th>Ja</th>
   </tr>
@@ -63,14 +62,14 @@ export default () => <Page title='文法'>
         <tr>
           <th>有聲破裂</th>
           <td>c [g-, -ɣ-]</td>
-          <td></td>
+          <td>j [dʑ, ʑ]</td>
           <td>d</td>
           <td>b</td>
         </tr>
         <tr>
           <th>無聲破裂</th>
           <td>q [k]</td>
-          <td>{/*[tɕ]*/}</td>
+          <td>k [tɕ]</td>
           <td>t</td>
           <td>p</td>
         </tr>
@@ -84,7 +83,7 @@ export default () => <Page title='文法'>
         <tr>
           <th>接近~有聲摩擦</th>
           <td></td>
-          <td>j [ʑ]</td>
+          <td></td>
           <td>r [l, ɾ, r]</td>
           <td>v [v, w]</td>
         </tr>
@@ -104,21 +103,26 @@ export default () => <Page title='文法'>
           </tr>
         </thead>
         <tr>
-          <th>閉</th>
+          <th>強</th>
           <td>i</td>
           <td>y [y,ju]</td>
-          <td>{/*w [ɨ]*/}</td>
+          <td>a</td>
           <td>u</td>
         </tr>
         <tr>
-          <th>開</th>
+          <th>弱</th>
           <td>e</td>
           <td>ø [ø,jo]</td>
-          <td>a</td>
+          <td>w [ə]</td>
           <td>o</td>
         </tr>
       </table>
     </div>
+
+    <aside>
+      <b>字の選擇</b>.
+      c [g]: Latn ‹C› が Grek ‹Γ› と同じく Phnx ‹𐤂› を由來とすることを考へれば自然.
+    </aside>
 
     <div>
       音節: 子音 母音.

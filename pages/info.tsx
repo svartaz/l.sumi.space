@@ -4,17 +4,16 @@ import { dict } from "../lib/dict";
 import { cs, vs } from "../lib/phoneme";
 import style from "./style.module.sass";
 
-const frequency = {};
+const frequency = new Map<string, number>();
 for (const k in dict) {
-  for (const c of [...dict[k].signifier]) {
+  for (const c of dict.get(k).signifier) {
     if (frequency.hasOwnProperty(c))
       frequency[c] += 1
     else
       frequency[c] = 1
   }
 }
-// @ts-ignore
-const frequencySorted = Object.entries(frequency).sort((a, b) => a[1] - b[1]).reverse()
+const frequencySorted = [...frequency.entries()].sort((a, b) => a[1] - b[1]).reverse()
 
 export default () => <Page title='情報'>
   <Section title='頻度'>

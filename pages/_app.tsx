@@ -6,8 +6,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { dict } from '../lib/dict'
 
-// @ts-ignore
-const title = dict._language.signifier
+const title = dict.get('_language')?.signifier
 export default ({ Component, props }) => {
   const router = useRouter()
   const [navVisible, setNavVisible] = useState(true)
