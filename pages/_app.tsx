@@ -5,6 +5,7 @@ import Script from 'next/script'
 import Link from 'next/link'
 import { useState } from 'react'
 import { dict } from '../lib/dict'
+import Head from 'next/head'
 
 const title = dict.get('_language')?.signifier
 export default ({ Component, props }) => {

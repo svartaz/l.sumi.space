@@ -16,6 +16,17 @@ for (const k in dict) {
 const frequencySorted = [...frequency.entries()].sort((a, b) => a[1] - b[1]).reverse()
 
 export default () => <Page title='情報'>
+  <table>
+    <tr>
+      <th>子音の數</th>
+      <td>{cs.length}</td>
+    </tr>
+    <tr>
+      <th>母音の數</th>
+      <td>{vs.length}</td>
+    </tr>
+  </table>
+
   <Section title='頻度'>
     <div className={style.row}>
       {

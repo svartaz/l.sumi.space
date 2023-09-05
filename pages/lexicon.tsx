@@ -23,7 +23,9 @@ export default () => <Page title='詞彙'>
             <th style={{ textAlign: 'left' }}>{k.toUpperCase()}</th>
             <td>{signifier}</td>
             <td>[{ipa(signifier)}]</td>
-            <td>{etymology}</td>
+            <td>{
+              Object.entries(etymology).map(([k, v]) => <span>{v}<sub>{k}</sub>, </span>)
+            }</td>
             <td>{klass}</td>
             <td>{signifiee}</td>
           </tr>

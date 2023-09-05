@@ -1,14 +1,14 @@
 import { Section } from '../components/section';
-import { dict, translate } from '../lib/dict';
+import { translate } from '../lib/dict';
 import { Page } from '../components/page';
 import { cs, isAllowed, vs } from '../lib/phoneme';
 
-console.log(translate(`DER I DO CAUSE DEN THAT DER THOU DEN _LANGUAGE DO KNOW`))
+console.log(translate(`CAUSE I THAT KNOW THOU _LANGUAGE`))
 
 const TranslateRuby = props => <span>{
   props.datum
-    .split(/(?<=[_A-Z'])(?=[^_A-Z'])|(?<=[^_A-Z'])(?=[_A-Z'])/g)
-    .map(it => /[_A-Z']+/.test(it) ? <ruby>{translate(it)}<rt>{it}</rt></ruby> : it)
+    .split(/(?<=[_A-Z][_A-Z0-9]*)(?![_A-Z0-9])|(?<![_A-Z0-9])(?=[_A-Z][_A-Z0-9]*)/g)
+    .map(it => /[_A-Z][_A-Z0-9]*/.test(it) ? <ruby>{translate(it)}<rt>{it}</rt></ruby> : it)
 }</span>
 
 const Sample = props => <table>
@@ -32,138 +32,124 @@ export default () => <Page title='文法'>
   現在 統べての詞を亂擇生成して居, 内容更新の度に變化します
 
   <Section title='由來'>
-    作者は {translate('_LANGUAGE')} を lojban の文法と Fr 語の音韻を參考にしつつ隙間に Ja 語を詰めて作った.
-    詞彙の大部分は亂數生成なれど諸自然言語を詞源にする物も有る.
+    <ul>
+      <li>lojban の文法</li>
+      <li>En, De 語の詞彙</li>
+      <li>Fr, Ru 語の音韻</li>
+      <li>Ja 語 (作者の母語) の無意識な諸諸</li>
+    </ul>
   </Section>
 
   <Section title='音と字'>
     <div>
-      ここに示す音素の分類は音聲學的な物でなく文化的な物である.
+      下の表は音韻論的でなく文化的である.
+      薄い色<span style={{ color: 'lightgray' }}>■</span>の音素は使はない (歷史として示すに留める).
     </div>
     <div>
-      子音.
       <table>
         <thead>
           <tr>
             <th></th>
-            <th>硬口蓋</th>
-            <th>軟口蓋</th>
-            <th>齒</th>
-            <th>脣</th>
+            <th>喉音</th>
+            <th>舌音</th>
+            <th>齒音</th>
+            <th>脣音</th>
           </tr>
         </thead>
         <tr>
-          <th>鼻</th>
-          <td>{/*g [ŋ]*/}</td>
-          <td>{/*ň [ɲ]*/}</td>
+          <th>鼻音</th>
+          <td>g [ŋ]</td>
+          <td style={{ visibility: 'hidden' }}>ň [ɲ]</td>
           <td>n</td>
           <td>m</td>
         </tr>
         <tr>
-          <th>有聲破裂</th>
+          <th>軟破裂音</th>
           <td>c [g-, -ɣ-]</td>
-          <td>j [dʑ, ʑ]</td>
+          <td style={{ visibility: 'hidden' }}>ď [dʑ]</td>
           <td>d</td>
           <td>b</td>
         </tr>
         <tr>
-          <th>無聲破裂</th>
+          <th>硬破裂音</th>
           <td>q [k]</td>
-          <td>k [tɕ]</td>
+          <td style={{ color: 'lightgray' }}>k [tɕ]</td>
           <td>t</td>
           <td>p</td>
         </tr>
         <tr>
-          <th>無聲摩擦</th>
-          <td>h [h, x, ç]</td>
-          <td>x [ɕ]</td>
+          <th>硬摩擦音</th>
+          <td>x [h, x, ç]</td>
+          <td>š [ɕ]</td>
           <td>s</td>
           <td>f</td>
         </tr>
         <tr>
-          <th>接近~有聲摩擦</th>
-          <td></td>
-          <td></td>
-          <td>r [l, ɾ, r]</td>
-          <td>v [v, w]</td>
+          <th>軟摩擦音</th>
+          <td style={{ color: 'lightgray' }}>h [ɣ]</td>
+          <td>j [ʑ]</td>
+          <td>z</td>
+          <td>v [v, β]</td>
         </tr>
-      </table>
-    </div>
-
-    <div>
-      母音.
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th>非圓脣前舌</th>
-            <th>圓脣前舌</th>
-            <th>中舌</th>
-            <th>圓脣後舌</th>
-          </tr>
-        </thead>
         <tr>
-          <th>強</th>
-          <td>i</td>
-          <td>y [y,ju]</td>
+          <th>接近音</th>
+          <td></td>
+          <td></td>
+          <td>l [l, r]</td>
+          <td></td>
+        </tr>
+        <tr style={{ borderTopStyle: 'double' }}>
+          <th>強音</th>
           <td>a</td>
+          <td>i [i, ɨ]</td>
+          <td style={{ color: 'lightgray' }}>y</td>
           <td>u</td>
         </tr>
         <tr>
-          <th>弱</th>
+          <th>弱音</th>
+          <td style={{ color: 'lightgray' }}>w [ə]</td>
           <td>e</td>
-          <td>ø [ø,jo]</td>
-          <td>w [ə]</td>
+          <td style={{ color: 'lightgray' }}>ø</td>
           <td>o</td>
         </tr>
       </table>
     </div>
-
-    <aside>
-      <b>字の選擇</b>.
-      c [g]: Latn ‹C› が Grek ‹Γ› と同じく Phnx ‹𐤂› を由來とすることを考へれば自然.
-    </aside>
 
     <div>
       音節: 子音 母音.
     </div>
 
     <div>
-      灰色の字列は音節でない.
-      <table>
-        {
-          cs.map(c =>
-            <tr>
-              {
-                vs.map(v =>
-                  <td style={{ padding: '0.25em', backgroundColor: isAllowed(c + v) ? 'transparent' : 'lightgray' }}>{c}{v}</td>
-                )
-              }
-            </tr>
-          )
-        }
-      </table>
+      以下は中和する.
+      <ul>
+        <li>{'/g, n/(i, y) → n'}</li>
+        <li>{'/c, j/(i, y) → j'}</li>
+        <li>{'/q, x, š/(i, y) → š'}</li>
+        <li>{'(š, j)/y, u/ → u [y]'}</li>
+        <li>{'(š, j)/ø, o/ → o [ø]'}</li>
+      </ul>
+
+      <table>{
+        cs.map(c =>
+          <tr>{
+            vs.map(v =>
+              <td style={{ padding: '0.25em', color: isAllowed(c + v) ? 'inherit' : 'lightgray' }}>{c}{v}</td>
+            )
+          }</tr>
+        )
+      }</table>
     </div>
 
     <div>
-      圓脣前舌音は軟口蓋音の後で圓脣後舌音として書かれる.
-    </div>
-
-    <div>
-      c は母音間で摩擦音である. 他の破裂音は母音間に起こらない.
+      以下は相補する.
+      <ul>
+        <li>{'齒音/i/ → [ɨ], /i/ → [i]'}</li>
+      </ul>
     </div>
 
     <div>
       詞頭の音節は低く殘りは高い.
     </div>
-  </Section>
-
-  <Section title='槪觀'>
-    <ul>
-      <li>文: 0個以上の副句と1個の述句の列び</li>
-      <li>副句: 量句 格標識 關係</li>
-      <li>述句: {translate('DO')} 助關係 極句 關係</li>
-    </ul>
   </Section>
 
   <Section title='詞順'>
@@ -174,19 +160,26 @@ export default () => <Page title='文法'>
       </div>
       で
       <div className='indent'>
-        V1 する者は V2 する者を V0 する
+        V1 する者は V2 する者を V する
       </div>
-      を意味する.
+      を意味する. V<span style={{ fontStyle: 'italic' }}>n</span> は統べて關係である.
     </div>
     <div>
-      V<span style={{ fontStyle: 'italic' }}>n</span> は統べて關係である.
       格標識を使って詞順を變へる事も可能である.
     </div>
 
     <Sample data={[
       [
         '我れは汝れを知る',
-        'KNOW I THOU ≡ DER I KNOW THOU ≡ DER I DEN THOU KNOW ≡ …',
+        'KNOW I THOU',
+      ],
+      [
+        '〃',
+        '_N I KNOW THOU',
+      ],
+      [
+        '〃',
+        '_N I _A THOU KNOW',
       ],
     ]} />
   </Section>
@@ -206,7 +199,7 @@ export default () => <Page title='文法'>
     <Sample data={[
       [
         '明るい (明るい-的な) 星を見る',
-        'SEE DEN SUN OF BRIGHT',
+        'SEE _A SUN OF BRIGHT',
       ],
     ]} />
   </Section>
@@ -218,7 +211,7 @@ export default () => <Page title='文法'>
       </div>
       は
       <div className='indent'>
-        文 P は {translate('DER')} を表す
+        文 P は {translate('_N')} を表す
       </div>
       を意味する關係を作る.
     </div>
@@ -287,7 +280,7 @@ export default () => <Page title='文法'>
           ],
           [
             '3.21',
-            'THREE NUMBER_DOT TWO ONE',
+            'THREE DECIMAL TWO ONE',
           ],
           [
             '3.21E3 (=3210)',
@@ -314,53 +307,7 @@ export default () => <Page title='文法'>
     <Sample data={[
       [
         '0人が知る (誰も知らない)',
-        'KNOW ZERO PERSON',
-      ],
-    ]} />
-  </Section>
-
-  <Section title='極'>
-    <div>
-      極は關係の程度を示す.
-      關係は暗黙的な極を持つ.
-      <div className='indent'>
-        _DEGREE N V
-      </div>
-      は
-      <div className='indent'>
-        N 程度に V する
-      </div>
-      を意味する.
-    </div>
-
-    <Sample data={[
-      [
-        '主觀的に通常の數',
-        'NORMAL',
-      ],
-      [
-        '主觀的に通常を超える數',
-        'HIGH',
-      ],
-      [
-        'Sは長い',
-        'LONG',
-      ],
-      [
-        '長い',
-        '_DEGREE HIGH LONG',
-      ],
-      [
-        '通常程度に長い',
-        '_DEGREE NORMAL LONG',
-      ],
-      [
-        '短い (低程度に長い)',
-        '_DEGREE LOW LONG',
-      ],
-      [
-        '長くない',
-        '_DEGREE LESS NORMAL LONG',
+        'KNOW ZERO MAN',
       ],
     ]} />
   </Section>
@@ -389,18 +336,18 @@ export default () => <Page title='文法'>
 
     <div>
       <div className='indent'>
-        P(… {translate('_ASK WHETHER')} …)
+        P(… {translate('_ASK HOW_MANY')} …)
       </div>
-      は {translate('_ASK WHETHER')} を滿たす數を問ふ.
+      は {translate('_ASK HOW_MANY')} を滿たす數を問ふ.
     </div>
     <Sample data={[
       [
         '幾人 見える?',
-        'SEE THOU _ASK WHETHER PERSON',
+        'SEE THOU _ASK HOW_MANY MAN',
       ],
       [
         'どれ程 長い?',
-        '_ASK WHETHER LONG',
+        '_ASK HOW_MANY LONG',
       ],
     ]} />
 
@@ -413,8 +360,12 @@ export default () => <Page title='文法'>
         'KNOW THOU I _ASK',
       ],
       [
-        'はい & いいえ (ToDo)',
-        '',
+        'はい',
+        'KNOW',
+      ],
+      [
+        'いいえ',
+        'NOT KNOW',
       ],
     ]} />
   </Section>
@@ -433,7 +384,7 @@ export default () => <Page title='文法'>
     <Sample data={[
       [
         '‹sumi› は我れを意味する',
-        'MEAN _QUOTE sumi _QUOTE I',
+        'NAME _QUOTE sumi _QUOTE I',
       ],
     ]} />
   </Section>
@@ -445,11 +396,11 @@ export default () => <Page title='文法'>
         '_PAST LIVE',
       ],
       [
-        '生きる',
+        '生く',
         '_PRESENT LIVE',
       ],
       [
-        '生きむ',
+        '生かむ',
         '_FUTURE LIVE',
       ],
       [
@@ -474,15 +425,15 @@ export default () => <Page title='文法'>
       ],
       [
         '生きてはならぬ',
-        '_MOOD ZERO LIVE',
+        'ZERO-MAY LIVE',
       ],
       [
         '生きてよい',
-        '_MOOD ZERO LESS LIVE',
+        'MAY ZERO LESS LIVE',
       ],
       [
         '生きねばならぬ',
-        '_MOOD MAX LIVE',
+        'MAX-MAY LIVE',
       ],
     ]} />
   </Section>
@@ -502,7 +453,7 @@ export default () => <Page title='文法'>
     <Sample data={[
       [
         '彼が死ぬ時に彼は幸福だった',
-        '_PAST _END LIVE HE _CONNECT TOGETHER CLAUSE_END _PAST _WHILE HAPPY HE',
+        '_PAST _END LIVE HE _CONNECT AT CLAUSE_END _PAST _WHILE LOVE HE',
       ],
     ]} />
   </Section>

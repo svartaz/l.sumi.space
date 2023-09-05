@@ -23,10 +23,14 @@ const compareWords = (w: string, w1: string) => {
 
 const cvs = cs.flatMap(c => vs.map(v => c + v)).filter(isAllowed)
 const cvcs = cvs.flatMap(cv => cs.map(c => cv + c)).filter(isAllowed)
+const cvccs = cvcs.flatMap(cvc => cs.map(c => cvc + c)).filter(isAllowed)
+const ccvcs = cs.flatMap(c => cvcs.map(cvc => c + cvc)).filter(isAllowed)
 const cvcvs = cvcs.flatMap(cvc => vs.map(v => cvc + v)).filter(isAllowed)
 
 console.log(`CV: ${cvs.length}`);
 console.log(`CVC: ${cvcs.length}`);
+console.log(`CVCC: ${cvccs.length}`);
+console.log(`CCVC: ${ccvcs.length}`);
 console.log(`CVCV: ${cvcvs.length}`);
 
 export const dict: Dict = (() => {
@@ -56,17 +60,16 @@ export const dict: Dict = (() => {
         else
           return w;
       }
-      throw 'failed: generate word'
+      throw `${k}: failed generating`
     })()
     usedWords.push(w)
-    d.set(k, { signifier: w, ...rest });
+    d.set(k, { signifier: '*' + w, ...rest });
   }
 
   return d
 })();
 
 export const translate = s => s
-  .replace(/'[A-QØS-Z]'/g, it => letters.get(it.charAt(1).toLowerCase()).name)
-  .replace(/[_A-Z]+/g, it =>
+  .replace(/[_A-Z][_A-Z0-9]*/g, it =>
     dict.get(it.toLowerCase())?.signifier ?? it
   );

@@ -1,14 +1,17 @@
+
 import { replaceAll } from "./util"
 
-export const cs = [...'cqh' + 'jkx' + 'ndtszr' + 'mbpfv'];
-export const vs = [...'iyaueøwo' + ''];
+export const cs = [...'gcqx' + 'šj' + 'ndtszlr' + 'mbpfv'];
+export const vs = [...'aiueo'];
 
 export const isAllowed = (x: string) =>
   !new RegExp([
     `[^${[...cs, ...vs].join('')}]`,
-    `[${vs.join('')}][qktpdb][${vs.join('')}]`,
-    's[iy]',
-    '[jkx][yø]',
+    '(?<!^)b',
+    //'[šj][wu]',
+    `[${vs.join('')}][db]d[${vs.join('')}]`, // VdV > l, VbV > v
+    `[${vs.join('')}]{2}`,
+    `[${cs.join('')}]{3}`,
   ]
     .join('|')
   )
@@ -18,16 +21,18 @@ export const ipa = s => s
   .replace(new RegExp(`[${[...cs, ...vs].join('')}]+`, 'g'), word => word
     .toUpperCase()
 
-    .replace(/(?<=[JKX])U/g, 'Y')
-    .replace(/(?<=[JKX])O/g, 'Ø')
+    .replace(/(?<![AIUEO])$/g, 'ǝ')
 
+    .replace(/(?<=[JKŠ])O/g, 'ø')
+    .replace(/(?<=[JKŠ])U/g, 'y')
+    .replace(/(?<=[NDTSZ])I/g, 'ɨ')
+
+    .replace(/G/g, 'ŋ')
     .replace(/N/g, 'n')
     .replace(/M/g, 'm')
 
     .replace(/^C/g, 'g')
     .replace(/C/g, 'ɣ')
-    .replace(/^J/g, 'dʑ')
-    .replace(/J/g, 'ʑ')
     .replace(/D/g, 'd')
     .replace(/B/g, 'b')
 
@@ -36,28 +41,53 @@ export const ipa = s => s
     .replace(/T/g, 't')
     .replace(/P/g, 'p')
 
-    .replace(/H/g, 'h')
-    .replace(/H(?=[IY])/g, 'ç')
-    .replace(/X/g, 'ɕ')
+    .replace(/X/g, 'h')
+    .replace(/X(?=[IY])/g, 'ç')
+    .replace(/Š/g, 'ɕ')
     .replace(/S/g, 's')
     .replace(/F/g, 'f')
 
+    .replace(/J/g, 'ʑ')
     .replace(/Z/g, 'z')
     .replace(/V/g, 'v')
 
     .replace(/R/g, 'ɾ')
+    .replace(/L/g, 'l')
 
     .replace(/I/g, 'i')
-    .replace(/Y/g, 'y')
-    .replace(/U/g, 'u')
-
     .replace(/E/g, 'e')
     .replace(/A/g, 'a')
-    .replace(/Ø/g, 'ø')
     .replace(/O/g, 'o')
+    .replace(/U/g, 'u')
+    .replace(/Â/g, 'ja')
+    .replace(/Ø/g, 'ø')
+    .replace(/Y/g, 'y')
 
-    .replace(/(?<=^.+[iyueøao])(?=.+[iyueøao])/g, 'ꜛ')
+    .replace(/(?<=^[^ieaouøyǝ]*[ieaouøyǝ])(?!$)/, 'ꜛ')
   )
+
+export const la = s =>
+  replaceAll(s, [
+    [/i/g, 'e'],
+    [/e/g, 'e'],
+    [/a/g, 'a'],
+    [/o/g, 'o'],
+    [/u/g, 'u'],
+    [/ī/g, 'i'],
+    [/ē/g, 'i'],
+    [/ā/g, 'a'],
+    [/ō/g, 'o'],
+    [/ū/g, 'y'],
+    [/y/g, 'ø'],
+    [/ȳ/g, 'y'],
+
+    [/ae/g, 'e'],
+    [/au/g, 'o'],
+    [/eu/g, 'ø'],
+    [/oe/g, 'ø'],
+
+    [/h/g, 'x'],
+  ]);
 
 export const ja = s =>
   replaceAll(s, [
