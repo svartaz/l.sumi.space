@@ -25,6 +25,10 @@ export default () => <Page title='情報'>
       <th>母音の數</th>
       <td>{vs.length}</td>
     </tr>
+    <tr>
+      <th>音素の數</th>
+      <td>{cs.length + vs.length}</td>
+    </tr>
   </table>
 
   <Section title='頻度'>

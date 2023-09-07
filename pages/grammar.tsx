@@ -1,9 +1,8 @@
 import { Section } from '../components/section';
 import { translate } from '../lib/dict';
 import { Page } from '../components/page';
-import { cs, isAllowed, vs } from '../lib/phoneme';
 
-console.log(translate(`CAUSE I THAT KNOW THOU _LANGUAGE`))
+console.log(translate(`SHALL CAUSE I THEN KNOW THOU _LANGUAGE`))
 
 const TranslateRuby = props => <span>{
   props.datum
@@ -29,23 +28,19 @@ const Sample = props => <table>
 </table>
 
 export default () => <Page title='文法'>
-  現在 統べての詞を亂擇生成して居, 内容更新の度に變化します
-
   <Section title='由來'>
     <ul>
       <li>lojban の文法</li>
       <li>En, De 語の詞彙</li>
       <li>Fr, Ru 語の音韻</li>
+      <li>Sa 語の音韻論</li>
       <li>Ja 語 (作者の母語) の無意識な諸諸</li>
     </ul>
   </Section>
 
   <Section title='音と字'>
     <div>
-      下の表は音韻論的でなく文化的である.
-      薄い色<span style={{ color: 'lightgray' }}>■</span>の音素は使はない (歷史として示すに留める).
-    </div>
-    <div>
+      下の表は音韻論的ならず文化的な.
       <table>
         <thead>
           <tr>
@@ -65,86 +60,99 @@ export default () => <Page title='文法'>
         </tr>
         <tr>
           <th>軟破裂音</th>
-          <td>c [g-, -ɣ-]</td>
-          <td style={{ visibility: 'hidden' }}>ď [dʑ]</td>
+          <td>c [g]</td>
+          <td></td>
           <td>d</td>
           <td>b</td>
         </tr>
         <tr>
           <th>硬破裂音</th>
           <td>q [k]</td>
-          <td style={{ color: 'lightgray' }}>k [tɕ]</td>
+          <td>k [ɕ]</td>
           <td>t</td>
           <td>p</td>
         </tr>
         <tr>
           <th>硬摩擦音</th>
-          <td>x [h, x, ç]</td>
-          <td>š [ɕ]</td>
+          <td>x [h]</td>
+          <td></td>
           <td>s</td>
           <td>f</td>
         </tr>
         <tr>
           <th>軟摩擦音</th>
-          <td style={{ color: 'lightgray' }}>h [ɣ]</td>
+          <td>∅</td>
           <td>j [ʑ]</td>
           <td>z</td>
-          <td>v [v, β]</td>
+          <td>v</td>
         </tr>
         <tr>
           <th>接近音</th>
           <td></td>
           <td></td>
-          <td>l [l, r]</td>
+          <td>r</td>
           <td></td>
         </tr>
         <tr style={{ borderTopStyle: 'double' }}>
           <th>強音</th>
           <td>a</td>
-          <td>i [i, ɨ]</td>
-          <td style={{ color: 'lightgray' }}>y</td>
-          <td>u</td>
+          <td>i</td>
+          <td></td>
+          <td>u [ɯ]</td>
         </tr>
         <tr>
           <th>弱音</th>
-          <td style={{ color: 'lightgray' }}>w [ə]</td>
+          <td>∅ [ə]</td>
           <td>e</td>
-          <td style={{ color: 'lightgray' }}>ø</td>
+          <td></td>
           <td>o</td>
         </tr>
       </table>
     </div>
 
     <div>
+      條件異音.
+
+      <table>
+        <tr>
+          <th>音</th>
+          <th>環境</th>
+        </tr>
+        <tr>
+          <td>g</td>
+          <td>_V</td>
+          <td>[ɲ]</td>
+        </tr>
+        <tr>
+          <td>c</td>
+          <td>V_V</td>
+          <td>[ɣ]</td>
+        </tr>
+        <tr>
+          <td>x</td>
+          <td>_i | i_^</td>
+          <td>[ç]</td>
+        </tr>
+        <tr>
+          <td>i</td>
+          <td>齒_</td>
+          <td>[ɨ]</td>
+        </tr>
+        <tr>
+          <td>u</td>
+          <td>_舌</td>
+          <td>[y]</td>
+        </tr>
+        <tr>
+          <td>o</td>
+          <td>_舌</td>
+          <td>[ø]</td>
+        </tr>
+      </table>
+    </div>
+
+    <div>
       音節: 子音 母音.
-    </div>
-
-    <div>
-      以下は中和する.
-      <ul>
-        <li>{'/g, n/(i, y) → n'}</li>
-        <li>{'/c, j/(i, y) → j'}</li>
-        <li>{'/q, x, š/(i, y) → š'}</li>
-        <li>{'(š, j)/y, u/ → u [y]'}</li>
-        <li>{'(š, j)/ø, o/ → o [ø]'}</li>
-      </ul>
-
-      <table>{
-        cs.map(c =>
-          <tr>{
-            vs.map(v =>
-              <td style={{ padding: '0.25em', color: isAllowed(c + v) ? 'inherit' : 'lightgray' }}>{c}{v}</td>
-            )
-          }</tr>
-        )
-      }</table>
-    </div>
-
-    <div>
-      以下は相補する.
-      <ul>
-        <li>{'齒音/i/ → [ɨ], /i/ → [i]'}</li>
-      </ul>
     </div>
 
     <div>
@@ -393,15 +401,15 @@ export default () => <Page title='文法'>
     <Sample data={[
       [
         '生きた',
-        '_PAST LIVE',
+        'DID LIVE',
       ],
       [
         '生く',
-        '_PRESENT LIVE',
+        'DO LIVE',
       ],
       [
         '生かむ',
-        '_FUTURE LIVE',
+        'SHALL LIVE',
       ],
       [
         '生まれて居ない',

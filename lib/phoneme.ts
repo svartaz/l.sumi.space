@@ -1,17 +1,18 @@
 
 import { replaceAll } from "./util"
 
-export const cs = [...'gcqx' + 'šj' + 'ndtszlr' + 'mbpfv'];
+export const cs = [...'gcqx' + 'kj' + 'ndtszlr' + 'mbpfv'];
 export const vs = [...'aiueo'];
 
 export const isAllowed = (x: string) =>
   !new RegExp([
     `[^${[...cs, ...vs].join('')}]`,
     '(?<!^)b',
-    //'[šj][wu]',
-    `[${vs.join('')}][db]d[${vs.join('')}]`, // VdV > l, VbV > v
+    //`[${vs.join('')}][dbqtp][${vs.join('')}]`,
     `[${vs.join('')}]{2}`,
     `[${cs.join('')}]{3}`,
+
+    //`[iu][${cs.join('')}](?![${vs.join('')}])`,
   ]
     .join('|')
   )
