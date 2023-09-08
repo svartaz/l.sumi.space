@@ -1,6 +1,6 @@
 import Random from "./random";
 import { cs, vs, isAllowed } from './phoneme'
-import { Dict, dictBase, letters } from "./dict-base";
+import { Entry, aliases, dictBase } from "./dict-base";
 
 const compareWords = (w: string, w1: string) => {
   if (w == w1)
@@ -33,19 +33,21 @@ console.log(`CVCC: ${cvccs.length}`);
 console.log(`CCVC: ${ccvcs.length}`);
 console.log(`CVCV: ${cvcvs.length}`);
 
-export const dict: Dict = (() => {
-  let d: Dict = new Map();
+export const dict = (() => {
+  let d = new Map<string, Entry>();
   const random = new Random();
   const usedWords = []
 
   for (const [k, { signifier, ...rest }] of dictBase.entries())
     if (!/[CV]/.test(signifier)) {
       if (usedWords.includes(signifier))
-        throw `${k}: ${signifier} used twice`
+        throw `${k}: ${signifier} is already used by '${Array.from(d.keys()).filter(k => d.get(k).signifier == signifier)[0]}'`
       if (!isAllowed(signifier))
         throw `${k}: ${signifier} is not allowed`
-      usedWords.push(signifier)
+
       d.set(k, { signifier, ...rest });
+      usedWords.push(signifier)
+
       dictBase.delete(k);
     }
 
@@ -69,7 +71,18 @@ export const dict: Dict = (() => {
   return d
 })();
 
-export const translate = s => s
-  .replace(/[_A-Z][_A-Z0-9]*/g, it =>
+export const translate = s => {
+  while (true) {
+    const sNext = s.replace(/[_A-Z]*/g, it =>
+      aliases.get(it.toLowerCase()) ?? it
+    )
+
+    if (s == sNext)
+      break;
+    else
+      s = sNext;
+  }
+  return s.replace(/[_A-Z]*/g, it =>
     dict.get(it.toLowerCase())?.signifier ?? it
   );
+}

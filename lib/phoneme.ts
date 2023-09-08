@@ -1,184 +1,112 @@
 
-import { replaceAll } from "./util"
-
 export const cs = [...'gcqx' + 'kj' + 'ndtszlr' + 'mbpfv'];
 export const vs = [...'aiueo'];
 
 export const isAllowed = (x: string) =>
-  !new RegExp([
+  [
+    // defined alphabet only
     `[^${[...cs, ...vs].join('')}]`,
-    '(?<!^)b',
-    //`[${vs.join('')}][dbqtp][${vs.join('')}]`,
-    `[${vs.join('')}]{2}`,
-    `[${cs.join('')}]{3}`,
 
-    //`[iu][${cs.join('')}](?![${vs.join('')}])`,
-  ]
-    .join('|')
-  )
-    .test(x)
+    // no repetition
+    '(.)\\1',
+    'V{2}',
+    'C{3}',
+
+    // word must contain vowel
+    '^C+$',
+
+    // word-final nasal is one
+    '[gm]$',
+
+    // no word-final or pre-consonant v
+    'v(?!V)',
+
+    // no affricate
+    '[dt][szkj]',
+
+    // no word-final i after dental
+    //'[ndtszl]i$',
+
+    // no difficult dental cluster
+    '[ndt][rl]',
+
+    'xu',
+  ].every(re =>
+    !new RegExp(re
+      .replace(/C/g, `[${cs.join('')}]`)
+      .replace(/V/g, `[${vs.join('')}]`)
+    ).test(x)
+  );
+
+export const switchVoice = (letter: string) => {
+  for (const [weak, strong] of [
+    ['c', 'q'],
+    ['c', 'x'],
+    ['j', 'k'],
+    ['d', 't'],
+    ['z', 's'],
+    ['b', 'p'],
+    ['v', 'f'],
+  ]) {
+    if (weak == letter) return strong;
+    else if (strong == letter) return weak;
+  }
+
+  return letter;
+}
 
 export const ipa = s => s
   .replace(new RegExp(`[${[...cs, ...vs].join('')}]+`, 'g'), word => word
     .toUpperCase()
 
-    .replace(/(?<![AIUEO])$/g, 'ǝ')
+    .replace(/^(?=[IEAOU])/g, 'ʔ')
 
-    .replace(/(?<=[JKŠ])O/g, 'ø')
-    .replace(/(?<=[JKŠ])U/g, 'y')
-    .replace(/(?<=[NDTSZ])I/g, 'ɨ')
-
+    .replace(/G(?=[IE])/g, 'ɲ')
     .replace(/G/g, 'ŋ')
+    .replace(/(?<=([IEAOU]))N$/g, '$1\u0303'.normalize('NFKD'))
     .replace(/N/g, 'n')
     .replace(/M/g, 'm')
 
-    .replace(/^C/g, 'g')
-    .replace(/C/g, 'ɣ')
+    .replace(/C$/g, 'k')
+    .replace(/D$/g, 't')
+    .replace(/B$/g, 'p')
+
+    .replace(/(?<=[IEAOU])C(?=[IEAOU])/g, 'ɣ')
+    .replace(/C/g, 'g')
     .replace(/D/g, 'd')
     .replace(/B/g, 'b')
 
+    .replace(/Q$/g, 'kʰ')
+    .replace(/T$/g, 'tʰ')
+    .replace(/P$/g, 'pʰ')
+
     .replace(/Q/g, 'k')
-    .replace(/K/g, 'tɕ')
     .replace(/T/g, 't')
     .replace(/P/g, 'p')
 
+    .replace(/X(?=I)|(?<=I)X(?![IEAOU])/g, 'ç')
     .replace(/X/g, 'h')
-    .replace(/X(?=[IY])/g, 'ç')
-    .replace(/Š/g, 'ɕ')
+    .replace(/K/g, 'ɕ')
     .replace(/S/g, 's')
     .replace(/F/g, 'f')
 
+    .replace(/J(?![IEAOU])/g, 'tɕ')
     .replace(/J/g, 'ʑ')
+    .replace(/Z(?![IEAOU])/g, 'ts')
     .replace(/Z/g, 'z')
     .replace(/V/g, 'v')
 
     .replace(/R/g, 'ɾ')
-    .replace(/L/g, 'l')
+    .replace(/L(?=[IEAOU])/g, 'l')
+    .replace(/L/g, 'ɫ')
+
+    .replace(/(?<=[nsz])I/g, 'ɪ')
+    .replace(/(?<=[ɕʑ])O/g, 'ø')
+    .replace(/(?<=[ɕʑ])U/g, 'y')
 
     .replace(/I/g, 'i')
     .replace(/E/g, 'e')
     .replace(/A/g, 'a')
     .replace(/O/g, 'o')
-    .replace(/U/g, 'u')
-    .replace(/Â/g, 'ja')
-    .replace(/Ø/g, 'ø')
-    .replace(/Y/g, 'y')
-
-    .replace(/(?<=^[^ieaouøyǝ]*[ieaouøyǝ])(?!$)/, 'ꜛ')
-  )
-
-export const la = s =>
-  replaceAll(s, [
-    [/i/g, 'e'],
-    [/e/g, 'e'],
-    [/a/g, 'a'],
-    [/o/g, 'o'],
-    [/u/g, 'u'],
-    [/ī/g, 'i'],
-    [/ē/g, 'i'],
-    [/ā/g, 'a'],
-    [/ō/g, 'o'],
-    [/ū/g, 'y'],
-    [/y/g, 'ø'],
-    [/ȳ/g, 'y'],
-
-    [/ae/g, 'e'],
-    [/au/g, 'o'],
-    [/eu/g, 'ø'],
-    [/oe/g, 'ø'],
-
-    [/h/g, 'x'],
-  ]);
-
-export const ja = s =>
-  replaceAll(s, [
-    [/^あ/g, 'ra'],
-    [/^い/g, 'ri'],
-    [/^う/g, 'ru'],
-    [/^え/g, 're'],
-    [/^お/g, 'ro'],
-
-    [/あ/g, 'ha'],
-    [/い/g, 'ji'],
-    [/う/g, 'vu'],
-    [/え/g, 'je'],
-    [/お/g, 'vo'],
-
-    [/か/g, 'qa'],
-    [/き/g, 'qi'],
-    [/く/g, 'qu'],
-    [/け/g, 'qe'],
-    [/こ/g, 'qo'],
-    [/が/g, 'ca'],
-    [/ぎ/g, 'ci'],
-    [/ぐ/g, 'cu'],
-    [/げ/g, 'ce'],
-    [/ご/g, 'co'],
-
-    [/さ/g, 'xa'],
-    [/し/g, 'xi'],
-    [/す/g, 'xu'],
-    [/せ/g, 'xe'],
-    [/そ/g, 'xo'],
-    [/ざ/g, 'ja'],
-    [/じ/g, 'ji'],
-    [/ず/g, 'ju'],
-    [/ぜ/g, 'je'],
-    [/ぞ/g, 'jo'],
-
-    [/た/g, 'ta'],
-    [/ち/g, 'ti'],
-    [/つ/g, 'tu'],
-    [/て/g, 'te'],
-    [/と/g, 'to'],
-    [/だ/g, 'da'],
-    [/ぢ/g, 'di'],
-    [/づ/g, 'du'],
-    [/で/g, 'de'],
-    [/ど/g, 'do'],
-
-    [/な/g, 'na'],
-    [/に/g, 'ni'],
-    [/ぬ/g, 'nu'],
-    [/ね/g, 'ne'],
-    [/の/g, 'no'],
-
-    [/は/g, 'pa'],
-    [/ひ/g, 'pi'],
-    [/ふ/g, 'pu'],
-    [/へ/g, 'pe'],
-    [/ほ/g, 'po'],
-    [/ば/g, 'ba'],
-    [/び/g, 'bi'],
-    [/ぶ/g, 'bu'],
-    [/べ/g, 'be'],
-    [/ぼ/g, 'bo'],
-
-    [/ま/g, 'ma'],
-    [/み/g, 'mi'],
-    [/む/g, 'mu'],
-    [/め/g, 'me'],
-    [/も/g, 'mo'],
-
-    [/や/g, 'he'],
-    [/𛀁/g, 'he'],
-    [/ゆ/g, 'hy'],
-    [/よ/g, 'hø'],
-
-    [/ら/g, 'ra'],
-    [/り/g, 'ri'],
-    [/る/g, 'ru'],
-    [/れ/g, 're'],
-    [/ろ/g, 'ro'],
-
-    [/わ/g, 'va'],
-    [/ゐ/g, 'vi'],
-    [/ゑ/g, 've'],
-    [/を/g, 'vo'],
-
-    [/(?<!^)d/g, 'r'],
-    [/(?<!^)b/g, 'v'],
-    [/(?<!^)q/g, 'h'],
-    [/(?<!^)t/g, 's'],
-    [/(?<!^)p/g, 'f'],
-  ])
+    .replace(/U/g, 'u') //ɯ
+  );

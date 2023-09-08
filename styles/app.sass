@@ -94,23 +94,21 @@ table
     td
       vertical-align: center
     td, th
-      padding: 0.5em 1em
+      padding: .5em .5em
       word-wrap: normal
 
       &[colspan]
         text-align: center
-        border: 1px solid #0002
 
       &[rowspan]
         vertical-align: middle
-        border: 1px solid #0002
 
   tr th:first-child
     text-align: right
 
 ul
   list-style-position: inside
-  margin: 0
+  margin: 1em
 
 ul:not(ul *)
   padding-left: 0
@@ -214,3 +212,10 @@ aside
   margin-top: 0.25em
   margin-bottom: 0.25em
 
+section > div
+  border: 1px solid lightgray
+  border-right: none
+  border-bottom: none
+  padding: 1em
+  padding-right: 0
+  padding-bottom: 0

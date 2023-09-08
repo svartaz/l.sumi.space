@@ -1,20 +1,21 @@
 import { Section } from '../components/section';
 import { translate } from '../lib/dict';
 import { Page } from '../components/page';
+import { Lang } from '../components/lang';
 
 console.log(translate(`SHALL CAUSE I THEN KNOW THOU _LANGUAGE`))
 
 const TranslateRuby = props => <span>{
   props.datum
     .split(/(?<=[_A-Z][_A-Z0-9]*)(?![_A-Z0-9])|(?<![_A-Z0-9])(?=[_A-Z][_A-Z0-9]*)/g)
-    .map(it => /[_A-Z][_A-Z0-9]*/.test(it) ? <ruby>{translate(it)}<rt>{it}</rt></ruby> : it)
+    .map(it => /[_A-Z][_A-Z0-9]*/.test(it) ? <ruby><Lang>{translate(it)}</Lang><rt>{it}</rt></ruby> : <Lang>{it}</Lang>)
 }</span>
 
 const Sample = props => <table>
   <tr>
-    <th style={{ textAlign: 'center' }}>{
-      translate('_LANGUAGE')
-    }</th>
+    <th style={{ textAlign: 'center' }}>
+      <Lang>{translate('_LANGUAGE')}</Lang>
+    </th>
     <th>Ja</th>
   </tr>
   {
@@ -28,6 +29,8 @@ const Sample = props => <table>
 </table>
 
 export default () => <Page title='文法'>
+  この記事を標準的な Ja 語を使ひて書きたらず
+
   <Section title='由來'>
     <ul>
       <li>lojban の文法</li>
@@ -39,8 +42,7 @@ export default () => <Page title='文法'>
   </Section>
 
   <Section title='音と字'>
-    <div>
-      下の表は音韻論的ならず文化的な.
+    <Section title='傳統的な字と音の分類'>
       <table>
         <thead>
           <tr>
@@ -59,64 +61,94 @@ export default () => <Page title='文法'>
           <td>m</td>
         </tr>
         <tr>
-          <th>軟破裂音</th>
+          <th>軟塞音</th>
           <td>c [g]</td>
           <td></td>
           <td>d</td>
           <td>b</td>
         </tr>
         <tr>
-          <th>硬破裂音</th>
+          <th>硬塞音</th>
           <td>q [k]</td>
-          <td>k [ɕ]</td>
+          <td></td>
           <td>t</td>
           <td>p</td>
         </tr>
         <tr>
-          <th>硬摩擦音</th>
+          <th>硬擦音</th>
           <td>x [h]</td>
-          <td></td>
+          <td>k [ɕ]</td>
           <td>s</td>
           <td>f</td>
         </tr>
         <tr>
-          <th>軟摩擦音</th>
-          <td>∅</td>
+          <th>軟擦音</th>
+          <td>∅ [ʔ]</td>
           <td>j [ʑ]</td>
           <td>z</td>
           <td>v</td>
         </tr>
         <tr>
-          <th>接近音</th>
+          <th>流音</th>
           <td></td>
           <td></td>
-          <td>r</td>
+          <td>l</td>
           <td></td>
         </tr>
-        <tr style={{ borderTopStyle: 'double' }}>
-          <th>強音</th>
+        <tr>
+          <th>強母音</th>
           <td>a</td>
           <td>i</td>
           <td></td>
-          <td>u [ɯ]</td>
+          <td>u</td>
         </tr>
         <tr>
-          <th>弱音</th>
-          <td>∅ [ə]</td>
+          <th>弱母音</th>
+          <td></td>
           <td>e</td>
           <td></td>
           <td>o</td>
         </tr>
       </table>
-    </div>
+    </Section>
 
-    <div>
-      條件異音.
+    <Section title='字と音の對應の由來'>
+      <ul>
+        <li>Roa 語派に C が [k] を表すは Ett 語が齎した混亂なり, Γ と由來を共にせば [g] を表す</li>
+        <li>本來 存在しない G は [g] と有聲性と調音點を共にす [ŋ] を表す</li>
+        <li>Q と K は, Ine 語族の舌背塞音3系列を Q, ?, K で表したと假定し, satem 語の如く合流したと考ふ</li>
+      </ul>
+    </Section>
 
+    <Section title='異音'>
       <table>
+        <thead>
+          <tr>
+            <th>字</th>
+            <th>條件</th>
+            <th>異音</th>
+            <th></th>
+          </tr>
+        </thead>
         <tr>
-          <th>音</th>
-          <th>環境</th>
+          <td>q, t, p</td>
+          <td rowSpan={2}>_(!V)</td>
+          <td>(有氣)</td>
+          <td rowSpan={2}>子音が後續しない塞音は有氣性が有聲性を代替する</td>
+        </tr>
+        <tr>
+          <td>c, d, b</td>
+          <td>(無聲)</td>
+        </tr>
+        <tr>
+          <td>j</td>
+          <td rowSpan={2}>_(!V)</td>
+          <td>[tɕ]</td>
+          <td rowSpan={2}>子音が後續しない有聲擦音は無聲塞擦音に成る</td>
+        </tr>
+        <tr>
+          <td>z</td>
+          <td>[ts]</td>
         </tr>
         <tr>
           <td>g</td>
@@ -130,26 +162,26 @@ export default () => <Page title='文法'>
         </tr>
         <tr>
           <td>x</td>
-          <td>_i | i_^</td>
+          <td>_i, i_(!V)</td>
           <td>[ç]</td>
         </tr>
         <tr>
           <td>i</td>
-          <td>齒_</td>
+          <td>(n, s, z)_</td>
           <td>[ɨ]</td>
         </tr>
         <tr>
           <td>u</td>
-          <td>_舌</td>
+          <td rowSpan={2}>_舌</td>
           <td>[y]</td>
+          <td rowSpan={2}>舌子音に後續する脣母音は圓脣前舌母音に成る</td>
         </tr>
         <tr>
           <td>o</td>
-          <td>_舌</td>
           <td>[ø]</td>
         </tr>
       </table>
-    </div>
+    </Section>
 
     <div>
       音節: 子音 母音.
@@ -161,53 +193,37 @@ export default () => <Page title='文法'>
   </Section>
 
   <Section title='詞順'>
-    <div>
-      基本の詞順は
-      <div className='indent'>
-        V0 V1 V2
-      </div>
-      で
-      <div className='indent'>
-        V1 する者は V2 する者を V する
-      </div>
-      を意味する. V<span style={{ fontStyle: 'italic' }}>n</span> は統べて關係である.
-    </div>
-    <div>
-      格標識を使って詞順を變へる事も可能である.
-    </div>
+    <Section title='格'>
+      <em>關係</em> (自然言語の動詞, 名詞, 形容詞に樣に多樣な意味を擔ふ部分) を PNAD… の順に竝べて文を作る.
+
+      <ul>
+        <li>P 述部 {translate('_P')}: Vする (文頭に省略可能)</li>
+        <li>N 主部 {translate('_N')}: Vが</li>
+        <li>A 客部 {translate('_A')}: Vを</li>
+        <li>D 與部 {translate('_D')}: Vへ, Vの, Vと …</li>
+      </ul>
+    </Section>
 
     <Sample data={[
       [
-        '我れは汝れを知る',
+        '我は汝を知る',
         'KNOW I THOU',
       ],
       [
-        '〃',
-        '_N I KNOW THOU',
-      ],
-      [
-        '〃',
-        '_N I _A THOU KNOW',
+        '汝は我へ眞實を與ふ',
+        'GIVE THOU TRUE I',
       ],
     ]} />
   </Section>
 
   <Section title='形容'>
-    <div className='indent'>
-      V0 {translate('OF')} V1
+    <div>
+      {translate('OF')} の後の關係は前の關係の意味を修飾する.
     </div>
-    は
-    <div className='indent'>
-      V1 的に V0 する
-    </div>
-    を意味する.
-    V0 と V1 の關係は曖昧である.
-    左結合である
-
     <Sample data={[
       [
-        '明るい (明るい-的な) 星を見る',
-        'SEE _A SUN OF BRIGHT',
+        '汝は明るい (明るい-的な) 星を見る',
+        'SEE THOU SUN OF BRIGHT',
       ],
     ]} />
   </Section>
@@ -219,36 +235,41 @@ export default () => <Page title='文法'>
       </div>
       は
       <div className='indent'>
-        文 P は {translate('_N')} を表す
+        {translate('_N')} は文 P として {translate('_A')}  を表す
       </div>
       を意味する關係を作る.
+      構造終止 {translate('CLAUSE_END')} を文末に省略可能.
     </div>
 
     <Sample data={[
       [
-        '我れは知る, 汝れが星を見るを',
+        '我は知る, 汝が星を見るを',
         'KNOW I THAT SEE THOU SUN (CLAUSE_END)',
-      ],
-      [
-        '生きる事は食ふ事なり',
-        'THAT EAT CLAUSE_END THAT LIVE',
       ],
     ]} />
   </Section>
 
-  <Section title='有格句'>
+  <Section title='缺節'>
     <div>
+      <div className='indent'>
+        {translate('WHAT')}
+      </div>
+      は文の空欄を意味し
       <div className='indent'>
         {translate('WHICH')} P(… {translate('WHAT')} …) ({translate('CLAUSE_END')})
       </div>
-      は {translate('WHAT')} として P を滿たす關係を意味する.
-      節の右端の {translate('WHAT')} を省略しても良い.
+      は關係
+      <div className='indent'>
+        {translate('_N')} は {translate('WHAT')} として P を滿たす
+      </div>
+      を意味する.
+      <br />N, A, D の内 未登場の部としての {translate('WHAT')} を省略可能.
     </div>
 
     <Sample data={[
       [
-        '我れ知る, 汝れが見る星を',
-        'KNOW I SUN WHICH SEE THOU (WHAT) (CLAUSE_END)',
+        '我は知る, 汝が見る星 (星なりて汝が見るもの) を',
+        'KNOW I SUN AND WHICH SEE THOU (WHAT) (CLAUSE_END)',
       ],
     ]} />
   </Section>
@@ -256,15 +277,19 @@ export default () => <Page title='文法'>
   <Section title='副文'>
     <div>
       <div className='indent'>
-        {translate('WITH')} P ({translate('CLAUSE_END')})
+        P0 {translate('then')} P1
       </div>
-      は主文に副次的な文を追加する.
+      は順接, 逆接, 竝列などの多樣な文關係を示す (分詞構文の樣に).
     </div>
 
     <Sample data={[
       [
-        '汝れが引き起こして我れは知る (汝れが我れに知らせる)',
-        'KNOW I WITH CAUSE THOU (CLAUSE_END)',
+        '汝が引き起こして我が知る',
+        'CAUSE THOU THEN KNOW I',
+      ],
+      [
+        '汝が, 我が知るを引き起こす',
+        'CAUSE THOU THAT KNOW I',
       ],
     ]} />
   </Section>
@@ -314,8 +339,12 @@ export default () => <Page title='文法'>
 
     <Sample data={[
       [
-        '0人が知る (誰も知らない)',
-        'KNOW ZERO MAN',
+        '人を0回見る (人を見ない, 見たことが無い)',
+        'ZERO SEE MAN',
+      ],
+      [
+        '0人を見る (誰も見ない)',
+        'SEE ZERO MAN',
       ],
     ]} />
   </Section>
@@ -323,49 +352,45 @@ export default () => <Page title='文法'>
   <Section title='疑問'>
     <div>
       <div className='indent'>
-        P(… {translate('_ASK WHAT')} …)
+        P({translate('WHAT _ASK')})
       </div>
       は {translate('WHAT')} を滿たす關係を問ふ.
     </div>
     <Sample data={[
       [
-        '我れは汝れの何だ?',
-        '_ASK WHAT I THOU',
+        '我は汝の何だ?',
+        'WHAT _ASK I THOU',
       ],
       [
-        '誰れが汝れを知る?',
-        'KNOW _ASK WHAT THOU',
-      ],
-      [
-        '我れは誰れを知る?',
-        'KNOW I _ASK WHAT',
+        '誰が汝を知る?',
+        'KNOW WHAT _ASK THOU',
       ],
     ]} />
 
     <div>
       <div className='indent'>
-        P(… {translate('_ASK HOW_MANY')} …)
+        P(… {translate('HOW_MANY _ASK')} …)
       </div>
-      は {translate('_ASK HOW_MANY')} を滿たす數を問ふ.
+      は {translate('HOW_MANY _ASK')} を滿たす數を問ふ.
     </div>
     <Sample data={[
       [
-        '幾人 見える?',
-        'SEE THOU _ASK HOW_MANY MAN',
+        '汝は幾人を見る?',
+        'THOU SEE HOW_MANY _ASK MAN',
       ],
       [
         'どれ程 長い?',
-        '_ASK HOW_MANY LONG',
+        'LONG OF CARDINAL HOW_MANY _ASK',
       ],
     ]} />
 
     <div>
-      文末の {translate('_ASK')} は文全體を問ふ.
+      文頭の {translate('_ASK')} は文全體を問ふ.
     </div>
     <Sample data={[
       [
         '汝れは我れを知るか?',
-        'KNOW THOU I _ASK',
+        ' _ASK KNOW THOU I',
       ],
       [
         'はい',
@@ -373,7 +398,7 @@ export default () => <Page title='文法'>
       ],
       [
         'いいえ',
-        'NOT KNOW',
+        'NO KNOW',
       ],
     ]} />
   </Section>
@@ -385,14 +410,14 @@ export default () => <Page title='文法'>
       </div>
       は
       <div className='indent'>
-        表現 F である
+        {translate('_N')} は表現 F として{translate('_A')} を意味する
       </div>
       を意味する關係を作る.
     </div>
     <Sample data={[
       [
         '‹sumi› は我れを意味する',
-        'NAME _QUOTE sumi _QUOTE I',
+        '_QUOTE sumi, I',
       ],
     ]} />
   </Section>
@@ -404,11 +429,11 @@ export default () => <Page title='文法'>
         'DID LIVE',
       ],
       [
-        '生く',
+        '生きる',
         'DO LIVE',
       ],
       [
-        '生かむ',
+        '生きむ',
         'SHALL LIVE',
       ],
       [
@@ -433,35 +458,15 @@ export default () => <Page title='文法'>
       ],
       [
         '生きてはならぬ',
-        'ZERO-MAY LIVE',
+        'MAY OF ZERO LIVE',
       ],
       [
         '生きてよい',
-        'MAY ZERO LESS LIVE',
+        'MAY LIVE',
       ],
       [
         '生きねばならぬ',
-        'MAX-MAY LIVE',
-      ],
-    ]} />
-  </Section>
-
-  <Section title='接續'>
-    <div>
-      接續は文と文の關係を示す.
-      <div className='indent'>
-        P0 {translate('_CONNECT')} V {translate('CLAUSE_END')} P1
-      </div>
-      は
-      <div className='indent'>
-        V {translate('THAT')} P0 {translate('CLAUSE_END THAT')} P1 ({translate('CLAUSE_END')})
-      </div>
-      を表す.
-    </div>
-    <Sample data={[
-      [
-        '彼が死ぬ時に彼は幸福だった',
-        '_PAST _END LIVE HE _CONNECT AT CLAUSE_END _PAST _WHILE LOVE HE',
+        'MAY OF ALL LIVE',
       ],
     ]} />
   </Section>
